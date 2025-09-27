@@ -1,0 +1,8 @@
+<svg width="110" height="125" viewBox="0 0 110 125" xmlns="http://www.w3.org/2000/svg">
+  <!--駒の形（五角形）-->
+  <polygon points="55,5 88.9,16.0  105,117.5 5,117.5 21.1,16.0" fill="#f4e2c2" stroke="#000" stroke-width="2"/>
+  <!--駒の文字-->>
+  <text x="50%" y="65%" font-size="55" writing-mode="vertical-rl" font-family="UD デジタル 教科書体 NK" text-anchor="middle" fill="#000" dominant-baseline="center">
+    桂
+  </text>
+</svg>

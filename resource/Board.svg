@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="駒盤.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showguides="true"
+     showgrid="false"
+     inkscape:lockguides="false"
+     inkscape:zoom="0.71891835"
+     inkscape:cx="139.79334"
+     inkscape:cy="424.94395"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="use4">
+    <inkscape:grid
+       id="grid2"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999998"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#f4e3d7;fill-opacity:1;stroke:#000000;stroke-width:0.52916667;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4"
+       width="205.82059"
+       height="224.87059"
+       x="0.27720612"
+       y="0.27720612"
+       inkscape:label="外枠" />
+    <g
+       inkscape:label="Clip"
+       id="use4"
+       style="fill:#f4e3d7;fill-opacity:1"
+       transform="matrix(1,0,0,1.1,7.9374995,7.9375)">
+      <rect
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.558393;stroke-dasharray:none;stroke-opacity:1"
+         id="rect5"
+         width="189.9416"
+         height="189.9416"
+         x="0.2791965"
+         y="0.2791965"
+         inkscape:label="内枠" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.5284;stroke-dasharray:none;stroke-opacity:1"
+         d="m 21.430867,0 c 0,190.5 0,190.5 0,190.5"
+         id="path5"
+         inkscape:label="縦線8" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.5284;stroke-dasharray:none;stroke-opacity:1"
+         d="m 42.597533,0 c 0,190.5 0,190.5 0,190.5"
+         id="path6"
+         inkscape:label="縦線7" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.5284;stroke-dasharray:none;stroke-opacity:1"
+         d="m 63.7642,0 c 0,190.5 0,190.5 0,190.5"
+         id="path7"
+         inkscape:label="縦線6" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.5284;stroke-dasharray:none;stroke-opacity:1"
+         d="m 84.930867,0 c 0,190.5 0,190.5 0,190.5"
+         id="path8"
+         inkscape:label="縦線5" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.5284;stroke-dasharray:none;stroke-opacity:1"
+         d="m 106.09753,0 c 0,190.5 0,190.5 0,190.5"
+         id="path9"
+         inkscape:label="縦線4" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.5284;stroke-dasharray:none;stroke-opacity:1"
+         d="m 127.2642,0 c 0,190.5 0,190.5 0,190.5"
+         id="path10"
+         inkscape:label="縦線3" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.5284;stroke-dasharray:none;stroke-opacity:1"
+         d="m 148.43087,0 c 0,190.5 0,190.5 0,190.5"
+         id="path11"
+         inkscape:label="縦線2" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.5284;stroke-dasharray:none;stroke-opacity:1"
+         d="m 169.59753,0 c 0,190.5 0,190.5 0,190.5"
+         id="path12"
+         inkscape:label="縦線1" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.528776;stroke-dasharray:none;stroke-opacity:1"
+         d="M 190.5,169.59811 C 5.4126676e-7,169.59772 5.4126676e-7,169.59772 5.4126676e-7,169.59772"
+         id="path20"
+         inkscape:label="横線8" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.528776;stroke-dasharray:none;stroke-opacity:1"
+         d="M 190.5,148.43145 C 5.4126676e-7,148.43106 5.4126676e-7,148.43106 5.4126676e-7,148.43106"
+         id="path19"
+         inkscape:label="横線7" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.528776;stroke-dasharray:none;stroke-opacity:1"
+         d="M 190.5,127.26478 C 5.4126677e-7,127.26439 5.4126677e-7,127.26439 5.4126677e-7,127.26439"
+         id="path18"
+         inkscape:label="横線6" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.528776;stroke-dasharray:none;stroke-opacity:1"
+         d="M 190.5,106.09811 C 5.4126676e-7,106.09772 5.4126676e-7,106.09772 5.4126676e-7,106.09772"
+         id="path17"
+         inkscape:label="横線5" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.528776;stroke-dasharray:none;stroke-opacity:1"
+         d="M 190.5,84.931446 C 5.4265462e-7,84.931055 5.4265462e-7,84.931055 5.4265462e-7,84.931055"
+         id="path16"
+         inkscape:label="横線4" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.528776;stroke-dasharray:none;stroke-opacity:1"
+         d="M 190.5,63.764779 C 5.4265463e-7,63.764388 5.4265463e-7,63.764388 5.4265463e-7,63.764388"
+         id="path15"
+         inkscape:label="横線3" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.528776;stroke-dasharray:none;stroke-opacity:1"
+         d="M 190.5,42.598112 C 5.4959488e-7,42.597721 5.4959488e-7,42.597721 5.4959488e-7,42.597721"
+         id="path14"
+         inkscape:label="横線2" />
+      <path
+         style="fill:#f4e2c2;fill-opacity:1;stroke:#000000;stroke-width:0.532085;stroke-dasharray:none;stroke-opacity:1"
+         d="M 190.49976,21.696038 C 2.3107543e-4,21.695642 2.3107543e-4,21.695642 2.3107543e-4,21.695642"
+         id="path13"
+         inkscape:label="横線1" />
+    </g>
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.262465;stroke-dasharray:none;stroke-opacity:1"
+       id="path4-49"
+       cx="71.702087"
+       cy="147.90208"
+       rx="0.66251767"
+       ry="0.66251791"
+       inkscape:label="ポイント左下" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.262465;stroke-dasharray:none;stroke-opacity:1"
+       id="path4-6"
+       cx="135.20209"
+       cy="147.90208"
+       rx="0.66251767"
+       ry="0.66251791"
+       inkscape:label="ポイント右下" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.262465;stroke-dasharray:none;stroke-opacity:1"
+       id="path4"
+       cx="135.20209"
+       cy="78.052086"
+       rx="0.66251767"
+       ry="0.66251791"
+       inkscape:label="ポイント右上" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.26246;stroke-dasharray:none;stroke-opacity:1"
+       id="path4-4"
+       cx="71.70208"
+       cy="78.052086"
+       rx="0.66251981"
+       ry="0.66252005"
+       inkscape:label="ポイント左上" />
+  </g>
+</svg>

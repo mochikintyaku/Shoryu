@@ -1,0 +1,83 @@
+@startuml shoryu
+hide empty members
+
+class ShogiGameController{
+    - currentMode : GameMode
+    - board : ShogiBoard
+    - player1 : ShogiPlayer
+    - player2 : ShogiPlayer
+    - aiPlayer : ShogiAI
+    + SelectMode(mode: GameMode)
+    + StartGame()
+    + ShowBoard()
+    + PlayTurn()
+    + PlayAITurn()
+}
+
+class ShogiBoard{
+    - board : Piece[,]
+    + InitializeBoard()
+    + GetPieceAt(x,y)
+    + SetPieceAt(x,y)
+}
+
+class Piece{
+    - type : PieceType
+    - position : (int,int)
+    + GetType()
+    + GetPosition()
+    + SetPosition(x,y)
+}
+
+class ShogiMoveValidator{
+    + IsValidMove(piece, fromX, fromY, toX, toY, board)
+    + GetLegalMoves(piece, board)
+}
+
+class ShogiPlayer{
+    - name : string
+    - isHuman : bool
+    + GetMove()
+}
+
+class ShogiAI{
+    - board : ShogiBoard
+    - moveValidator : ShogiMoveValidator
+    + GetBestMove()
+    + EvaluateBoard()
+}
+
+class ShogiView{
+    - board : ShogiBoard
+    - gameController : ShogiGameController
+    + RenderBoard()
+    + ShowMessage(message: string)
+    + GetPlayerInput()
+    + UpdateUI()
+}
+
+class ShogiServer{
+    - tcpListener : TcpListener
+    + StartServer(ipAddress, port)
+    + StartGame(client1, client2)
+    + SendMessage(client, message)
+    + ReceiveMessage(client)
+}
+
+class ShogiClient{
+    - tcpClient : TcpClient
+    - stream : NetworkStream
+    + ConnectToServer(ipAddress, port)
+    + SendMessage(message)
+    + ReceiveMessage()
+}
+
+
+ShogiBoard <.. ShogiGameController
+ShogiBoard *-- Piece
+ShogiMoveValidator <.. ShogiBoard
+ShogiGameController *-- ShogiPlayer
+ShogiAI <.. ShogiGameController
+ShogiView o-- ShogiBoard
+ShogiServer -- ShogiClient
+@enduml
