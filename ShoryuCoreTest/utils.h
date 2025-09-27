@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <string>
 
-namespace shoryu
+namespace shoryu::core
 {
     static inline std::string toKanji(Piece piece)
     {

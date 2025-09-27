@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 
-namespace shoryu
+namespace shoryu::core
 {
 	DropPieceCommand::DropPieceCommand(Board& board, Position pos, std::optional<Piece> post)
 		: board_(board), pos_(pos), pre_piece_(std::nullopt), post_piece_(post), executed_(false)

@@ -5,7 +5,7 @@
 #include "ShoryuParams.h"
 #include "Piece.h"
 
-namespace shoryu
+namespace shoryu::core
 {
 	class SHORYU_API Board
 	{
@@ -14,7 +14,7 @@ namespace shoryu
 
 		Board();
 		~Board() = default;
-		
+
 		void Clear();
 		const std::optional<Piece> getPiece(Position pos) const;
 		void setPiece(Position pos, std::optional<Piece> newPiece);

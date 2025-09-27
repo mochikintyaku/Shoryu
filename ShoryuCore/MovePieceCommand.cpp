@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-namespace shoryu
+namespace shoryu::core
 {
 	MovePieceCommand::MovePieceCommand(Board& board, Position from, Position to)
 		:board_(board), from_(from), to_(to), removeCommand_(std::nullopt), dropCommand_(std::nullopt), executed_(false)

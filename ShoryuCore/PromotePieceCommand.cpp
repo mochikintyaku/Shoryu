@@ -2,7 +2,7 @@
 #include "Board.h"
 #include <stdexcept>
 
-namespace shoryu
+namespace shoryu::core
 {
 	PromotePieceCommand::PromotePieceCommand(Board& board, Position pos)
 		: board_(board), pos_(pos), normal_piece_(std::nullopt), promoted_piece_(std::nullopt)

@@ -1,7 +1,7 @@
 #include "RemovePieceCommand.h"
 #include <stdexcept>
 
-namespace shoryu
+namespace shoryu::core
 {
 	RemovePieceCommand::RemovePieceCommand(Board& board, Position pos)
 		: dropCommand(board, pos, std::nullopt), executed_(false)

@@ -1,6 +1,6 @@
 #include "Board.h"
 
-namespace shoryu
+namespace shoryu::core
 {
 	Board::Board()
 	{

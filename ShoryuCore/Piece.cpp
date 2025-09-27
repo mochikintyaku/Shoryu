@@ -1,6 +1,6 @@
 #include "Piece.h"
 
-namespace shoryu
+namespace shoryu::core
 {
 	Piece::Piece(PieceType pieceType, PlayerSide owner)
 		: pieceType_(pieceType), owner_(owner)

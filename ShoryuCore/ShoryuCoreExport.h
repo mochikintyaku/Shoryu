@@ -1,6 +1,6 @@
 #pragma once
 
-namespace shoryu
+namespace shoryu::core
 {
 	// DLLエクスポート定義
 	#ifdef SHORYUCORE_EXPORTS

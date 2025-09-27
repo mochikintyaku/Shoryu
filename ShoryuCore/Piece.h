@@ -2,7 +2,7 @@
 #include "ShoryuCoreExport.h"
 #include "ShoryuParams.h"
 
-namespace shoryu
+namespace shoryu::core
 {
 	class SHORYU_API Piece
 	{

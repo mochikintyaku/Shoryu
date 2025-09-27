@@ -6,7 +6,7 @@
 #include <memory>
 #include <stack>
 
-namespace shoryu
+namespace shoryu::core
 {
 	class SHORYU_API CommandManager
 	{

@@ -5,7 +5,7 @@
 #include "Piece.h"
 #include <optional>
 
-namespace shoryu
+namespace shoryu::core
 {
     class Board;
 

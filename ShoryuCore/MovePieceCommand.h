@@ -6,7 +6,7 @@
 #include "ShoryuParams.h"
 #include <optional>
 
-namespace shoryu
+namespace shoryu::core
 {
     class Board;
 

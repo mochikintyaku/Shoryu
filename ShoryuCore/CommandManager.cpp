@@ -1,6 +1,6 @@
 #include "CommandManager.h"
 
-namespace shoryu
+namespace shoryu::core
 {
 	CommandManager::CommandManager()
 		:stack_()
