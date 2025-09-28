@@ -150,29 +150,17 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="CommandManager.h" />
-    <ClInclude Include="DropPieceCommand.h" />
-    <ClInclude Include="IShoryuCommand.h" />
-    <ClInclude Include="MovePieceCommand.h" />
+    <ClInclude Include="Move.h" />
+    <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Piece.h" />
-    <ClInclude Include="PromotePieceCommand.h" />
-    <ClInclude Include="RemovePieceCommand.h" />
     <ClInclude Include="ShoryuCoreExport.h" />
     <ClInclude Include="ShoryuParams.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="CommandManager.cpp" />
-    <ClCompile Include="DropPieceCommand.cpp" />
-    <ClCompile Include="MovePieceCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Move.cpp" />
     <ClCompile Include="Piece.cpp" />
-    <ClCompile Include="PromotePieceCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="RemovePieceCommand.cpp" />
     <ClCompile Include="ShoryuParams.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
