@@ -36,6 +36,12 @@
     <ClInclude Include="Move.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="ShoryuCore.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="LegalMoveFinder.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp">
@@ -48,6 +54,12 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="ShoryuParams.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ShoryuCore.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="LegalMoveFinder.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

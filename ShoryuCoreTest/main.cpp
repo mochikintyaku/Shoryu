@@ -1,52 +1,51 @@
 #include <iostream>
 #include "utils.h"
-#include "Board.h"
-#include "MoveManager.h"
+#include "ShoryuCore.h"
 #include <optional>
 
 int main()
 {
 	using namespace shoryu::core;
-	Board board;
-	MoveManager manager(board);
+	ShoryuCore core;
+	core.Initialize();
 
 	Move m1 = {
-		.from = std::nullopt,
-		.to = Position(Suji::Suji7, Dan::Dan6),
+		.from = Position(Suji::_7, Dan::_7),
+		.to = Position(Suji::_7, Dan::_6),
 		.capturedPiece = std::nullopt,
-		.movedPieceBefore = std::nullopt,
+		.movedPieceBefore = Piece(PieceType::Fu, PlayerSide::Sente),
 		.movedPieceAfter = Piece(PieceType::Fu, PlayerSide::Sente)
 	};
 
 	Move m2 = {
-		.from = std::nullopt,
-		.to = Position(Suji::Suji6, Dan::Dan9),
+		.from = Position(Suji::_8, Dan::_3),
+		.to = Position(Suji::_8, Dan::_4),
 		.capturedPiece = std::nullopt,
-		.movedPieceBefore = std::nullopt,
-		.movedPieceAfter = Piece(PieceType::Kin, PlayerSide::Gote)
+		.movedPieceBefore = Piece(PieceType::Fu, PlayerSide::Gote),
+		.movedPieceAfter = Piece(PieceType::Fu, PlayerSide::Gote)
 	};
 
 	Move m3 = {
-		.from = Position(Suji::Suji7, Dan::Dan6),
-		.to = Position(Suji::Suji8, Dan::Dan5),
+		.from = Position(Suji::_2, Dan::_7),
+		.to = Position(Suji::_2, Dan::_6),
 		.capturedPiece = std::nullopt,
 		.movedPieceBefore = Piece(PieceType::Fu, PlayerSide::Sente),
-		.movedPieceAfter = Piece(PieceType::Tokin, PlayerSide::Sente)
+		.movedPieceAfter = Piece(PieceType::Fu, PlayerSide::Sente)
 	};
 
-	show(board.getLayout());
-	manager.execute(m1);
-	show(board.getLayout());
-	manager.execute(m2);
-	show(board.getLayout());
-	manager.execute(m3);
-	show(board.getLayout());
-	manager.undoLast();
-	show(board.getLayout());
-	manager.undoLast();
-	show(board.getLayout());
-	manager.undoLast();
-	show(board.getLayout());
+	show(core.board().getLayout());
+	core.play(m1);
+	show(core.board().getLayout());
+	core.play(m2);
+	show(core.board().getLayout());
+	core.play(m3);
+	show(core.board().getLayout());
+	core.undo();
+	show(core.board().getLayout());
+	core.undo();
+	show(core.board().getLayout());
+	core.undo();
+	show(core.board().getLayout());
 
 	return 0;
 }

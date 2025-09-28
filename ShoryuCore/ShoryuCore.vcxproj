@@ -149,16 +149,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="LegalMoveFinder.h" />
     <ClInclude Include="MoveManager.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="Piece.h" />
+    <ClInclude Include="ShoryuCore.h" />
     <ClInclude Include="ShoryuCoreExport.h" />
     <ClInclude Include="ShoryuParams.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="LegalMoveFinder.cpp" />
     <ClCompile Include="MoveManager.cpp" />
     <ClCompile Include="Piece.cpp" />
+    <ClCompile Include="ShoryuCore.cpp" />
     <ClCompile Include="ShoryuParams.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

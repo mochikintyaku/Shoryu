@@ -10,29 +10,29 @@ namespace shoryu::core
 
     enum class Suji
     {
-        Suji1 = 8,  // 配列要素のインデックスに合わせている
-        Suji2 = 7,
-        Suji3 = 6,
-        Suji4 = 5,
-        Suji5 = 4,
-        Suji6 = 3,
-        Suji7 = 2,
-        Suji8 = 1,
-        Suji9 = 0,
+        _1 = 8,  // 配列要素のインデックスに合わせている
+        _2 = 7,
+        _3 = 6,
+        _4 = 5,
+        _5 = 4,
+        _6 = 3,
+        _7 = 2,
+        _8 = 1,
+        _9 = 0,
         Invalid = 9
     };
 
     enum class Dan
     {
-        Dan1 = 0,
-        Dan2,
-        Dan3,
-        Dan4,
-        Dan5,
-        Dan6,
-        Dan7,
-        Dan8,
-        Dan9,
+        _1 = 0,
+        _2,
+        _3,
+        _4,
+        _5,
+        _6,
+        _7,
+        _8,
+        _9,
         Invalid
     };
 
@@ -42,7 +42,7 @@ namespace shoryu::core
         Dan dan_;
 
         Position()
-            : suji_(Suji::Suji1), dan_(Dan::Dan1)
+            : suji_(Suji::_1), dan_(Dan::_1)
         {
         }
 
