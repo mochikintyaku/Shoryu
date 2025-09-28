@@ -12,7 +12,10 @@ namespace shoryu::core
 		// 1. 移動元（from）から駒を削除
 		// 2. 移動先（to）に駒を配置
 		// 3. 取った駒があれば、持ち駒に追加
-		board_.setPiece(move.from, std::nullopt);
+		if (move.from.has_value())
+		{
+			board_.setPiece(move.from.value(), std::nullopt);
+		}
 		board_.setPiece(move.to, move.movedPieceAfter);
 		if (move.capturedPiece.has_value())
 		{
@@ -47,6 +50,9 @@ namespace shoryu::core
 		{
 			board_.setPiece(move.to, std::nullopt);
 		}
-		board_.setPiece(move.from, move.movedPieceBefore);
+		if (move.from.has_value())
+		{
+			board_.setPiece(move.from.value(), move.movedPieceBefore);
+		}
 	}
 }

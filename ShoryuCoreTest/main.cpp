@@ -1,38 +1,45 @@
 #include <iostream>
 #include "utils.h"
 #include "Board.h"
-#include "CommandManager.h"
-#include "DropPieceCommand.h"
-#include "RemovePieceCommand.h"
-#include "PromotePieceCommand.h"
-#include "MovePieceCommand.h"
-#include <memory>
+#include "MoveManager.h"
+#include <optional>
 
 int main()
 {
 	using namespace shoryu::core;
 	Board board;
-	CommandManager manager;
+	MoveManager manager(board);
 
-	auto cmd1 = std::make_unique<DropPieceCommand>(board, Position(Suji::Suji1, Dan::Dan3), Piece(PieceType::Fu, PlayerSide::Sente));
-	auto cmd2 = std::make_unique<DropPieceCommand>(board, Position(Suji::Suji6, Dan::Dan9), Piece(PieceType::Kin, PlayerSide::Sente));
-	auto cmd3 = std::make_unique<PromotePieceCommand>(board, Position(Suji::Suji1, Dan::Dan3));
-	auto cmd4 = std::make_unique<DropPieceCommand>(board, Position(Suji::Suji1, Dan::Dan3), Piece(PieceType::Kaku, PlayerSide::Gote));
-	auto cmd5 = std::make_unique<RemovePieceCommand>(board, Position(Suji::Suji1, Dan::Dan3));
-	auto cmd6 = std::make_unique<MovePieceCommand>(board, Position(Suji::Suji6, Dan::Dan9), Position(Suji::Suji5, Dan::Dan8));
+	Move m1 = {
+		.from = std::nullopt,
+		.to = Position(Suji::Suji7, Dan::Dan6),
+		.capturedPiece = std::nullopt,
+		.movedPieceBefore = std::nullopt,
+		.movedPieceAfter = Piece(PieceType::Fu, PlayerSide::Sente)
+	};
+
+	Move m2 = {
+		.from = std::nullopt,
+		.to = Position(Suji::Suji6, Dan::Dan9),
+		.capturedPiece = std::nullopt,
+		.movedPieceBefore = std::nullopt,
+		.movedPieceAfter = Piece(PieceType::Kin, PlayerSide::Gote)
+	};
+
+	Move m3 = {
+		.from = Position(Suji::Suji7, Dan::Dan6),
+		.to = Position(Suji::Suji8, Dan::Dan5),
+		.capturedPiece = std::nullopt,
+		.movedPieceBefore = Piece(PieceType::Fu, PlayerSide::Sente),
+		.movedPieceAfter = Piece(PieceType::Tokin, PlayerSide::Sente)
+	};
 
 	show(board.getLayout());
-	manager.invoke(std::move(cmd1));
+	manager.execute(m1);
 	show(board.getLayout());
-	manager.invoke(std::move(cmd2));
+	manager.execute(m2);
 	show(board.getLayout());
-	manager.invoke(std::move(cmd3));
-	show(board.getLayout());
-	manager.invoke(std::move(cmd4));
-	show(board.getLayout());
-	manager.invoke(std::move(cmd5));
-	show(board.getLayout());
-	manager.invoke(std::move(cmd6));
+	manager.execute(m3);
 	show(board.getLayout());
 	manager.undoLast();
 	show(board.getLayout());

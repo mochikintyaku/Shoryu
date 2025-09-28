@@ -13,7 +13,7 @@ namespace shoryu::core
 	class SHORYU_API MoveManager
 	{
 	public:
-		typedef std::stack<const Move> MoveStack;
+		typedef std::stack<Move> MoveStack;
 
 		MoveManager(Board& board);
 		~MoveManager() = default;
