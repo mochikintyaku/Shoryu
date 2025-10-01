@@ -26,12 +26,16 @@ namespace shoryu::core
 
 	const std::optional<Piece> Board::getPiece(Position pos) const
 	{
-		return layout_[(int)pos.dan_][(int)pos.suji_];
+		int rowIdx = DantoRowIndex(pos.dan_);
+		int colIdx = SujitoColumnIndex(pos.suji_);
+		return layout_[rowIdx][colIdx];
 	}
 
 	void Board::setPiece(Position pos, std::optional<Piece> newPiece)
 	{
-		layout_[(int)pos.dan_][(int)pos.suji_] = newPiece;
+		int rowIdx = DantoRowIndex(pos.dan_);
+		int colIdx = SujitoColumnIndex(pos.suji_);
+		layout_[rowIdx][colIdx] = newPiece;
 	}
 
 	void Board::setLayout(PieceLayout& newLayout)

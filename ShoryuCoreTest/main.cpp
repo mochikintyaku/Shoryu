@@ -10,24 +10,24 @@ int main()
 	core.Initialize();
 
 	Move m1 = {
-		.from = Position(Suji::_7, Dan::_7),
-		.to = Position(Suji::_7, Dan::_6),
+		.from = Position(7, 7),
+		.to = Position(7, 6),
 		.capturedPiece = std::nullopt,
 		.movedPieceBefore = Piece(PieceType::Fu, PlayerSide::Sente),
 		.movedPieceAfter = Piece(PieceType::Fu, PlayerSide::Sente)
 	};
 
 	Move m2 = {
-		.from = Position(Suji::_8, Dan::_3),
-		.to = Position(Suji::_8, Dan::_4),
+		.from = Position(8, 3),
+		.to = Position(8, 4),
 		.capturedPiece = std::nullopt,
 		.movedPieceBefore = Piece(PieceType::Fu, PlayerSide::Gote),
 		.movedPieceAfter = Piece(PieceType::Fu, PlayerSide::Gote)
 	};
 
 	Move m3 = {
-		.from = Position(Suji::_2, Dan::_7),
-		.to = Position(Suji::_2, Dan::_6),
+		.from = Position(2, 7),
+		.to = Position(2, 6),
 		.capturedPiece = std::nullopt,
 		.movedPieceBefore = Piece(PieceType::Fu, PlayerSide::Sente),
 		.movedPieceAfter = Piece(PieceType::Fu, PlayerSide::Sente)

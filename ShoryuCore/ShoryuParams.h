@@ -8,48 +8,20 @@ namespace shoryu::core
 
     constexpr static int BoardSize = 9;
 
-    enum class Suji
-    {
-        _1 = 8,  // 配列要素のインデックスに合わせている
-        _2 = 7,
-        _3 = 6,
-        _4 = 5,
-        _5 = 4,
-        _6 = 3,
-        _7 = 2,
-        _8 = 1,
-        _9 = 0,
-        Invalid = 9
-    };
-
-    enum class Dan
-    {
-        _1 = 0,
-        _2,
-        _3,
-        _4,
-        _5,
-        _6,
-        _7,
-        _8,
-        _9,
-        Invalid
-    };
-
     struct SHORYU_API Position
     {
-        Suji suji_;
-        Dan dan_;
+        int suji_;
+        int dan_;
 
-        Position()
-            : suji_(Suji::_1), dan_(Dan::_1)
-        {
-        }
-
-        Position(Suji suji, Dan dan)
+        Position(int suji, int dan)
             : suji_(suji), dan_(dan)
         { }
     };
+
+        int SujitoColumnIndex(int suji);
+        int DantoRowIndex(int dan);
+		int ColumnIndexToSuji(int col);
+		int RowIndexToDan(int row);
 
     enum class PieceType
     {
