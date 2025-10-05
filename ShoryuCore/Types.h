@@ -14,7 +14,8 @@ namespace shoryu::core
 
         Position(int suji, int dan)
             : suji_(suji), dan_(dan)
-        { }
+        {
+        }
     };
 
     enum class PieceType
@@ -58,20 +59,20 @@ namespace shoryu::core
 
     struct step
     {
-		int dx;
-		int dy;
+        int dx;
+        int dy;
     };
 
     struct slideDir
     {
-		int dx;
-		int dy;
+        int dx;
+        int dy;
     };
 
     struct MoveSpec
     {
-		std::vector<step> stepMoves;
-		std::vector<slideDir> slideMoves;
+        std::vector<step> stepMoves;
+        std::vector<slideDir> slideMoves;
     };
 
     enum class PlayerSide

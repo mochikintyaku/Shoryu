@@ -52,8 +52,8 @@ namespace shoryu::core
 				if (pieceOpt == std::nullopt)
 				{
 					legalMoves.push_back(newPos);
-					searchPos.suji_ + dx;
-					searchPos.dan_ + dy;
+					searchPos.suji_ += dx;
+					searchPos.dan_ += dy;
 					continue;
 				}
 				
