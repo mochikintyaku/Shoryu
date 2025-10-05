@@ -19,13 +19,17 @@ mono_crash.*
 
 # Build results
 [Dd]ebug/
+[Dd]ebug-Static/
 [Dd]ebugPublic/
 [Rr]elease/
+[Rr]elease-Static/
 [Rr]eleases/
 
 [Dd]ebug/x64/
 [Dd]ebugPublic/x64/
+[Dd]ebug-Static/x64/
 [Rr]elease/x64/
+[Rr]elease-Static/xt64/
 [Rr]eleases/x64/
 bin/x64/
 obj/x64/

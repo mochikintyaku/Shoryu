@@ -5,8 +5,6 @@
 
 namespace shoryu::core
 {
-    class Piece;
-
     struct SHORYU_API Position
     {
         int suji_;  // x•ûŒü
