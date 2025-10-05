@@ -1,5 +1,6 @@
 #pragma once
 #include "Types.h"
+#include "Piece.h"
 
 namespace shoryu::core
 {
@@ -24,5 +25,15 @@ namespace shoryu::core
 		}
 
 		return true;
+	}
+
+	inline bool isAlly(const Piece& a, const Piece& b)
+	{
+		return a.owner() == b.owner();
+	}
+
+	inline bool isEnemy(const Piece& a, const Piece& b)
+	{
+		return a.owner() != b.owner();
 	}
 }

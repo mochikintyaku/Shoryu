@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3d817316-56de-4d58-9fa9-545c229bb6d6}</ProjectGuid>
-    <RootNamespace>ShoryuCoreTest</RootNamespace>
+    <ProjectGuid>{4591318E-0B29-493C-8466-D81AD072C648}</ProjectGuid>
+    <RootNamespace>ShoryuCoreDebug</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

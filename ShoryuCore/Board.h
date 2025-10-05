@@ -4,6 +4,7 @@
 #include "ShoryuCoreExport.h"
 #include "Types.h"
 #include "Piece.h"
+#include "Square.h"
 
 namespace shoryu::core
 {

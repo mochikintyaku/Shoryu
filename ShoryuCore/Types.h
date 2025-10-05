@@ -9,8 +9,8 @@ namespace shoryu::core
 
     struct SHORYU_API Position
     {
-        int suji_;
-        int dan_;
+        int suji_;  // x•ûŒü
+        int dan_;   // y•ûŒü
 
         Position(int suji, int dan)
             : suji_(suji), dan_(dan)
