@@ -152,10 +152,13 @@
     <ClInclude Include="LegalMoveFinder.h" />
     <ClInclude Include="MoveManager.h" />
     <ClInclude Include="Move.h" />
+    <ClInclude Include="MoveTable.h" />
     <ClInclude Include="Piece.h" />
+    <ClInclude Include="PieceTraits.h" />
     <ClInclude Include="ShoryuCore.h" />
     <ClInclude Include="ShoryuCoreExport.h" />
-    <ClInclude Include="ShoryuParams.h" />
+    <ClInclude Include="Types.h" />
+    <ClInclude Include="Square.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
@@ -163,7 +166,6 @@
     <ClCompile Include="MoveManager.cpp" />
     <ClCompile Include="Piece.cpp" />
     <ClCompile Include="ShoryuCore.cpp" />
-    <ClCompile Include="ShoryuParams.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

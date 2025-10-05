@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "ShoryuParams.h"
+#include "Types.h"
 
 namespace shoryu::core
 {

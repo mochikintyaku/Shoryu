@@ -2,7 +2,7 @@
 #include <optional>
 #include <array>
 #include "ShoryuCoreExport.h"
-#include "ShoryuParams.h"
+#include "Types.h"
 #include "Piece.h"
 
 namespace shoryu::core

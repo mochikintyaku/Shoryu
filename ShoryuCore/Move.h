@@ -1,5 +1,5 @@
 #pragma once
-#include "ShoryuParams.h"
+#include "Types.h"
 #include "Piece.h"
 #include <optional>
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "ShoryuParams.h"
+#include "Types.h"
 #include "Board.h"
 #include <iostream>
 #include <iomanip>

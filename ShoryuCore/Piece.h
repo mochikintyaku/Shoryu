@@ -1,6 +1,6 @@
 #pragma once
 #include "ShoryuCoreExport.h"
-#include "ShoryuParams.h"
+#include "Types.h"
 
 namespace shoryu::core
 {
