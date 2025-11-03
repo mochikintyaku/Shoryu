@@ -16,7 +16,7 @@ namespace shoryu::core
 		typedef std::stack<Move> MoveStack;
 
 		MoveManager(Board& board);
-		~MoveManager() = default;
+		~MoveManager();
 		void execute(Move cmd);
 		void undoLast();
 

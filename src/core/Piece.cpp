@@ -1,4 +1,4 @@
-#include "Piece.h"
+#include "core/Piece.h"
 
 namespace shoryu::core
 {

@@ -10,10 +10,7 @@ namespace shoryu::core
         int suji_;  // x•ûŒü
         int dan_;   // y•ûŒü
 
-        Position(int suji, int dan)
-            : suji_(suji), dan_(dan)
-        {
-        }
+        Position(int suji, int dan);
     };
 
     enum class PieceType

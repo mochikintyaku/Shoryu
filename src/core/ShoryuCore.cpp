@@ -1,4 +1,4 @@
-#include "ShoryuCore.h"
+#include "core/ShoryuCore.h"
 
 namespace shoryu::core
 {

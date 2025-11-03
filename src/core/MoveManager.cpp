@@ -1,10 +1,13 @@
-#include "MoveManager.h"
-#include "Board.h"
+#include "core/MoveManager.h"
+#include "core/Board.h"
 
 namespace shoryu::core
 {
 	MoveManager::MoveManager(Board& board)
 		:stack_(), board_(board)
+	{ }
+
+	MoveManager::~MoveManager()
 	{ }
 
 	void MoveManager::execute(Move move)

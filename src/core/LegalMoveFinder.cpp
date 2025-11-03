@@ -1,9 +1,9 @@
-#include "LegalMoveFinder.h"
+#include "core/LegalMoveFinder.h"
 #include "vector"
-#include "MoveTable.h"
-#include "Board.h"
-#include "Square.h"
-#include "PieceTraits.h"
+#include "core/MoveTable.h"
+#include "core/Board.h"
+#include "core/Square.h"
+#include "core/PieceTraits.h"
 
 namespace shoryu::core
 {

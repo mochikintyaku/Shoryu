@@ -1,4 +1,4 @@
-#include "Board.h"
+#include "core/Board.h"
 
 namespace shoryu::core
 {
