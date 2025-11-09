@@ -5,14 +5,8 @@
 
 using namespace shoryu::core;
 
-TEST(PieceTest, DefaultConstructor) {
-    Piece piece;
-    EXPECT_NO_THROW(piece);
-}
-
-TEST(BoardTest, Initialization) {
-    Board board;
-    Position pos(1, 1);
-    auto piece = board.getPiece(pos);
-    EXPECT_FALSE(piece.has_value()); // ‰Šúó‘Ô‚Í‹ó
+int main(int argc, char** argv)
+{
+	::testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
 }

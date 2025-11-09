@@ -11,6 +11,10 @@ namespace shoryu::core
         int dan_;   // y•ûŒü
 
         Position(int suji, int dan);
+
+        // ”äŠr‰‰ŽZŽq‚ð’Ç‰Á
+        bool operator==(const Position& other) const;
+        bool operator !=(const Position& other) const;
     };
 
     enum class PieceType

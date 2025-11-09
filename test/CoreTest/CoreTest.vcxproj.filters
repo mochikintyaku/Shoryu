@@ -38,6 +38,9 @@
     <ClCompile Include="test.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="LegalMoveFinderTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <!-- Core �w�b�_�[�t�@�C�� -->
   <ItemGroup>

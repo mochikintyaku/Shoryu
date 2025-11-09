@@ -90,6 +90,7 @@
     <ClCompile Include="..\..\src\core\Piece.cpp" />
     <ClCompile Include="..\..\src\core\ShoryuCore.cpp" />
     <ClCompile Include="..\..\src\core\Types.cpp" />
+    <ClCompile Include="LegalMoveFinderTest.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
