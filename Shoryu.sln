@@ -3,12 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "core", "src\core\core.vcxproj", "{84B43D53-997D-4C08-ADA1-47B1865F2AB2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "src\core\Core.vcxproj", "{84B43D53-997D-4C08-ADA1-47B1865F2AB2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
 	ProjectSection(SolutionItems) = preProject
 		docs\設計問答集.md = docs\設計問答集.md
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoreTest", "test\CoreTest\CoreTest.vcxproj", "{6F852B51-BEEB-4F1C-BE5E-95EF97759B72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +22,10 @@ Global
 		{84B43D53-997D-4C08-ADA1-47B1865F2AB2}.Debug|x64.Build.0 = Debug|x64
 		{84B43D53-997D-4C08-ADA1-47B1865F2AB2}.Release|x64.ActiveCfg = Release|x64
 		{84B43D53-997D-4C08-ADA1-47B1865F2AB2}.Release|x64.Build.0 = Release|x64
+		{6F852B51-BEEB-4F1C-BE5E-95EF97759B72}.Debug|x64.ActiveCfg = Debug|x64
+		{6F852B51-BEEB-4F1C-BE5E-95EF97759B72}.Debug|x64.Build.0 = Debug|x64
+		{6F852B51-BEEB-4F1C-BE5E-95EF97759B72}.Release|x64.ActiveCfg = Release|x64
+		{6F852B51-BEEB-4F1C-BE5E-95EF97759B72}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
