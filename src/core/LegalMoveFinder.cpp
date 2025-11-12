@@ -14,11 +14,11 @@ namespace shoryu::core
 		if (isInside(from) == false)
 			return legalMoves;
 
-		const auto pieceOpt = board.getPiece(from);
-		if (pieceOpt.has_value() == false)
-			return legalMoves; // 指定位置に駒がない場合、空のリストを返す
+		// 指定位置に駒がない場合、空のリストを返す
+		if (auto opt = board.getPiece(from); !opt)
+			return legalMoves; 
 
-		const auto& fromPiece = pieceOpt.value();
+		const auto& fromPiece = *board.getPiece(from);
 		const auto it = moveTable.find(fromPiece.pieceType());
 		if (it == moveTable.end())
 			return legalMoves;
@@ -32,10 +32,14 @@ namespace shoryu::core
 			int newSuji = from.suji_ + step.dx * sideFactor;
 			int newDan = from.dan_ + step.dy * sideFactor;
 			Position newPos(newSuji, newDan);
-			if (isInside(newPos))
-			{
-				legalMoves.push_back(newPos);
-			}
+			if (isInside(newPos) == false)
+				continue;
+
+			if (auto opt = board.getPiece(newPos); opt)
+				if (isAlly(fromPiece, *opt))
+					continue;
+			
+			legalMoves.push_back(newPos);
 		}
 
 		// スライド移動の処理

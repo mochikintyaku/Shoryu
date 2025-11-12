@@ -909,3 +909,130 @@ TEST(LegalMoveFinderTest, Sente_Ryu_Corner)
 	// 斜め1マス
 	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 2)), moves.end());
 }
+
+// ========================================
+// 移動先に駒がいるテスト（先手のみ）
+// ========================================
+
+// 先手・歩兵 - 移動先に味方駒がいる場合、合法手に含まれない
+TEST(LegalMoveFinderTest, Fu_Blocking)
+{
+	Board board;
+	Piece piece(PieceType::Fu, PlayerSide::Sente);
+	board.setPiece(Position(5, 5), piece);
+	Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
+	board.setPiece(Position(5, 4), blockingPiece);
+	std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+	// (5,4) に味方駒がいるため、合法手に含まれない
+	EXPECT_TRUE(moves.empty());
+}
+
+// 先手・歩兵 - 移動先に敵駒がいる場合、合法手に含まれる
+TEST(LegalMoveFinderTest, Fu_Capturing)
+{
+	Board board;
+	Piece piece(PieceType::Fu, PlayerSide::Sente);
+	board.setPiece(Position(5, 5), piece);
+	Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
+	board.setPiece(Position(5, 4), blockingPiece);
+	std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+	// (5,4) に敵駒がいるため、合法手に含まれる
+	ASSERT_EQ(moves.size(), 1);
+	EXPECT_EQ(moves[0], Position(5, 4));
+}
+
+// 先手・香 - 移動先に味方駒がいる場合、合法手に含まれず、それ以降も進めない
+TEST(LegalMoveFinderTest, Kyo_Blocking)
+{
+	Board board;
+	Piece piece(PieceType::Kyo, PlayerSide::Sente);
+	board.setPiece(Position(5, 5), piece);
+	Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
+	board.setPiece(Position(5, 3), blockingPiece);
+	std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+	// (5,3) に味方駒がいるため、(5, 4) のみが合法手
+	ASSERT_EQ(moves.size(), 1);
+	EXPECT_EQ(moves[0], Position(5, 4));
+}
+
+// 先手・香 - 移動先に敵駒がいる場合、合法手に含まれ、それ以降は進めない
+TEST(LegalMoveFinderTest, Kyo_Capturing)
+{
+	Board board;
+	Piece piece(PieceType::Kyo, PlayerSide::Sente);
+	board.setPiece(Position(5, 5), piece);
+	Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
+	board.setPiece(Position(5, 3), blockingPiece);
+	std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+	// (5,3) に敵駒がいるため、(5,4) と (5,3) が合法手
+	ASSERT_EQ(moves.size(), 2);
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 3)), moves.end());
+}
+
+// 先手・桂馬 - 移動先に味方駒がいる場合、合法手に含まれない
+TEST(LegalMoveFinderTest, Kei_Blocking)
+{
+	Board board;
+	Piece piece(PieceType::Kei, PlayerSide::Sente);
+	board.setPiece(Position(5, 5), piece);
+	Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
+	board.setPiece(Position(4, 3), blockingPiece);
+	std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+	// (4,3) に味方駒がいるため、(6,3) のみが合法手
+	ASSERT_EQ(moves.size(), 1);
+	EXPECT_EQ(moves[0], Position(6, 3));
+}
+
+// 先手・桂馬 - 移動先に敵駒がいる場合、合法手に含まれる
+TEST(LegalMoveFinderTest, Kei_Capturing)
+{
+	Board board;
+	Piece piece(PieceType::Kei, PlayerSide::Sente);
+	board.setPiece(Position(5, 5), piece);
+	Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
+	board.setPiece(Position(4, 3), blockingPiece);
+	std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+	// (4,3) に敵駒がいるため、(4,3) と (6,3) が合法手
+	ASSERT_EQ(moves.size(), 2);
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 3)), moves.end());
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 3)), moves.end());
+}
+
+// 先手・銀 - 移動先に味方駒がいる場合、合法手に含まれない
+TEST(LegalMoveFinderTest, Gin_Blocking)
+{
+	Board board;
+	Piece piece(PieceType::Gin, PlayerSide::Sente);
+	board.setPiece(Position(5, 5), piece);
+	Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
+	board.setPiece(Position(4, 4), blockingPiece);
+	Piece blockingPiece2(PieceType::Fu, PlayerSide::Sente);
+	board.setPiece(Position(6, 4), blockingPiece2);
+	std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+	// (4,4) に味方駒がいるため、合法手に含まれない
+	ASSERT_EQ(moves.size(), 3);
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+}
+
+// 先手・銀 - 移動先に敵駒がいる場合、合法手に含まれる
+TEST(LegalMoveFinderTest, Gin_Capturing)
+{
+	Board board;
+	Piece piece(PieceType::Gin, PlayerSide::Sente);
+	board.setPiece(Position(5, 5), piece);
+	Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
+	board.setPiece(Position(4, 4), blockingPiece);
+	Piece blockingPiece2(PieceType::Fu, PlayerSide::Gote);
+	board.setPiece(Position(6, 4), blockingPiece2);
+	std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+	// (4,4) に敵駒がいるため、合法手に含まれる
+	ASSERT_EQ(moves.size(), 5);
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+	EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+}
