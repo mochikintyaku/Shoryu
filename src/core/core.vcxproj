@@ -62,6 +62,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -80,6 +81,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,6 +92,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Hand.cpp" />
     <ClCompile Include="LegalMoveFinder.cpp" />
     <ClCompile Include="MoveManager.cpp" />
     <ClCompile Include="Piece.cpp" />
@@ -98,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\core\Board.h" />
+    <ClInclude Include="..\..\include\core\Hand.h" />
     <ClInclude Include="..\..\include\core\LegalMoveFinder.h" />
     <ClInclude Include="..\..\include\core\Move.h" />
     <ClInclude Include="..\..\include\core\MoveManager.h" />

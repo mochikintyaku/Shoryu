@@ -27,6 +27,9 @@
     <ClCompile Include="Types.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="Hand.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\core\Board.h">
@@ -60,6 +63,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\Types.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\core\Hand.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

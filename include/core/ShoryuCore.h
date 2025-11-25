@@ -1,6 +1,7 @@
 #pragma once
 #include "MoveManager.h"
 #include "Board.h"
+#include "Hand.h"
 #include "ShoryuCoreExport.h"
 
 namespace shoryu::core
@@ -16,6 +17,8 @@ namespace shoryu::core
 		Board& board();
 	private:
 		Board board_;
+		Hand senteHand_;
+		Hand goteHand_;
 		MoveManager moveManager_;
 	};
 }

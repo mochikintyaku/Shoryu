@@ -3,7 +3,7 @@
 namespace shoryu::core
 {
 	ShoryuCore::ShoryuCore()
-		:board_(), moveManager_(board_)
+		:board_(), senteHand_(), goteHand_(), moveManager_(board_, senteHand_, goteHand_)
 	{ }
 
 

@@ -18,7 +18,7 @@ namespace shoryu::core
 		if (auto opt = board.getPiece(from); !opt)
 			return legalMoves; 
 
-		const auto& fromPiece = *board.getPiece(from);
+		const Piece fromPiece = *board.getPiece(from);
 		const auto it = moveTable.find(fromPiece.pieceType());
 		if (it == moveTable.end())
 			return legalMoves;

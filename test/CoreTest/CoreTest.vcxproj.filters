@@ -41,6 +41,12 @@
     <ClCompile Include="LegalMoveFinderTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\core\Hand.cpp">
+      <Filter>Core %28Shared%29\src</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveManagerTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <!-- Core �w�b�_�[�t�@�C�� -->
   <ItemGroup>
@@ -76,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="..\..\include\core\Types.h">
       <Filter>Core (Shared)\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\core\Hand.h">
+      <Filter>Core %28Shared%29\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
