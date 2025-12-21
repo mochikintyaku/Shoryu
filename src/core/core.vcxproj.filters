@@ -21,54 +21,57 @@
     <ClCompile Include="Piece.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="ShoryuCore.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="Types.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="Hand.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+	<ClCompile Include="GameController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\core\Board.h">
+    <ClInclude Include="..\..\inc\core\Board.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\LegalMoveFinder.h">
+    <ClInclude Include="..\..\inc\core\LegalMoveFinder.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Move.h">
+    <ClInclude Include="..\..\inc\core\Move.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\MoveManager.h">
+    <ClInclude Include="..\..\inc\core\MoveManager.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\MoveTable.h">
+    <ClInclude Include="..\..\inc\core\MoveTable.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Piece.h">
+    <ClInclude Include="..\..\inc\core\Piece.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\PieceTraits.h">
+    <ClInclude Include="..\..\inc\core\PieceTraits.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\ShoryuCore.h">
+    <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\ShoryuCoreExport.h">
+    <ClInclude Include="..\..\inc\core\Square.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Square.h">
+    <ClInclude Include="..\..\inc\core\Types.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Types.h">
+    <ClInclude Include="..\..\inc\core\Hand.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Hand.h">
+    <ClInclude Include="..\..\inc\core\Game.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Game.h">
+	<ClInclude Include="..\..\inc\core\GameController.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>

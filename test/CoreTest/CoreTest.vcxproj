@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -43,7 +43,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)inc;$(SolutionDir)src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -60,7 +60,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)inc;$(SolutionDir)src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -71,26 +71,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\core\Board.h" />
-    <ClInclude Include="..\..\include\core\Hand.h" />
-    <ClInclude Include="..\..\include\core\LegalMoveFinder.h" />
-    <ClInclude Include="..\..\include\core\Move.h" />
-    <ClInclude Include="..\..\include\core\MoveManager.h" />
-    <ClInclude Include="..\..\include\core\MoveTable.h" />
-    <ClInclude Include="..\..\include\core\Piece.h" />
-    <ClInclude Include="..\..\include\core\PieceTraits.h" />
-    <ClInclude Include="..\..\include\core\ShoryuCore.h" />
-    <ClInclude Include="..\..\include\core\ShoryuCoreExport.h" />
-    <ClInclude Include="..\..\include\core\Square.h" />
-    <ClInclude Include="..\..\include\core\Types.h" />
+    <ClInclude Include="..\..\inc\core\Board.h" />
+    <ClInclude Include="..\..\inc\core\Game.h" />
+    <ClInclude Include="..\..\inc\core\GameController.h" />
+    <ClInclude Include="..\..\inc\core\Hand.h" />
+    <ClInclude Include="..\..\inc\core\LegalMoveFinder.h" />
+    <ClInclude Include="..\..\inc\core\Move.h" />
+    <ClInclude Include="..\..\inc\core\MoveManager.h" />
+    <ClInclude Include="..\..\inc\core\MoveTable.h" />
+    <ClInclude Include="..\..\inc\core\Piece.h" />
+    <ClInclude Include="..\..\inc\core\PieceTraits.h" />
+    <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h" />
+    <ClInclude Include="..\..\inc\core\Square.h" />
+    <ClInclude Include="..\..\inc\core\Types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\core\Board.cpp" />
+    <ClCompile Include="..\..\src\core\Game.cpp" />
+    <ClCompile Include="..\..\src\core\GameController.cpp" />
     <ClCompile Include="..\..\src\core\Hand.cpp" />
     <ClCompile Include="..\..\src\core\LegalMoveFinder.cpp" />
     <ClCompile Include="..\..\src\core\MoveManager.cpp" />
     <ClCompile Include="..\..\src\core\Piece.cpp" />
-    <ClCompile Include="..\..\src\core\ShoryuCore.cpp" />
     <ClCompile Include="..\..\src\core\Types.cpp" />
     <ClCompile Include="LegalMoveFinderTest.cpp" />
     <ClCompile Include="MoveManagerTest.cpp" />
@@ -106,7 +108,7 @@
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them. For more information, see http:/go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.7\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.7\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets'))" />
   </Target>

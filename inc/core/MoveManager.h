@@ -21,6 +21,9 @@ namespace shoryu::core
 		void execute(Move cmd);
 		void undoLast();
 
+		// è”i—š—ğ‚Ì[‚³j‚ğæ“¾
+		size_t getMoveCount() const;
+
 	private:
 		Board& board_;
 		Hand& senteHand_;

@@ -61,7 +61,7 @@
       <PreprocessorDefinitions>SHORYU_CORE_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -80,7 +80,7 @@
       <PreprocessorDefinitions>SHORYU_CORE_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -92,27 +92,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameController.cpp" />
     <ClCompile Include="Hand.cpp" />
     <ClCompile Include="LegalMoveFinder.cpp" />
     <ClCompile Include="MoveManager.cpp" />
     <ClCompile Include="Piece.cpp" />
-    <ClCompile Include="ShoryuCore.cpp" />
     <ClCompile Include="Types.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\core\Board.h" />
-    <ClInclude Include="..\..\include\core\Game.h" />
-    <ClInclude Include="..\..\include\core\Hand.h" />
-    <ClInclude Include="..\..\include\core\LegalMoveFinder.h" />
-    <ClInclude Include="..\..\include\core\Move.h" />
-    <ClInclude Include="..\..\include\core\MoveManager.h" />
-    <ClInclude Include="..\..\include\core\MoveTable.h" />
-    <ClInclude Include="..\..\include\core\Piece.h" />
-    <ClInclude Include="..\..\include\core\PieceTraits.h" />
-    <ClInclude Include="..\..\include\core\ShoryuCore.h" />
-    <ClInclude Include="..\..\include\core\ShoryuCoreExport.h" />
-    <ClInclude Include="..\..\include\core\Square.h" />
-    <ClInclude Include="..\..\include\core\Types.h" />
+    <ClInclude Include="..\..\inc\core\Board.h" />
+    <ClInclude Include="..\..\inc\core\Game.h" />
+	<ClInclude Include="..\..\inc\core\GameController.h" />
+    <ClInclude Include="..\..\inc\core\Hand.h" />
+    <ClInclude Include="..\..\inc\core\LegalMoveFinder.h" />
+    <ClInclude Include="..\..\inc\core\Move.h" />
+    <ClInclude Include="..\..\inc\core\MoveManager.h" />
+    <ClInclude Include="..\..\inc\core\MoveTable.h" />
+    <ClInclude Include="..\..\inc\core\Piece.h" />
+    <ClInclude Include="..\..\inc\core\PieceTraits.h" />
+    <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h" />
+    <ClInclude Include="..\..\inc\core\Square.h" />
+    <ClInclude Include="..\..\inc\core\Types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

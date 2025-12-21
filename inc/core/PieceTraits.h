@@ -27,6 +27,28 @@ namespace shoryu::core
 		return true;
 	}
 
+	// 駒種別を成りに変換
+	inline PieceType promoteType(PieceType type)
+	{
+		auto it = PromoteMap.find(type);
+		if (it != PromoteMap.end())
+		{
+			return it->second;
+		}
+		return type;  // 成れない駒はそのまま
+	}
+
+	// 駒種別を不成りに変換（持ち駒化用）
+	inline PieceType demoteType(PieceType type)
+	{
+		auto it = DemoteMap.find(type);
+		if (it != DemoteMap.end())
+		{
+			return it->second;
+		}
+		return type;  // 成っていない駒はそのまま
+	}
+
 	inline bool isAlly(const Piece& a, const Piece& b)
 	{
 		return a.owner() == b.owner();

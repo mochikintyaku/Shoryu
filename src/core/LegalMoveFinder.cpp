@@ -61,7 +61,7 @@ namespace shoryu::core
 					continue;
 				}
 				
-				const auto& destPiece = pieceOpt.value();
+				const auto& destPiece = *pieceOpt;
 				if (isAlly(destPiece, fromPiece))
 				{
 					break;

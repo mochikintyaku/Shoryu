@@ -7,8 +7,8 @@ namespace shoryu::core
 {
     struct SHORYU_API Position
     {
-        int suji_;  // x•ûŒü
-        int dan_;   // y•ûŒü
+        int suji_;  // xÀ•W
+        int dan_;   // yÀ•W
 
         Position(int suji, int dan);
 
@@ -19,7 +19,7 @@ namespace shoryu::core
 
     enum class PieceType
     {
-        Fu = 0,  // •à•º  =0
+        Fu = 0,  // •à  =0
         Kyo,     // Ô
         Kei,     // Œj”n
         Gin,     // ‹â«

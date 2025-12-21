@@ -13,30 +13,30 @@ namespace MoveManagerTest
 		Hand senteHand;
 		Hand goteHand;
 		MoveManager moveManager(board, senteHand, goteHand);
-		// 初期配置: 先手の歩を(5,7)に配置
+		// 初期配置: 先手の歩(5,7)に配置
 		Position from(5, 7);
 		Piece fu(PieceType::Fu, PlayerSide::Sente);
 		board.setPiece(from, fu);
 		// (5,7)から(5,6)へ移動する手を実行
 		Position to(5, 6);
 		Piece movedPieceAfter(PieceType::Fu, PlayerSide::Sente);
-		Move move{
-			.from = from,
-			.to = to,
-			.capturedPiece = std::nullopt,
-			.movedPieceBefore = fu,
-			.movedPieceAfter = movedPieceAfter
-		};
+		Move move(
+			from,
+			to,
+			std::nullopt,
+			fu,
+			movedPieceAfter
+		);
 		moveManager.execute(move);
-		// 移動後の状態を検証
+		// 移動後の状態を確認
 		EXPECT_EQ(board.getPiece(from), std::nullopt); // 移動元は空
 		auto pieceAtTo = board.getPiece(to);
 		ASSERT_TRUE(pieceAtTo.has_value());
 		EXPECT_EQ(pieceAtTo->pieceType(), PieceType::Fu); // 移動先に歩がある
 		EXPECT_EQ(pieceAtTo->owner(), PlayerSide::Sente);
-		// 手を取り消す
+		// 手を戻す
 		moveManager.undoLast();
-		// 取り消し後の状態を検証
+		// 戻した後の状態を確認
 		auto pieceAtFromAfterUndo = board.getPiece(from);
 		ASSERT_TRUE(pieceAtFromAfterUndo.has_value());
 		EXPECT_EQ(pieceAtFromAfterUndo->pieceType(), PieceType::Fu); // 移動元に歩が戻る

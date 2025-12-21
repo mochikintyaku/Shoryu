@@ -7,11 +7,11 @@
     <Filter Include="Core (Shared)\src">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core (Shared)\include">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Tests">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core %28Shared%29\inc">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <!-- Core �\�[�X�t�@�C�� -->
@@ -26,9 +26,6 @@
       <Filter>Core (Shared)\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\core\Piece.cpp">
-      <Filter>Core (Shared)\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\ShoryuCore.cpp">
       <Filter>Core (Shared)\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\core\Types.cpp">
@@ -47,44 +44,53 @@
     <ClCompile Include="MoveManagerTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\core\Game.cpp">
+      <Filter>Core %28Shared%29\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\core\GameController.cpp">
+      <Filter>Core %28Shared%29\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <!-- Core �w�b�_�[�t�@�C�� -->
   <ItemGroup>
-    <ClInclude Include="..\..\include\core\Board.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\Board.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\LegalMoveFinder.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\LegalMoveFinder.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Move.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\Move.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\MoveManager.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\MoveManager.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\MoveTable.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\MoveTable.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Piece.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\Piece.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\PieceTraits.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\PieceTraits.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\ShoryuCore.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\ShoryuCoreExport.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\Square.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Square.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\Types.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Types.h">
-      <Filter>Core (Shared)\include</Filter>
+    <ClInclude Include="..\..\inc\core\Hand.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\core\Hand.h">
-      <Filter>Core %28Shared%29\include</Filter>
+    <ClInclude Include="..\..\inc\core\Game.h">
+      <Filter>Core %28Shared%29\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\core\GameController.h">
+      <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
