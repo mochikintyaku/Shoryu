@@ -4,7 +4,7 @@
     <Filter Include="src">
       <UniqueIdentifier>{34fbcb25-9e0f-47d5-94b9-7c0109dfd265}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include">
+    <Filter Include="inc">
       <UniqueIdentifier>{3e3424ec-be18-4135-aae9-aa2c14b82533}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -33,40 +33,43 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\core\Board.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\LegalMoveFinder.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\Move.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\MoveManager.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\MoveTable.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\Piece.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\PieceTraits.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\ShoryuCore.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\ShoryuCoreExport.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\Square.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\Types.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\core\Hand.h">
-      <Filter>include</Filter>
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\core\Game.h">
+      <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
