@@ -2,13 +2,12 @@
 #include "Board.h"
 #include "Hand.h"
 #include "MoveManager.h"
-#include "ShoryuCoreExport.h"
 #include "Types.h"
 
 namespace shoryu::core
 {
 	// «Šû‚Ì1‹Ç‘S‘Ì‚ğŠÇ—‚·‚éModelƒNƒ‰ƒX
-	class SHORYU_API Game
+	class Game
 	{
 	public:
 		Game();

@@ -1,6 +1,5 @@
 #include "core/Game.h"
 #include "core/Piece.h"
-#include "core/Square.h"
 #include <optional>
 
 namespace shoryu::core

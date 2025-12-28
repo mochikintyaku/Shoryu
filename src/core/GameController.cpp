@@ -1,126 +1,191 @@
 #include "core/GameController.h"
+#include "core/Game.h"
+#include "core/Move.h"
+#include "core/LegalMoveFinder.h"
 #include "core/PieceTraits.h"
 #include <cassert>
 
 namespace shoryu::core
 {
 	GameController::GameController()
-		: game_()
+		: game_(std::make_unique<Game>())
 	{
 		startNewGame();
 	}
 
+	GameController::~GameController() = default;
+
+	GameController::GameController(GameController&&) noexcept = default;
+	GameController& GameController::operator=(GameController&&) noexcept = default;
+
 	void GameController::startNewGame()
 	{
-		game_.initializeStartPosition();
+		game_->initializeStartPosition();
 	}
 
 	void GameController::clear()
 	{
-		game_.clear();
+		game_->clear();
 	}
 
-	const Board& GameController::getBoard() const
+	ViewBoardLayout GameController::getViewBoardLayout() const
 	{
-		return game_.getBoard();
+		ViewBoardLayout viewLayout;
+		const auto& board = game_->getBoard();
+		
+		for (int dan = 1; dan <= BoardSize; ++dan)
+		{
+			for (int suji = 1; suji <= BoardSize; ++suji)
+			{
+				Position pos(suji, dan);
+				auto piece = board.getPiece(pos);
+				
+				int rowIdx = Board::DanToRowIndex(dan);
+				int colIdx = Board::SujiToColumnIndex(suji);
+				
+				if (!piece)
+				{
+					viewLayout[rowIdx][colIdx] = ViewPiece{ .hasPiece = false };
+				}
+				else
+				{
+					viewLayout[rowIdx][colIdx] = ViewPiece{
+						.hasPiece = true,
+						.owner = piece->owner(),
+						.pieceType = piece->pieceType()
+					};
+				}
+			}
+		}
+		
+		return viewLayout;
 	}
 
-	const Hand& GameController::getSenteHand() const
+	ViewHand GameController::getSenteViewHand() const
 	{
-		return game_.getSenteHand();
+		const auto& hand = game_->getSenteHand();
+		ViewHand viewHand;
+		
+		viewHand.hands[0] = hand.getPieceCount(PieceType::Fu);
+		viewHand.hands[1] = hand.getPieceCount(PieceType::Kyo);
+		viewHand.hands[2] = hand.getPieceCount(PieceType::Kei);
+		viewHand.hands[3] = hand.getPieceCount(PieceType::Gin);
+		viewHand.hands[4] = hand.getPieceCount(PieceType::Kin);
+		viewHand.hands[5] = hand.getPieceCount(PieceType::Kaku);
+		viewHand.hands[6] = hand.getPieceCount(PieceType::Hisha);
+		
+		return viewHand;
 	}
 
-	const Hand& GameController::getGoteHand() const
+	ViewHand GameController::getGoteViewHand() const
 	{
-		return game_.getGoteHand();
+		const auto& hand = game_->getGoteHand();
+		ViewHand viewHand;
+		
+		viewHand.hands[0] = hand.getPieceCount(PieceType::Fu);
+		viewHand.hands[1] = hand.getPieceCount(PieceType::Kyo);
+		viewHand.hands[2] = hand.getPieceCount(PieceType::Kei);
+		viewHand.hands[3] = hand.getPieceCount(PieceType::Gin);
+		viewHand.hands[4] = hand.getPieceCount(PieceType::Kin);
+		viewHand.hands[5] = hand.getPieceCount(PieceType::Kaku);
+		viewHand.hands[6] = hand.getPieceCount(PieceType::Hisha);
+		
+		return viewHand;
 	}
 
 	PlayerSide GameController::getCurrentPlayer() const
 	{
-		return game_.getCurrentPlayer();
+		return game_->getCurrentPlayer();
 	}
 
 	size_t GameController::getMoveCount() const
 	{
-		return game_.getMoveCount();
+		return game_->getMoveCount();
 	}
 
 	std::vector<Position> GameController::getLegalMoves(Position from) const
 	{
-		return findLegalMoves(game_.getBoard(), from);
+		return findLegalMoves(game_->getBoard(), from);
 	}
 
-	Move GameController::createNormalMove(Position from, Position to) const
+	void GameController::executeNormalMove(Position from, Position to)
 	{
 		// 事前条件: from に駒が存在する
-		assert(game_.getBoard().getPiece(from).has_value() 
+		assert(game_->getBoard().getPiece(from).has_value() 
 		       && "Precondition violated: No piece at 'from' position");
 		
-		return Move(
+		// Move 構造体を内部で構築
+		Move move(
 			from,
 			to,
-			game_.getBoard().getPiece(to),
-			game_.getBoard().getPiece(from),
-			*game_.getBoard().getPiece(from)
+			game_->getBoard().getPiece(to),		//capturedPiece
+			game_->getBoard().getPiece(from),	//movedPieceBefore
+			*game_->getBoard().getPiece(from)	//movedPieceAfter
 		);
+		
+		// Game に実行を委譲
+		game_->executeMove(move);
 	}
 
-	Move GameController::createPromotionMove(Position from, Position to) const
+	void GameController::executePromotionMove(Position from, Position to)
 	{
 		// 事前条件: from に駒が存在する
-		assert(game_.getBoard().getPiece(from).has_value() 
+		assert(game_->getBoard().getPiece(from).has_value() 
 		       && "Precondition violated: No piece at 'from' position");
 		
-		Piece originalPiece = *game_.getBoard().getPiece(from);
+		Piece originalPiece = *game_->getBoard().getPiece(from);
 		
 		// 事前条件: 駒が成れる種類である
 		assert(canPromotePiece(originalPiece.pieceType()) 
 		       && "Precondition violated: Piece cannot be promoted");
 		
-		return Move(
+		// Move 構造体を内部で構築（成った後の駒）
+		Move move(
 			from,
 			to,
-			game_.getBoard().getPiece(to),
-			originalPiece,
-			Piece(promoteType(originalPiece.pieceType()), originalPiece.owner())
+			game_->getBoard().getPiece(to),		//capturedPiece
+			originalPiece,						//movedPieceBefore
+			Piece(promoteType(originalPiece.pieceType()), originalPiece.owner())	//movedPieceAfter
 		);
+		
+		// Game に実行を委譲
+		game_->executeMove(move);
 	}
 
-	Move GameController::createDropMove(Position to, PieceType pieceType) const
+	void GameController::executeDropMove(Position to, PieceType pieceType)
 	{
 		// 事前条件: to が空マスである
-		assert(!game_.getBoard().getPiece(to).has_value() 
+		assert(!game_->getBoard().getPiece(to).has_value() 
 		       && "Precondition violated: 'to' position must be empty for drop move");
 		
 		// 事前条件: 持ち駒に指定した駒がある
-		const Hand& hand = (game_.getCurrentPlayer() == PlayerSide::Sente) 
-		                   ? game_.getSenteHand() 
-		                   : game_.getGoteHand();
+		const Hand& hand = (game_->getCurrentPlayer() == PlayerSide::Sente) 
+		                   ? game_->getSenteHand() 
+		                   : game_->getGoteHand();
 		assert(hand.hasPiece(pieceType) 
 		       && "Precondition violated: No piece in hand to drop");
 		
-		return Move(
-			std::nullopt,
+		// Move 構造体を内部で構築（持ち駒を打つ）
+		Move move(
+			std::nullopt,		// from
 			to,
-			std::nullopt,
-			std::nullopt,
-			Piece(pieceType, game_.getCurrentPlayer())
+			std::nullopt,		// capturedPiece
+			std::nullopt,		// movedPieceBefore
+			Piece(pieceType, game_->getCurrentPlayer())		// movedPieceAfter
 		);
-	}
-
-	void GameController::executeMove(const Move& move)
-	{
-		game_.executeMove(move);
+		
+		// Game に実行を委譲
+		game_->executeMove(move);
 	}
 
 	void GameController::undoLastMove()
 	{
-		game_.undoLastMove();
+		game_->undoLastMove();
 	}
 
 	bool GameController::canUndo() const
 	{
-		return game_.getMoveCount() > 0;
+		return game_->getMoveCount() > 0;
 	}
 
 	void GameController::undoMultipleMoves(int count)

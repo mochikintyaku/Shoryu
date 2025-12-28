@@ -58,14 +58,14 @@ namespace shoryu::core
 
     struct step
     {
-        int dx;
-        int dy;
+        const int dx;
+        const int dy;
     };
 
     struct slideDir
     {
-        int dx;
-        int dy;
+        const int dx;
+        const int dy;
     };
 
     struct MoveSpec
@@ -79,4 +79,8 @@ namespace shoryu::core
         Sente = 0,
         Gote
     };
+
+	//---- 以下、定数定義 ----//
+	inline constexpr int BoardSize = 9;        // 盤面の一辺のサイズ（9x9）
+	inline constexpr int NumHandPieceType = 7; // Hand用（駒台に登場する）駒の種類数
 }

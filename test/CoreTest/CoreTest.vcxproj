@@ -82,7 +82,6 @@
     <ClInclude Include="..\..\inc\core\Piece.h" />
     <ClInclude Include="..\..\inc\core\PieceTraits.h" />
     <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h" />
-    <ClInclude Include="..\..\inc\core\Square.h" />
     <ClInclude Include="..\..\inc\core\Types.h" />
   </ItemGroup>
   <ItemGroup>

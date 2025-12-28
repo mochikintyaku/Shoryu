@@ -1,47 +1,48 @@
 #pragma once
-#include "Game.h"
-#include "Move.h"
-#include "LegalMoveFinder.h"
 #include "ShoryuCoreExport.h"
+#include "Types.h"
+#include "ViewDto.h"
 #include <vector>
-#include <optional>
+#include <memory>
 
 namespace shoryu::core
 {
+	// 前方宣言
+	class Game;
+
 	// ユーザー操作とModelの橋渡しを行うControllerクラス
 	class SHORYU_API GameController
 	{
 	public:
 		GameController();
-		~GameController() = default;
+		~GameController();
 
 		// コピー禁止、ムーブ許可
 		GameController(const GameController&) = delete;
 		GameController& operator=(const GameController&) = delete;
-		GameController(GameController&&) = default;
-		GameController& operator=(GameController&&) = default;
+		GameController(GameController&&) noexcept;
+		GameController& operator=(GameController&&) noexcept;
 
 		// ゲームの初期化
 		void startNewGame();
 		void clear();
 
 		// 盤面情報の取得（View層用）
-		const Board& getBoard() const;
-		const Hand& getSenteHand() const;
-		const Hand& getGoteHand() const;
+		ViewBoardLayout getViewBoardLayout() const;
+		ViewHand getSenteViewHand() const;
+		ViewHand getGoteViewHand() const;
 		PlayerSide getCurrentPlayer() const;
 		size_t getMoveCount() const;
 
 		// 合法手の取得
 		std::vector<Position> getLegalMoves(Position from) const;
 
-		// Move構築ヘルパー（Controller層の責務）
-		Move createNormalMove(Position from, Position to) const;
-		Move createPromotionMove(Position from, Position to) const;
-		Move createDropMove(Position to, PieceType pieceType) const;
+		// 指し手の実行（ユーザー操作）- Move構造体は内部実装として隠蔽
+		void executeNormalMove(Position from, Position to);
+		void executePromotionMove(Position from, Position to);
+		void executeDropMove(Position to, PieceType pieceType);
 
-		// 指し手の実行と取り消し
-		void executeMove(const Move& move);
+		// 指し手の取り消し
 		void undoLastMove();
 		bool canUndo() const;
 
@@ -49,6 +50,6 @@ namespace shoryu::core
 		void undoMultipleMoves(int count);
 
 	private:
-		Game game_;  // 値型で所有
+		std::unique_ptr<Game> game_;  // ポインタで所有（Pimpl イディオム）
 	};
 }

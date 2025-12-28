@@ -77,9 +77,6 @@
     <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h">
       <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\inc\core\Square.h">
-      <Filter>Core %28Shared%29\inc</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\inc\core\Types.h">
       <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>

@@ -1,14 +1,12 @@
 #pragma once
 #include <optional>
 #include <array>
-#include "ShoryuCoreExport.h"
 #include "Types.h"
 #include "Piece.h"
-#include "Square.h"
 
 namespace shoryu::core
 {
-	class SHORYU_API Board
+	class Board
 	{
 	public:
 		typedef std::array<std::array<std::optional<Piece>, BoardSize>, BoardSize> PieceLayout;
@@ -21,6 +19,15 @@ namespace shoryu::core
 		void setPiece(Position pos, std::optional<Piece> newPiece);
 		void setLayout(PieceLayout& newLayout);
 		const PieceLayout& getLayout() const;
+
+		// 座標変換ユーティリティ
+		static int SujiToColumnIndex(int suji);
+		static int DanToRowIndex(int dan);
+		static int ColumnIndexToSuji(int col);
+		static int RowIndexToDan(int row);
+
+		// 盤面判定
+		static bool isInside(Position pos);
 
 	private:
 		PieceLayout layout_;

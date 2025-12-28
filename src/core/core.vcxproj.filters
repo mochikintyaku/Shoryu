@@ -30,7 +30,7 @@
     <ClCompile Include="Game.cpp">
       <Filter>src</Filter>
     </ClCompile>
-	<ClCompile Include="GameController.cpp">
+    <ClCompile Include="GameController.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,9 +59,6 @@
     <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\inc\core\Square.h">
-      <Filter>inc</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\inc\core\Types.h">
       <Filter>inc</Filter>
     </ClInclude>
@@ -71,7 +68,10 @@
     <ClInclude Include="..\..\inc\core\Game.h">
       <Filter>inc</Filter>
     </ClInclude>
-	<ClInclude Include="..\..\inc\core\GameController.h">
+    <ClInclude Include="..\..\inc\core\GameController.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\core\ViewDto.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>

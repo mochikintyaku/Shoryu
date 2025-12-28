@@ -1,10 +1,9 @@
 #pragma once
-#include "ShoryuCoreExport.h"
 #include "Types.h"
 
 namespace shoryu::core
 {
-	class SHORYU_API Piece
+	class Piece
 	{
 	public:
 		Piece(PieceType type, PlayerSide owner);

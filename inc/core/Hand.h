@@ -1,12 +1,11 @@
 // ‚¿‹î‚ğŠÇ—‚·‚éƒNƒ‰ƒX
 #pragma once
-#include "ShoryuCoreExport.h"
 #include "Types.h"
 #include <map>
 
 namespace shoryu::core
 {
-	class SHORYU_API Hand
+	class Hand
 	{
 	public:
 		Hand();

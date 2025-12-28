@@ -2,7 +2,6 @@
 #include "vector"
 #include "core/MoveTable.h"
 #include "core/Board.h"
-#include "core/Square.h"
 #include "core/PieceTraits.h"
 
 namespace shoryu::core
@@ -11,7 +10,7 @@ namespace shoryu::core
 	{
 		std::vector<Position> legalMoves;
 
-		if (isInside(from) == false)
+		if (Board::isInside(from) == false)
 			return legalMoves;
 
 		// 指定位置に駒がない場合、空のリストを返す
@@ -32,7 +31,7 @@ namespace shoryu::core
 			int newSuji = from.suji_ + step.dx * sideFactor;
 			int newDan = from.dan_ + step.dy * sideFactor;
 			Position newPos(newSuji, newDan);
-			if (isInside(newPos) == false)
+			if (Board::isInside(newPos) == false)
 				continue;
 
 			if (auto opt = board.getPiece(newPos); opt)
@@ -49,7 +48,7 @@ namespace shoryu::core
 			int dy = slide.dy * sideFactor;
 
 			Position searchPos(from.suji_ + dx, from.dan_ + dy);
-			while (isInside(searchPos))
+			while (Board::isInside(searchPos))
 			{
 				Position newPos = searchPos;
 				const auto pieceOpt = board.getPiece(newPos);

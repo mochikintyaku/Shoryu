@@ -103,7 +103,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\inc\core\Board.h" />
     <ClInclude Include="..\..\inc\core\Game.h" />
-	<ClInclude Include="..\..\inc\core\GameController.h" />
+    <ClInclude Include="..\..\inc\core\GameController.h" />
     <ClInclude Include="..\..\inc\core\Hand.h" />
     <ClInclude Include="..\..\inc\core\LegalMoveFinder.h" />
     <ClInclude Include="..\..\inc\core\Move.h" />
@@ -112,8 +112,8 @@
     <ClInclude Include="..\..\inc\core\Piece.h" />
     <ClInclude Include="..\..\inc\core\PieceTraits.h" />
     <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h" />
-    <ClInclude Include="..\..\inc\core\Square.h" />
     <ClInclude Include="..\..\inc\core\Types.h" />
+    <ClInclude Include="..\..\inc\core\ViewDto.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
