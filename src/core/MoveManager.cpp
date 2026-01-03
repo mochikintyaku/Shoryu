@@ -14,15 +14,15 @@ namespace shoryu::core
 
 	void MoveManager::execute(Move move)
 	{
-		// 1. 移動元（from）から駒を削除、または持ち駒を減らす
+		// 1. 移動元(from)から駒を削除、または持ち駒から減らす
 		if (move.from)
 		{
-			// 盤面から駒を移動
-			board_.setPiece(*move.from, std::nullopt);
+			// 盤面からの移動
+			board_.setSquare(*move.from, std::nullopt);
 		}
 		else
 		{
-			// 持ち駒を打つ場合、持ち駒を減らす
+			// 持ち駒を打つ場合、持ち駒から減らす
 			PlayerSide owner = move.movedPieceAfter.owner();
 			PieceType pieceType = move.movedPieceAfter.pieceType();
 			if (owner == PlayerSide::Sente)
@@ -35,14 +35,14 @@ namespace shoryu::core
 			}
 		}
 
-		// 2. 移動先（to）に駒を配置
-		board_.setPiece(move.to, move.movedPieceAfter);
+		// 2. 移動先(to)に駒を配置
+		board_.setSquare(move.to, move.movedPieceAfter);
 
-		// 3. 取った駒があれば、持ち駒に追加
+		// 3. 駒を取っていれば、持ち駒に追加
 		if (move.capturedPiece)
 		{
 			PlayerSide owner = move.movedPieceAfter.owner();
-			// 取った駒は成っていたら元に戻す
+			// 取った駒は成っていても元に戻す
 			PieceType capturedType = demoteType(move.capturedPiece->pieceType());
 			if (owner == PlayerSide::Sente)
 			{
@@ -65,7 +65,7 @@ namespace shoryu::core
 		Move move = stack_.top();
 		stack_.pop();
 
-		// 1. 持ち駒から駒を削除（駒を取っていた場合）
+		// 1. 持ち駒を削除(駒を取っていた場合)
 		if (move.capturedPiece)
 		{
 			PlayerSide owner = move.movedPieceAfter.owner();
@@ -80,24 +80,24 @@ namespace shoryu::core
 			}
 		}
 
-		// 2. 移動先(to)の駒を削除（駒を取っていれば、そこに戻す）
+		// 2. 移動先(to)の駒を削除(駒を取っていれば、そこに戻す)
 		if (move.capturedPiece)
 		{
-			board_.setPiece(move.to, move.capturedPiece);
+			board_.setSquare(move.to, move.capturedPiece);
 		}
 		else
 		{
-			board_.setPiece(move.to, std::nullopt);
+			board_.setSquare(move.to, std::nullopt);
 		}
 
 		// 3. 移動元(from)に駒を配置、または持ち駒に戻す
 		if (move.from)
 		{
-			board_.setPiece(*move.from, move.movedPieceBefore);
+			board_.setSquare(*move.from, move.movedPieceBefore);
 		}
 		else
 		{
-			// 持ち駒を打った手を戻す場合、持ち駒に戻す
+			// 持ち駒を打っていた場合、持ち駒に戻す
 			PlayerSide owner = move.movedPieceAfter.owner();
 			PieceType pieceType = move.movedPieceAfter.pieceType();
 			if (owner == PlayerSide::Sente)

@@ -6,17 +6,20 @@
 
 namespace shoryu::core
 {
+	// É}ÉX = ãÓÇ™Ç†ÇÈÇ©Ç‡ÇµÇÍÇ»Ç¢èÍèä
+	typedef std::optional<Piece> Square;
+
 	class Board
 	{
 	public:
-		typedef std::array<std::array<std::optional<Piece>, BoardSize>, BoardSize> PieceLayout;
+		typedef std::array<std::array<Square, BoardSize>, BoardSize> PieceLayout;
 
 		Board();
 		~Board() = default;
 
 		void Clear();
-		const std::optional<Piece> getPiece(Position pos) const;
-		void setPiece(Position pos, std::optional<Piece> newPiece);
+		Square getSquare(Position pos) const;
+		void setSquare(Position pos, Square square);
 		void setLayout(PieceLayout& newLayout);
 		const PieceLayout& getLayout() const;
 
@@ -25,7 +28,7 @@ namespace shoryu::core
 		static int DanToRowIndex(int dan);
 		static int ColumnIndexToSuji(int col);
 		static int RowIndexToDan(int row);
-
+		
 		// î’ñ îªíË
 		static bool isInside(Position pos);
 

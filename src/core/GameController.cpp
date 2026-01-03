@@ -38,21 +38,21 @@ namespace shoryu::core
 			for (int suji = 1; suji <= BoardSize; ++suji)
 			{
 				Position pos(suji, dan);
-				auto piece = board.getPiece(pos);
+				auto square = board.getSquare(pos);
 				
 				int rowIdx = Board::DanToRowIndex(dan);
 				int colIdx = Board::SujiToColumnIndex(suji);
 				
-				if (!piece)
+				if (!square)
 				{
-					viewLayout[rowIdx][colIdx] = ViewPiece{ .hasPiece = false };
+					viewLayout[rowIdx][colIdx] = ViewSquare{ .hasPiece = false };
 				}
 				else
 				{
-					viewLayout[rowIdx][colIdx] = ViewPiece{
+					viewLayout[rowIdx][colIdx] = ViewSquare{
 						.hasPiece = true,
-						.owner = piece->owner(),
-						.pieceType = piece->pieceType()
+						.owner = square->owner(),
+						.pieceType = square->pieceType()
 					};
 				}
 			}
@@ -111,16 +111,16 @@ namespace shoryu::core
 	void GameController::executeNormalMove(Position from, Position to)
 	{
 		// 事前条件: from に駒が存在する
-		assert(game_->getBoard().getPiece(from).has_value() 
+		assert(game_->getBoard().getSquare(from).has_value() 
 		       && "Precondition violated: No piece at 'from' position");
 		
 		// Move 構造体を内部で構築
 		Move move(
 			from,
 			to,
-			game_->getBoard().getPiece(to),		//capturedPiece
-			game_->getBoard().getPiece(from),	//movedPieceBefore
-			*game_->getBoard().getPiece(from)	//movedPieceAfter
+			game_->getBoard().getSquare(to),	// capturedPiece
+			game_->getBoard().getSquare(from),	// movedPieceBefore
+			*game_->getBoard().getSquare(from)	// movedPieceAfter
 		);
 		
 		// Game に実行を委譲
@@ -130,10 +130,10 @@ namespace shoryu::core
 	void GameController::executePromotionMove(Position from, Position to)
 	{
 		// 事前条件: from に駒が存在する
-		assert(game_->getBoard().getPiece(from).has_value() 
+		assert(game_->getBoard().getSquare(from).has_value() 
 		       && "Precondition violated: No piece at 'from' position");
 		
-		Piece originalPiece = *game_->getBoard().getPiece(from);
+		Piece originalPiece = *game_->getBoard().getSquare(from);
 		
 		// 事前条件: 駒が成れる種類である
 		assert(canPromotePiece(originalPiece.pieceType()) 
@@ -143,9 +143,9 @@ namespace shoryu::core
 		Move move(
 			from,
 			to,
-			game_->getBoard().getPiece(to),		//capturedPiece
-			originalPiece,						//movedPieceBefore
-			Piece(promoteType(originalPiece.pieceType()), originalPiece.owner())	//movedPieceAfter
+			game_->getBoard().getSquare(to),	// capturedPiece
+			originalPiece,						// movedPieceBefore
+			Piece(promoteType(originalPiece.pieceType()), originalPiece.owner())	// movedPieceAfter
 		);
 		
 		// Game に実行を委譲
@@ -155,7 +155,7 @@ namespace shoryu::core
 	void GameController::executeDropMove(Position to, PieceType pieceType)
 	{
 		// 事前条件: to が空マスである
-		assert(!game_->getBoard().getPiece(to).has_value() 
+		assert(!game_->getBoard().getSquare(to).has_value() 
 		       && "Precondition violated: 'to' position must be empty for drop move");
 		
 		// 事前条件: 持ち駒に指定した駒がある

@@ -24,18 +24,18 @@ namespace shoryu::core
 		}
 	}
 
-	const std::optional<Piece> Board::getPiece(Position pos) const
+	Square Board::getSquare(Position pos) const
 	{
 		int rowIdx = DanToRowIndex(pos.dan_);
 		int colIdx = SujiToColumnIndex(pos.suji_);
 		return layout_[rowIdx][colIdx];
 	}
 
-	void Board::setPiece(Position pos, std::optional<Piece> newPiece)
+	void Board::setSquare(Position pos, Square square)
 	{
 		int rowIdx = DanToRowIndex(pos.dan_);
 		int colIdx = SujiToColumnIndex(pos.suji_);
-		layout_[rowIdx][colIdx] = newPiece;
+		layout_[rowIdx][colIdx] = square;
 	}
 
 	void Board::setLayout(PieceLayout& newLayout)
@@ -69,7 +69,7 @@ namespace shoryu::core
 		return row + 1;
 	}
 
-	// ”Õ–Ê“à”»’è‚ÌŽÀ‘•
+	// ”Õ–Ê”»’è‚ÌŽÀ‘•
 	bool Board::isInside(Position pos)
 	{
 		if ((pos.suji_ < 1) || (pos.suji_ > BoardSize))

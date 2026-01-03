@@ -14,10 +14,11 @@ namespace shoryu::core
 			return legalMoves;
 
 		// 指定位置に駒がない場合、空のリストを返す
-		if (auto opt = board.getPiece(from); !opt)
+		auto square = board.getSquare(from);
+		if (!square)
 			return legalMoves; 
 
-		const Piece fromPiece = *board.getPiece(from);
+		const Piece fromPiece = *square;
 		const auto it = moveTable.find(fromPiece.pieceType());
 		if (it == moveTable.end())
 			return legalMoves;
@@ -34,7 +35,7 @@ namespace shoryu::core
 			if (Board::isInside(newPos) == false)
 				continue;
 
-			if (auto opt = board.getPiece(newPos); opt)
+			if (auto opt = board.getSquare(newPos); opt)
 				if (isAlly(fromPiece, *opt))
 					continue;
 			
@@ -51,8 +52,8 @@ namespace shoryu::core
 			while (Board::isInside(searchPos))
 			{
 				Position newPos = searchPos;
-				const auto pieceOpt = board.getPiece(newPos);
-				if (pieceOpt == std::nullopt)
+				const auto squareOpt = board.getSquare(newPos);
+				if (squareOpt == std::nullopt)
 				{
 					legalMoves.push_back(newPos);
 					searchPos.suji_ += dx;
@@ -60,7 +61,7 @@ namespace shoryu::core
 					continue;
 				}
 				
-				const auto& destPiece = *pieceOpt;
+				const auto& destPiece = *squareOpt;
 				if (isAlly(destPiece, fromPiece))
 				{
 					break;

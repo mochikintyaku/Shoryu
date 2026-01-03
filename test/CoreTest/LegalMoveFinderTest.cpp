@@ -73,7 +73,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 1);
@@ -85,7 +85,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kyo, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 4);
@@ -100,7 +100,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 2);
@@ -113,7 +113,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Gin, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 5);
@@ -129,7 +129,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kin, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -146,7 +146,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kaku, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 16);
@@ -177,7 +177,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Hisha, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 16);
@@ -208,7 +208,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Ou, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 8);
@@ -227,7 +227,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Gyoku, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 8);
@@ -246,7 +246,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Tokin, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -263,7 +263,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::NariKyo, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -280,7 +280,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::NariKei, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -297,7 +297,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::NariGin, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -314,7 +314,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Uma, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 20);
@@ -350,7 +350,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Ryu, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 20);
@@ -390,7 +390,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Fu, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 1);
@@ -402,7 +402,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kyo, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 4);
@@ -417,7 +417,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kei, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 2);
@@ -430,7 +430,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Gin, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 5);
@@ -446,7 +446,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kin, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -463,7 +463,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kaku, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 16);
@@ -494,7 +494,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Hisha, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 16);
@@ -525,7 +525,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Ou, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 8);
@@ -544,7 +544,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Gyoku, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 8);
@@ -563,7 +563,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Tokin, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -580,7 +580,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::NariKyo, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -597,7 +597,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::NariKei, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -614,7 +614,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::NariGin, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -631,7 +631,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Uma, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 20);
@@ -667,7 +667,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Ryu, PlayerSide::Gote);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 20);
@@ -707,7 +707,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(5, 1), piece);
+		board.setSquare(Position(5, 1), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 1));
 		// (5,1) の歩は (5,0) に進むが盤外なので合法手なし
@@ -719,7 +719,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kyo, PlayerSide::Sente);
-		board.setPiece(Position(5, 1), piece);
+		board.setSquare(Position(5, 1), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 1));
 		// (5,1) の香車は (5,0) 方向だが盤外なので合法手なし
@@ -731,7 +731,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setPiece(Position(5, 2), piece);
+		board.setSquare(Position(5, 2), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 2));
 		// (5,2) の桂は (4,0) と (6,0) に移動するが、両方とも盤外なので合法手なし
@@ -743,7 +743,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setPiece(Position(1, 5), piece);
+		board.setSquare(Position(1, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 5));
 		// (1,5) の桂は (0,3) と (2,3) に移動するが、(0,3) は盤外なので除外
@@ -756,7 +756,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setPiece(Position(9, 5), piece);
+		board.setSquare(Position(9, 5), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(9, 5));
 		// (9,5) の桂は (8,3) と (10,3) に移動するが、(10,3) は盤外なので除外
@@ -769,7 +769,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Gin, PlayerSide::Sente);
-		board.setPiece(Position(1, 1), piece);
+		board.setSquare(Position(1, 1), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 銀は左下のみ
@@ -782,7 +782,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kin, PlayerSide::Sente);
-		board.setPiece(Position(1, 1), piece);
+		board.setSquare(Position(1, 1), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 金は左・下の2方向のみ
@@ -796,7 +796,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kaku, PlayerSide::Sente);
-		board.setPiece(Position(1, 1), piece);
+		board.setSquare(Position(1, 1), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 角は左下方向のみ
@@ -816,7 +816,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Hisha, PlayerSide::Sente);
-		board.setPiece(Position(1, 1), piece);
+		board.setSquare(Position(1, 1), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 飛車左方向と下方向に移動可能
@@ -846,7 +846,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Ou, PlayerSide::Sente);
-		board.setPiece(Position(1, 1), piece);
+		board.setSquare(Position(1, 1), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 王は左・左下・下の3方向
@@ -861,7 +861,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Uma, PlayerSide::Sente);
-		board.setPiece(Position(1, 1), piece);
+		board.setSquare(Position(1, 1), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 馬は右下斜め + 右・下のステップ
@@ -885,7 +885,7 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Ryu, PlayerSide::Sente);
-		board.setPiece(Position(1, 1), piece);
+		board.setSquare(Position(1, 1), piece);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 竜は右・下方向のスライド + 右下斜め1マス
@@ -921,9 +921,9 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(5, 4), blockingPiece);
+		board.setSquare(Position(5, 4), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4) に味方駒がいるため、合法手に含まれない
 		EXPECT_TRUE(moves.empty());
@@ -934,9 +934,9 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setPiece(Position(5, 4), blockingPiece);
+		board.setSquare(Position(5, 4), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4) に敵駒がいるため、合法手に含まれる
 		ASSERT_EQ(moves.size(), 1);
@@ -948,9 +948,9 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kyo, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(5, 3), blockingPiece);
+		board.setSquare(Position(5, 3), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,3) に味方駒がいるため、(5, 4) のみが合法手
 		ASSERT_EQ(moves.size(), 1);
@@ -962,9 +962,9 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kyo, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setPiece(Position(5, 3), blockingPiece);
+		board.setSquare(Position(5, 3), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,3) に敵駒がいるため、(5,4) と (5,3) が合法手
 		ASSERT_EQ(moves.size(), 2);
@@ -977,9 +977,9 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(4, 3), blockingPiece);
+		board.setSquare(Position(4, 3), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,3) に味方駒がいるため、(6,3) のみが合法手
 		ASSERT_EQ(moves.size(), 1);
@@ -991,9 +991,9 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setPiece(Position(4, 3), blockingPiece);
+		board.setSquare(Position(4, 3), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,3) に敵駒がいるため、(4,3) と (6,3) が合法手
 		ASSERT_EQ(moves.size(), 2);
@@ -1006,10 +1006,10 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Gin, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(4, 4), blockingPiece);
-		board.setPiece(Position(6, 4), blockingPiece);
+		board.setSquare(Position(4, 4), blockingPiece);
+		board.setSquare(Position(6, 4), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,4) に味方駒がいるため、合法手に含まれない
 		ASSERT_EQ(moves.size(), 3);
@@ -1023,10 +1023,10 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Gin, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setPiece(Position(4, 4), blockingPiece);
-		board.setPiece(Position(6, 4), blockingPiece);
+		board.setSquare(Position(4, 4), blockingPiece);
+		board.setSquare(Position(6, 4), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,4) に敵駒がいるため、合法手に含まれる
 		ASSERT_EQ(moves.size(), 5);
@@ -1041,10 +1041,10 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kin, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(5, 4), blockingPiece);
-		board.setPiece(Position(4, 5), blockingPiece);
+		board.setSquare(Position(5, 4), blockingPiece);
+		board.setSquare(Position(4, 5), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4)と (4,5) に味方駒がいるため、合法手に含まれない
 		ASSERT_EQ(moves.size(), 4);
@@ -1058,10 +1058,10 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kin, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setPiece(Position(5, 4), blockingPiece);
-		board.setPiece(Position(4, 5), blockingPiece);
+		board.setSquare(Position(5, 4), blockingPiece);
+		board.setSquare(Position(4, 5), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4)と (4,5) に敵駒がいるため、合法手に含まれる
 		ASSERT_EQ(moves.size(), 6);
@@ -1077,12 +1077,12 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kaku, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(4, 4), blockingPiece);
-		board.setPiece(Position(9, 1), blockingPiece);
-		board.setPiece(Position(8, 8), blockingPiece);
-		board.setPiece(Position(3, 7), blockingPiece);
+		board.setSquare(Position(4, 4), blockingPiece);
+		board.setSquare(Position(9, 1), blockingPiece);
+		board.setSquare(Position(8, 8), blockingPiece);
+		board.setSquare(Position(3, 7), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,4),(9,1),(8,8),(3,7) に味方駒がいるため、合法手に含まれず、それ以降も進めない
 		ASSERT_EQ(moves.size(), 6);
@@ -1098,12 +1098,12 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Kaku, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setPiece(Position(4, 4), blockingPiece);
-		board.setPiece(Position(9, 1), blockingPiece);
-		board.setPiece(Position(8, 8), blockingPiece);
-		board.setPiece(Position(3, 7), blockingPiece);
+		board.setSquare(Position(4, 4), blockingPiece);
+		board.setSquare(Position(9, 1), blockingPiece);
+		board.setSquare(Position(8, 8), blockingPiece);
+		board.setSquare(Position(3, 7), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,4),(9,1),(8,8),(3,7) に敵駒がいるため、合法手に含まれ、それ以降は進めない
 		ASSERT_EQ(moves.size(), 10);
@@ -1123,12 +1123,12 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Hisha, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(5, 3), blockingPiece);
-		board.setPiece(Position(9, 5), blockingPiece);
-		board.setPiece(Position(5, 8), blockingPiece);
-		board.setPiece(Position(2, 5), blockingPiece);
+		board.setSquare(Position(5, 3), blockingPiece);
+		board.setSquare(Position(9, 5), blockingPiece);
+		board.setSquare(Position(5, 8), blockingPiece);
+		board.setSquare(Position(2, 5), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,3),(9,5),(5,8),(2,5) に味方駒がいるため、合法手に含まれず、それ以降も進めない
 		ASSERT_EQ(moves.size(), 8);
@@ -1146,12 +1146,12 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Hisha, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setPiece(Position(5, 3), blockingPiece);
-		board.setPiece(Position(9, 5), blockingPiece);
-		board.setPiece(Position(5, 8), blockingPiece);
-		board.setPiece(Position(2, 5), blockingPiece);
+		board.setSquare(Position(5, 3), blockingPiece);
+		board.setSquare(Position(9, 5), blockingPiece);
+		board.setSquare(Position(5, 8), blockingPiece);
+		board.setSquare(Position(2, 5), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,3),(9,5),(5,8),(2,5) に敵駒がいるため、合法手に含まれ、それ以降は進めない
 		ASSERT_EQ(moves.size(), 12);
@@ -1173,11 +1173,11 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Ou, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setPiece(Position(5, 4), blockingPiece);
-		board.setPiece(Position(4, 5), blockingPiece);
-		board.setPiece(Position(6, 6), blockingPiece);
+		board.setSquare(Position(5, 4), blockingPiece);
+		board.setSquare(Position(4, 5), blockingPiece);
+		board.setSquare(Position(6, 6), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4),(4,5),(6,6) に味方駒がいるため、合法手に含まれない
 		ASSERT_EQ(moves.size(), 5);
@@ -1192,11 +1192,11 @@ namespace LegalMoveFinderTest
 	{
 		Board board;
 		Piece piece(PieceType::Ou, PlayerSide::Sente);
-		board.setPiece(Position(5, 5), piece);
+		board.setSquare(Position(5, 5), piece);
 		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setPiece(Position(5, 4), blockingPiece);
-		board.setPiece(Position(4, 5), blockingPiece);
-		board.setPiece(Position(6, 6), blockingPiece);
+		board.setSquare(Position(5, 4), blockingPiece);
+		board.setSquare(Position(4, 5), blockingPiece);
+		board.setSquare(Position(6, 6), blockingPiece);
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4),(4,5),(6,6) に敵駒がいるため、合法手に含まれる
 		ASSERT_EQ(moves.size(), 8);

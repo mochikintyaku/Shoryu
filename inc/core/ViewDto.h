@@ -7,14 +7,14 @@
 namespace shoryu::core
 {
 
-    struct SHORYU_API ViewPiece
+    struct SHORYU_API ViewSquare
     {
         bool hasPiece = false;
         PlayerSide owner = PlayerSide::Sente;   // hasPiece == false ‚Ì‚Æ‚«‚Í–³‹‚³‚ê‚é‘z’è
         PieceType pieceType = PieceType::Fu;    // “¯ã
     };
 
-    using ViewBoardLayout = std::array<std::array<ViewPiece, BoardSize>, BoardSize>;
+    using ViewBoardLayout = std::array<std::array<ViewSquare, BoardSize>, BoardSize>;
 
     struct SHORYU_API ViewHand
     {
