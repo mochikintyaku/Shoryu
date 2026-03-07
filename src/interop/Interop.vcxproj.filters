@@ -12,9 +12,18 @@
     <ClInclude Include="..\..\inc\interop\GameControllerManaged.h">
       <Filter>inc</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\inc\interop\ManagedTypes.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\interop\TypeConverter.h">
+      <Filter>inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameControllerManaged.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagedTypes.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

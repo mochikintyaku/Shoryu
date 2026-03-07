@@ -8,7 +8,7 @@ namespace shoryu::core
 		{
 			for (auto& square : dan)
 			{
-				square = std::nullopt;
+				square = PieceCode::Empty;
 			}
 		}
 	}
@@ -19,23 +19,23 @@ namespace shoryu::core
 		{
 			for (auto& square : dan)
 			{
-				square = std::nullopt;
+				square = PieceCode::Empty;
 			}
 		}
 	}
 
-	Square Board::getSquare(Position pos) const
+	PieceCode Board::getSquare(Position pos) const
 	{
 		int rowIdx = DanToRowIndex(pos.dan_);
 		int colIdx = SujiToColumnIndex(pos.suji_);
 		return layout_[rowIdx][colIdx];
 	}
 
-	void Board::setSquare(Position pos, Square square)
+	void Board::setSquare(Position pos, PieceCode pieceCode)
 	{
 		int rowIdx = DanToRowIndex(pos.dan_);
 		int colIdx = SujiToColumnIndex(pos.suji_);
-		layout_[rowIdx][colIdx] = square;
+		layout_[rowIdx][colIdx] = pieceCode;
 	}
 
 	void Board::setLayout(PieceLayout& newLayout)

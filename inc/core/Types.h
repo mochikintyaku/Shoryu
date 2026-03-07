@@ -17,43 +17,39 @@ namespace shoryu::core
         bool operator !=(const Position& other) const;
     };
 
-    enum class PieceType
+    enum class PieceCode : int
     {
-        Fu = 0,  // 歩  =0
-        Kyo,     // 香車
-        Kei,     // 桂馬
-        Gin,     // 銀将
-        Kin,     // 金将
-        Kaku,    // 角行
-        Hisha,   // 飛車
-        Ou,      // 王将
-        Gyoku,   // 玉将
-        Tokin,   // と金  =9
-        NariKyo, // 成香
-        NariKei, // 成桂
-        NariGin, // 成銀
-        Uma,     // 馬
-        Ryu      // 竜
-    };
+        Empty = 0, //空マスを表すコード
 
-    inline const std::map<PieceType, PieceType> PromoteMap =
-    {
-        {PieceType::Fu, PieceType::Tokin},
-        {PieceType::Kyo, PieceType::NariKyo},
-        {PieceType::Kei, PieceType::NariKei},
-        {PieceType::Gin, PieceType::NariGin},
-        {PieceType::Kaku, PieceType::Uma},
-        {PieceType::Hisha, PieceType::Ryu}
-    };
+        SenteFu = 1,
+        SenteKyo = 2,
+        SenteKei = 3,
+        SenteGin = 4,
+        SenteKin = 5,
+        SenteKaku = 6,
+        SenteHisya = 7,
+        Ou = 8,     //先手が王
+        SenteTokin = 11,  //成りごまは駒コードに10を足す事で表す
+        SenteNariKyo = 12,
+        SenteNariKei = 13,
+        SenteNariGin = 14,
+        SenteUma = 16,
+        SenteRyu = 17,
 
-    inline const std::map<PieceType, PieceType> DemoteMap =
-    {
-        {PieceType::Tokin, PieceType::Fu},
-        {PieceType::NariKyo, PieceType::Kyo},
-        {PieceType::NariKei, PieceType::Kei},
-        {PieceType::NariGin, PieceType::Gin},
-        {PieceType::Uma, PieceType::Kaku},
-        {PieceType::Ryu, PieceType::Hisha}
+        GoteFu = -1,
+        GoteKyo = -2,
+        GoteKei = -3,
+        GoteGin = -4,
+        GoteKin = -5,
+        GoteKaku = -6,
+        GoteHisya = -7,
+        Gyoku = -8,
+        GoteTokin = -11,
+        GoteNariKyo = -12,
+        GoteNariKei = -13,
+        GoteNariGin = -14,
+        GoteUma = -16,
+        GoteRyu = -17
     };
 
     struct step

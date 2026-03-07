@@ -89,9 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameControllerManaged.cpp" />
+    <ClCompile Include="ManagedTypes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\inc\interop\GameControllerManaged.h" />
+    <ClInclude Include="..\..\inc\interop\ManagedTypes.h" />
+    <ClInclude Include="..\..\inc\interop\TypeConverter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

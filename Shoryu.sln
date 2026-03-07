@@ -8,11 +8,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
 	ProjectSection(SolutionItems) = preProject
 		docs\設計問答集.md = docs\設計問答集.md
+		docs\設計問答集２.md = docs\設計問答集２.md
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoreTest", "test\CoreTest\CoreTest.vcxproj", "{6F852B51-BEEB-4F1C-BE5E-95EF97759B72}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Interop", "src\Interop\Interop.vcxproj", "{47DB5E2A-C3D4-9001-4ED3-72B5B4458D10}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Interop", "src\interop\Interop.vcxproj", "{47DB5E2A-C3D4-9001-4ED3-72B5B4458D10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

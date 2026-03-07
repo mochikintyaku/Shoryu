@@ -18,7 +18,7 @@ namespace shoryu::core
 		if (move.from)
 		{
 			// ”Õ–Ê‚©‚ç‚ÌˆÚ“®
-			board_.setSquare(*move.from, std::nullopt);
+			board_.setSquare(*move.from, PieceCode::Empty);
 		}
 		else
 		{

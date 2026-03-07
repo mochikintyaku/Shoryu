@@ -2,24 +2,20 @@
 #include <optional>
 #include <array>
 #include "Types.h"
-#include "Piece.h"
 
 namespace shoryu::core
 {
-	// É}ÉX = ãÓÇ™Ç†ÇÈÇ©Ç‡ÇµÇÍÇ»Ç¢èÍèä
-	typedef std::optional<Piece> Square;
-
 	class Board
 	{
 	public:
-		typedef std::array<std::array<Square, BoardSize>, BoardSize> PieceLayout;
+		typedef std::array<std::array<PieceCode, BoardSize>, BoardSize> PieceLayout;
 
 		Board();
 		~Board() = default;
 
 		void Clear();
-		Square getSquare(Position pos) const;
-		void setSquare(Position pos, Square square);
+		PieceCode getSquare(Position pos) const;
+		void setSquare(Position pos, PieceCode pieceCode);
 		void setLayout(PieceLayout& newLayout);
 		const PieceLayout& getLayout() const;
 

@@ -10,12 +10,19 @@ namespace shoryu::core
 	public:
 		Hand();
 		~Hand() = default;
-		void addPiece(PieceType type);
-		void removePiece(PieceType type);
-		int getPieceCount(PieceType type) const;
-		bool hasPiece(PieceType type) const;
+		// 所有者込み PieceCode（先手=正 / 後手=負）で管理する。
+		// 成り駒が渡された場合は自動的に不成に戻して持ち駒化する。
+		void add(PieceCode pc);
+		void remove(PieceCode pc);
+		int count(PieceCode pc) const;
+		bool has(PieceCode pc) const;
+
 
 	private:
-		std::map<PieceType, int> pieces_;  // 駒の種類ごとの枚数を管理
+		// キーは「所有者付き・不成の PieceCode」のみ
+		std::map<PieceCode, int> pieces_;
+
+		static bool isHandKind(PieceCode pc);
+		static PieceCode normalizeKey(PieceCode pc);
 	};
 }

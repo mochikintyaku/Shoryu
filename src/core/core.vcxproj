@@ -97,7 +97,6 @@
     <ClCompile Include="Hand.cpp" />
     <ClCompile Include="LegalMoveFinder.cpp" />
     <ClCompile Include="MoveManager.cpp" />
-    <ClCompile Include="Piece.cpp" />
     <ClCompile Include="Types.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -109,7 +108,6 @@
     <ClInclude Include="..\..\inc\core\Move.h" />
     <ClInclude Include="..\..\inc\core\MoveManager.h" />
     <ClInclude Include="..\..\inc\core\MoveTable.h" />
-    <ClInclude Include="..\..\inc\core\Piece.h" />
     <ClInclude Include="..\..\inc\core\PieceTraits.h" />
     <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h" />
     <ClInclude Include="..\..\inc\core\Types.h" />

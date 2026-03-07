@@ -31,7 +31,7 @@ namespace shoryu::core
 	ViewBoardLayout GameController::getViewBoardLayout() const
 	{
 		ViewBoardLayout viewLayout;
-		const auto& board = game_->getBoard();
+		const Board& board = game_->getBoard();
 		
 		for (int dan = 1; dan <= BoardSize; ++dan)
 		{
