@@ -65,8 +65,5 @@
     <ClInclude Include="..\..\inc\core\GameController.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\inc\core\ViewDto.h">
-      <Filter>inc</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

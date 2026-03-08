@@ -111,7 +111,6 @@
     <ClInclude Include="..\..\inc\core\PieceTraits.h" />
     <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h" />
     <ClInclude Include="..\..\inc\core\Types.h" />
-    <ClInclude Include="..\..\inc\core\ViewDto.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

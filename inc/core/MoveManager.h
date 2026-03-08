@@ -12,7 +12,7 @@ namespace shoryu::core
 	public:
 		typedef std::stack<Move> MoveStack;
 
-		MoveManager(Board& board, Hand& sente, Hand& gote);
+		MoveManager(Board& board, Hand& hand);
 		~MoveManager();
 		void execute(Move cmd);
 		void undoLast();
@@ -22,8 +22,7 @@ namespace shoryu::core
 
 	private:
 		Board& board_;
-		Hand& senteHand_;
-		Hand& goteHand_;
+		Hand& hand_;
 		MoveStack stack_;
 	};
 }
