@@ -88,12 +88,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameControllerManaged.cpp" />
+    <ClCompile Include="ManagedGame.cpp" />
     <ClCompile Include="ManagedTypes.cpp" />
     <ClCompile Include="TypeConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\inc\interop\GameControllerManaged.h" />
+    <ClInclude Include="..\..\inc\interop\ManagedGame.h" />
     <ClInclude Include="..\..\inc\interop\ManagedTypes.h" />
     <ClInclude Include="..\..\inc\interop\TypeConverter.h" />
   </ItemGroup>

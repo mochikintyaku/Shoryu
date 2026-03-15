@@ -9,7 +9,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\inc\interop\GameControllerManaged.h">
+    <ClInclude Include="..\..\inc\interop\ManagedGame.h">
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\inc\interop\ManagedTypes.h">
@@ -20,7 +20,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameControllerManaged.cpp">
+    <ClCompile Include="ManagedGame.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="ManagedTypes.cpp">
