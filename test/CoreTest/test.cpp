@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include "core/Piece.h"
 #include "core/Board.h"
 #include "core/Types.h"
 

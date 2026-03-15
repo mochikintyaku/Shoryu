@@ -11,10 +11,10 @@ namespace shoryu::core
 		, moveManager_(board_, hand_)
 		, currentPlayer_(PlayerSide::Sente)
 	{
-		NewGame();
+		newGame();
 	}
 
-	void Game::NewGame()
+	void Game::newGame()
 	{
 		initializeStartPosition();
 	}
@@ -66,8 +66,8 @@ namespace shoryu::core
 
 	void Game::clear()
 	{
-		board_.Clear();
-		hand_ = Hand();
+		board_.clear();
+		hand_.clear();
 		moveManager_.clear();
 		currentPlayer_ = PlayerSide::Sente;
 	}
@@ -77,30 +77,9 @@ namespace shoryu::core
 		return board_.getLayout();
 	}
 
-	std::array<int, NumHandPieceType> Game::getSenteHand() const
+	std::array<int, NumHandPieceType*2> Game::getHandCounts() const
 	{
-		std::array<int, NumHandPieceType> counts{};
-		counts[0] = hand_.count(PieceCode::SenteFu);
-		counts[1] = hand_.count(PieceCode::SenteKyo);
-		counts[2] = hand_.count(PieceCode::SenteKei);
-		counts[3] = hand_.count(PieceCode::SenteGin);
-		counts[4] = hand_.count(PieceCode::SenteKin);
-		counts[5] = hand_.count(PieceCode::SenteKaku);
-		counts[6] = hand_.count(PieceCode::SenteHisya);
-		return counts;
-	}
-
-	std::array<int, NumHandPieceType> Game::getGoteHand() const
-	{
-		std::array<int, NumHandPieceType> counts{};
-		counts[0] = hand_.count(PieceCode::GoteFu);
-		counts[1] = hand_.count(PieceCode::GoteKyo);
-		counts[2] = hand_.count(PieceCode::GoteKei);
-		counts[3] = hand_.count(PieceCode::GoteGin);
-		counts[4] = hand_.count(PieceCode::GoteKin);
-		counts[5] = hand_.count(PieceCode::GoteKaku);
-		counts[6] = hand_.count(PieceCode::GoteHisya);
-		return counts;
+		return hand_.getAllCounts();
 	}
 
 	PlayerSide Game::getCurrentPlayer() const

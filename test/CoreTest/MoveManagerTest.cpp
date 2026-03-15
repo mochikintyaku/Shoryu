@@ -2,6 +2,7 @@
 #include "core/MoveManager.h"
 #include "core/Board.h"
 #include "core/Hand.h"
+#include "core/PieceTraits.h"
 
 using namespace shoryu::core;
 
@@ -10,37 +11,32 @@ namespace MoveManagerTest
 	TEST(BasicTest, ExecuteAndUndoMove)
 	{
 		Board board;
-		Hand senteHand;
-		Hand goteHand;
-		MoveManager moveManager(board, senteHand, goteHand);
+		Hand hand;
+		MoveManager moveManager(board, hand);
 		// 初期配置: 先手の歩(5,7)に配置
 		Position from(5, 7);
-		Piece fu(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(from, fu);
+		board.setPiece(from, PieceCode::SenteFu);
 		// (5,7)から(5,6)へ移動する手を実行
 		Position to(5, 6);
-		Piece movedPieceAfter(PieceType::Fu, PlayerSide::Sente);
 		Move move(
 			from,
 			to,
-			std::nullopt,
-			fu,
-			movedPieceAfter
+			PieceCode::Empty,
+			PieceCode::SenteFu,
+			PieceCode::SenteFu
 		);
 		moveManager.execute(move);
 		// 移動後の状態を確認
-		EXPECT_EQ(board.getSquare(from), std::nullopt); // 移動元は空
-		auto pieceAtTo = board.getSquare(to);
-		ASSERT_TRUE(pieceAtTo.has_value());
-		EXPECT_EQ(pieceAtTo->pieceType(), PieceType::Fu); // 移動先に歩がある
-		EXPECT_EQ(pieceAtTo->owner(), PlayerSide::Sente);
+		EXPECT_EQ(board.getPiece(from), PieceCode::Empty); // 移動元は空
+		const PieceCode pieceAtTo = board.getPiece(to);
+		EXPECT_TRUE(!isEmpty(pieceAtTo));
+		EXPECT_EQ(pieceAtTo, PieceCode::SenteFu); // 移動先に歩がある
 		// 手を戻す
 		moveManager.undoLast();
 		// 戻した後の状態を確認
-		auto pieceAtFromAfterUndo = board.getSquare(from);
-		ASSERT_TRUE(pieceAtFromAfterUndo.has_value());
-		EXPECT_EQ(pieceAtFromAfterUndo->pieceType(), PieceType::Fu); // 移動元に歩が戻る
-		EXPECT_EQ(pieceAtFromAfterUndo->owner(), PlayerSide::Sente);
-		EXPECT_EQ(board.getSquare(to), std::nullopt); // 移動先は空に戻る
+		const PieceCode pieceAtFromAfterUndo = board.getPiece(from);
+		EXPECT_TRUE(!isEmpty(pieceAtFromAfterUndo));
+		EXPECT_EQ(pieceAtFromAfterUndo, PieceCode::SenteFu); // 移動元に歩が戻る
+		EXPECT_TRUE(isEmpty(board.getPiece(to))); // 移動先は空に戻る
 	}
 } // namespace MoveManagerTest

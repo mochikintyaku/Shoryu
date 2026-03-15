@@ -7,13 +7,13 @@ namespace shoryu::interop
 	{
 	}
 
-	ManagedViewHand::ManagedViewHand(array<int>^ hands)
-		: Hands(hands)
+	ManagedPieceLayout::ManagedPieceLayout(array<ManagedPieceCode, 2>^ board)
+		: Board(board)
 	{
 	}
 
-	ManagedViewBoardLayout::ManagedViewBoardLayout(array<ManagedViewSquare, 2>^ board)
-		: Board(board)
+	ManagedHandCounts::ManagedHandCounts(array<int>^ counts)
+		: Counts(counts)
 	{
 	}
 }

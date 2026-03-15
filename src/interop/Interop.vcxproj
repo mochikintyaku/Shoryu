@@ -48,11 +48,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\app\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\app\$(ProjectName)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)build\interop\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\app\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\app\$(ProjectName)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)build\interop\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -90,6 +90,7 @@
   <ItemGroup>
     <ClCompile Include="GameControllerManaged.cpp" />
     <ClCompile Include="ManagedTypes.cpp" />
+    <ClCompile Include="TypeConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\inc\interop\GameControllerManaged.h" />

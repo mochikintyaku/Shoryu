@@ -1,7 +1,7 @@
 // 持ち駒を管理するクラス
 #pragma once
 #include "Types.h"
-#include <map>
+#include <array>
 
 namespace shoryu::core
 {
@@ -17,9 +17,11 @@ namespace shoryu::core
 		void remove(PieceCode pc);
 		int count(PieceCode pc) const;
 		bool has(PieceCode pc) const;
+		void clear();
+
+		const std::array<int, NumHandPieceType * 2>& getAllCounts() const;
 
 	private:
-		// キーは「所有者付き・不成の PieceCode」のみ
-		std::map<PieceCode, int> pieces_;
+		std::array<int, NumHandPieceType * 2> counts_;
 	};
 }

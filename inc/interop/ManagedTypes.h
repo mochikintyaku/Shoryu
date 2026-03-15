@@ -10,49 +10,62 @@ namespace shoryu::interop
 		ManagedPosition(int suji, int dan);
 	};
 
-	public enum class ManagedPieceType
+	// core::PieceCode と同じ値を持つ（所有者込み: 先手=正 / 後手=負）
+	public enum class ManagedPieceCode : int
 	{
-		Fu = 0,  // 歩  =0
-		Kyo,     // 香車
-		Kei,     // 桂馬
-		Gin,     // 銀将
-		Kin,     // 金将
-		Kaku,    // 角行
-		Hisha,   // 飛車
-		Ou,      // 王将
-		Gyoku,   // 玉将
-		Tokin,   // と金  =9
-		NariKyo, // 成香
-		NariKei, // 成桂
-		NariGin, // 成銀
-		Uma,     // 馬
-		Ryu      // 竜
+		Empty = 0,
+
+		SenteFu = 1,
+		SenteKyo = 2,
+		SenteKei = 3,
+		SenteGin = 4,
+		SenteKin = 5,
+		SenteKaku = 6,
+		SenteHisya = 7,
+		Ou = 8,
+
+		SenteTokin = 11,
+		SenteNariKyo = 12,
+		SenteNariKei = 13,
+		SenteNariGin = 14,
+		SenteUma = 16,
+		SenteRyu = 17,
+
+		GoteFu = -1,
+		GoteKyo = -2,
+		GoteKei = -3,
+		GoteGin = -4,
+		GoteKin = -5,
+		GoteKaku = -6,
+		GoteHisya = -7,
+		Gyoku = -8,
+
+		GoteTokin = -11,
+		GoteNariKyo = -12,
+		GoteNariKei = -13,
+		GoteNariGin = -14,
+		GoteUma = -16,
+		GoteRyu = -17
 	};
 
-	public enum class ManagedPlayerSide
+	public value struct ManagedPieceLayout
 	{
-		Sente = 0,
-		Gote
+		literal int BoardSize = 9;
+
+		// [row, col] の 9x9（core::PieceLayout と同等）
+		array<ManagedPieceCode, 2>^ Board;
+
+		ManagedPieceLayout(array<ManagedPieceCode, 2>^ board);
 	};
 
-	public value struct ManagedViewSquare
+	public value struct ManagedHandCounts
 	{
-		bool HasPiece;
-		ManagedPieceType PieceType;
-		ManagedPlayerSide Owner; // HasPiece == false のときは無視される想定
-	};
+		literal int NumHandPieceType = 7;
+		literal int CountsLength = NumHandPieceType * 2;
 
-	public value struct ManagedViewHand
-	{
-		array<int>^ Hands; // arrayのindexはManagedPieceTypeの定義順に対応
+		// 長さ=14（0..6:先手 歩香桂銀金角飛 / 7..13:後手 歩香桂銀金角飛）
+		array<int>^ Counts;
 
-		ManagedViewHand(array<int>^ hands);
-	};
-
-	public value struct ManagedViewBoardLayout
-	{
-		array<ManagedViewSquare, 2>^ Board;
-
-		ManagedViewBoardLayout(array<ManagedViewSquare, 2>^ board);
+		ManagedHandCounts(array<int>^ counts);
 	};
 }

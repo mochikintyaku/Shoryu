@@ -4,8 +4,18 @@
 namespace shoryu::core
 {
 	Hand::Hand()
-		: pieces_()
+		: counts_{}
 	{
+	}
+
+	void Hand::clear()
+	{
+		counts_.fill(0);
+	}
+
+	const std::array<int, NumHandPieceType * 2>& Hand::getAllCounts() const
+	{
+		return counts_;
 	}
 
 	void Hand::add(PieceCode pc)
@@ -14,8 +24,8 @@ namespace shoryu::core
 		if (!isHandPiece(pc))
 			return;
 
-		pc = toHandKey(pc);
-		pieces_[pc]++;
+		const int index = handPieceIndex(pc);
+		counts_[index]++;
 	}
 
 	void Hand::remove(PieceCode pc)
@@ -24,18 +34,13 @@ namespace shoryu::core
 		if (!isHandPiece(pc))
 			return;
 
-		pc = toHandKey(pc);
+		const int index = handPieceIndex(pc);
 
-		auto it = pieces_.find(pc);
-		assert(it != pieces_.end() && "Hand::remove(pc): piece not found in hand");
-		if (it == pieces_.end())
+		assert(counts_[index] > 0 && "Hand::remove(pc): piece count must be > 0");
+		if (counts_[index] <= 0)
 			return;
 
-		assert(it->second > 0 && "Hand::remove(pc): piece count must be > 0");
-		if (it->second <= 0)
-			return;
-
-		it->second--;
+		counts_[index]--;
 	}
 
 	int Hand::count(PieceCode pc) const
@@ -44,9 +49,8 @@ namespace shoryu::core
 		if (!isHandPiece(pc))
 			return 0;
 
-		pc = toHandKey(pc);
-		auto it = pieces_.find(pc);
-		return (it != pieces_.end()) ? it->second : 0;
+		const int index = handPieceIndex(pc);
+		return counts_[index];
 	}
 
 	bool Hand::has(PieceCode pc) const

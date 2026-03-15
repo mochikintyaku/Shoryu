@@ -26,5 +26,8 @@
     <ClCompile Include="ManagedTypes.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="TypeConverter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

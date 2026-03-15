@@ -141,4 +141,36 @@ namespace shoryu::core
 	{
 		return demote(pc);
 	}
+
+	// 持ち駒配列の index に変換する。
+	// pc は「所有者付き」。成りが渡されても demote して扱う。
+	// 返り値:
+	//   0..6  : 先手 (歩,香,桂,銀,金,角,飛)
+	//   7..13 : 後手 (歩,香,桂,銀,金,角,飛)
+	inline constexpr int handPieceIndex(PieceCode pc)
+	{
+		assert(isHandPiece(pc) && "handPieceIndex(pc): pc must be a hand piece");
+
+		const PieceCode base = demote(pc);
+		const bool isGote = isGotePiece(base);
+		const PieceCode absBase = static_cast<PieceCode>(isGote ? -static_cast<int>(base) : static_cast<int>(base));
+
+		int typeIndex = 0;
+		switch (absBase)
+		{
+		case PieceCode::SenteFu: typeIndex = 0; break;
+		case PieceCode::SenteKyo: typeIndex = 1; break;
+		case PieceCode::SenteKei: typeIndex = 2; break;
+		case PieceCode::SenteGin: typeIndex = 3; break;
+		case PieceCode::SenteKin: typeIndex = 4; break;
+		case PieceCode::SenteKaku: typeIndex = 5; break;
+		case PieceCode::SenteHisya: typeIndex = 6; break;
+		default:
+			assert(false && "handPieceIndex(pc): unexpected piece");
+			typeIndex = 0;
+			break;
+		}
+
+		return (isGote ? NumHandPieceType : 0) + typeIndex;
+	}
 }

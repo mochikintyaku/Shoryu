@@ -195,20 +195,6 @@ namespace LegalMoveFinderTest
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 5)), moves.end());
 	}
 
-	// 後手の王・玉は同値テスト案
-	// 後手・王将
-	TEST(BasicTest, Gote_Ou_Similarity)
-	{
-		Board board1;
-		Board board2;
-		board1.setPiece(Position(5, 5), PieceCode::Ou);
-		board2.setPiece(Position(5, 5), PieceCode::Gyoku);
-
-		std::vector<Position> moves1 = findLegalMoves(board1, Position(5, 5));
-		std::vector<Position> moves2 = findLegalMoves(board2, Position(5, 5));
-		EXPECT_EQ(moves1, moves2);
-	}
-
 	// 先手・王将
 	TEST(BasicTest, Sente_Ou)
 	{
@@ -227,6 +213,276 @@ namespace LegalMoveFinderTest
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
 	}
 
+	// 先手・と金（= 金）
+	TEST(BasicTest, Sente_Tokin)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::SenteTokin);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 6);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+	}
+
+	// 先手・成香（= 金）
+	TEST(BasicTest, Sente_NariKyo)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::SenteNariKyo);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 6);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+	}
+
+	// 先手・成桂（= 金）
+	TEST(BasicTest, Sente_NariKei)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::SenteNariKei);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 6);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+	}
+
+	// 先手・成銀（= 金）
+	TEST(BasicTest, Sente_NariGin)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::SenteNariGin);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 6);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+	}
+
+	// 先手・馬（= 角 + 十字のステップ）
+	TEST(BasicTest, Sente_Uma)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::SenteUma);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 20);
+
+		// 斜め（角）
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 3)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 2)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 1)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 3)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 2)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 1)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 9)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 9)), moves.end());
+
+		// 十字のステップ
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+	}
+
+	// 先手・竜（= 飛 + 斜めのステップ）
+	TEST(BasicTest, Sente_Ryu)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::SenteRyu);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 20);
+
+		// 直線（飛）
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 3)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 2)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 1)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 9)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 5)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 5)), moves.end());
+
+		// 斜めのステップ
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+	}
+
+	// ========================================
+	// 後手のテスト（中央配置）
+	// ========================================
+
+	// 後手・歩兵
+	TEST(BasicTest, Gote_Fu)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteFu);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 1);
+		EXPECT_EQ(moves[0], Position(5, 6));
+	}
+
+	// 後手・香車
+	TEST(BasicTest, Gote_Kyo)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteKyo);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 4);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 9)), moves.end());
+	}
+
+	// 後手・桂馬
+	TEST(BasicTest, Gote_Kei)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteKei);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 2);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 7)), moves.end());
+	}
+
+	// 後手・銀将
+	TEST(BasicTest, Gote_Gin)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteGin);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 5);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
+	}
+
+	// 後手・金将
+	TEST(BasicTest, Gote_Kin)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteKin);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 6);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+	}
+
+	// 後手・角行
+	TEST(BasicTest, Gote_Kaku)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteKaku);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 16);
+		// 右上方向
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 3)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 2)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 1)), moves.end());
+		// 左上方向
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 3)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 2)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 1)), moves.end());
+		// 右下方向
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 9)), moves.end());
+		// 左下方向
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 9)), moves.end());
+	}
+
+	// 後手・飛車
+	TEST(BasicTest, Gote_Hisha)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteHisya);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 16);
+		// 上方向
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 3)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 2)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 1)), moves.end());
+		// 下方向
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 9)), moves.end());
+		// 左方向
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 5)), moves.end());
+		// 右方向
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 5)), moves.end());
+	}
+
 	// 後手・玉将
 	TEST(BasicTest, Gote_Gyoku)
 	{
@@ -241,6 +497,144 @@ namespace LegalMoveFinderTest
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+	}
+
+	// 後手・と金（= 金）
+	TEST(BasicTest, Gote_Tokin)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteTokin);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 6);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+	}
+
+	// 後手・成香（= 金）
+	TEST(BasicTest, Gote_NariKyo)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteNariKyo);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 6);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+	}
+
+	// 後手・成桂（= 金）
+	TEST(BasicTest, Gote_NariKei)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteNariKei);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 6);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+	}
+
+	// 後手・成銀（= 金）
+	TEST(BasicTest, Gote_NariGin)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteNariGin);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 6);
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+	}
+
+	// 後手・馬（= 角 + 十字のステップ）
+	TEST(BasicTest, Gote_Uma)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteUma);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 20);
+
+		// 斜め（角）
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 3)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 2)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 1)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 3)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 2)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 1)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 9)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 9)), moves.end());
+
+		// 十字のステップ
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+	}
+
+	// 後手・竜（= 飛 + 斜めのステップ）
+	TEST(BasicTest, Gote_Ryu)
+	{
+		Board board;
+		board.setPiece(Position(5, 5), PieceCode::GoteRyu);
+
+		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
+		ASSERT_EQ(moves.size(), 20);
+
+		// 直線（飛）
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 3)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 2)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 1)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 9)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 5)), moves.end());
+
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 5)), moves.end());
+
+		// 斜めのステップ
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
 	}
@@ -400,7 +794,7 @@ namespace LegalMoveFinderTest
 		board.setPiece(Position(1, 1), PieceCode::SenteUma);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
-		// (1,1) 馬は右下斜め + 右・下のステップ
+		// (1,1) 馬は左下斜め + 左・下のステップ
 		ASSERT_EQ(moves.size(), 10);
 		// 斜め（左下のみ）
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 2)), moves.end());
@@ -423,7 +817,7 @@ namespace LegalMoveFinderTest
 		board.setPiece(Position(1, 1), PieceCode::SenteRyu);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
-		// (1,1) 竜は右・下方向のスライド + 右下斜め1マス
+		// (1,1) 竜は左・下方向のスライド + 左下斜め1マス
 		ASSERT_EQ(moves.size(), 17);
 		// 直線（左）
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 1)), moves.end());
@@ -445,13 +839,6 @@ namespace LegalMoveFinderTest
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 9)), moves.end());
 		// 斜め1マス
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 2)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 3)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 9)), moves.end());
 	}
 
 	// ========================================

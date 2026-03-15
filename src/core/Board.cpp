@@ -13,7 +13,7 @@ namespace shoryu::core
 		}
 	}
 
-	void Board::Clear()
+	void Board::clear()
 	{
 		for (auto& dan : layout_)
 		{

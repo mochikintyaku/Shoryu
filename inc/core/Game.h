@@ -16,20 +16,19 @@ namespace shoryu::core
 		~Game() = default;
 
 		// ゲームの初期化
-		void NewGame();
+		void newGame();
 		void clear();
 
 		// 盤面情報の取得
 		PieceLayout getLayout() const;
-		std::array<int, NumHandPieceType> getSenteHand() const;
-		std::array<int, NumHandPieceType> getGoteHand() const;
+		std::array<int, NumHandPieceType*2> getHandCounts() const;
 		PlayerSide getCurrentPlayer() const;
 		size_t getMoveCount() const;
 
 		// 合法手の取得
 		std::vector<Position> getLegalMoves(Position from) const;
 
-		// 指し手の実行（ユーザー操作）- Move構造体は内部実装として隠蔽
+		// 指し手の実行
 		void executeNormalMove(Position from, Position to);
 		void executePromotionMove(Position from, Position to);
 		void executeDropMove(Position to, PieceCode pc);
