@@ -1,7 +1,6 @@
 #pragma once
 #include "ShoryuCoreExport.h"
 #include "Types.h"
-#include "ViewDto.h"
 #include <vector>
 #include <memory>
 
@@ -27,10 +26,10 @@ namespace shoryu::core
 		void startNewGame();
 		void clear();
 
-		// 盤面情報の取得（View層用）
-		ViewBoardLayout getViewBoardLayout() const;
-		ViewHand getSenteViewHand() const;
-		ViewHand getGoteViewHand() const;
+		// 盤面情報の取得
+		PieceLayout getLayout() const;
+		std::array<int, NumHandPieceType> getSenteHand() const;
+		std::array<int, NumHandPieceType> getGoteHand() const;
 		PlayerSide getCurrentPlayer() const;
 		size_t getMoveCount() const;
 
@@ -40,7 +39,7 @@ namespace shoryu::core
 		// 指し手の実行（ユーザー操作）- Move構造体は内部実装として隠蔽
 		void executeNormalMove(Position from, Position to);
 		void executePromotionMove(Position from, Position to);
-		void executeDropMove(Position to, PieceType pieceType);
+		void executeDropMove(Position to, PieceCode pc);
 
 		// 指し手の取り消し
 		void undoLastMove();

@@ -3,43 +3,50 @@
 #include "Hand.h"
 #include "MoveManager.h"
 #include "Types.h"
+#include <array>
+#include <vector>
 
 namespace shoryu::core
 {
-	// 将棋の1局全体を管理するModelクラス
+	// 将棋の1局全体を管理するModelクラス兼公開APIをもつContollerクラス
 	class Game
 	{
 	public:
 		Game();
 		~Game() = default;
 
-		// 盤面の取得（読み取り専用）
-		const Board& getBoard() const;
-
-		// 持ち駒の取得（読み取り専用）
-		const Hand& getSenteHand() const;
-		const Hand& getGoteHand() const;
-
-		// 現在の手番の取得
-		PlayerSide getCurrentPlayer() const;
-
-		// 手数の取得（MoveManagerの履歴から取得）
-		size_t getMoveCount() const;
-
-		// 指し手の実行と取り消し
-		void executeMove(const Move& move);
-		void undoLastMove();
-
-		// 盤面の初期化
-		void initializeStartPosition();
+		// ゲームの初期化
+		void NewGame();
 		void clear();
 
+		// 盤面情報の取得
+		PieceLayout getLayout() const;
+		std::array<int, NumHandPieceType> getSenteHand() const;
+		std::array<int, NumHandPieceType> getGoteHand() const;
+		PlayerSide getCurrentPlayer() const;
+		size_t getMoveCount() const;
+
+		// 合法手の取得
+		std::vector<Position> getLegalMoves(Position from) const;
+
+		// 指し手の実行（ユーザー操作）- Move構造体は内部実装として隠蔽
+		void executeNormalMove(Position from, Position to);
+		void executePromotionMove(Position from, Position to);
+		void executeDropMove(Position to, PieceCode pc);
+
+		// 指し手の取り消し
+		void undoLastMove();
+		bool canUndo() const;
+
+		// 高レベル操作
+		void undoMultipleMoves(int count);
+
 	private:
+		void initializeStartPosition();
 		void togglePlayer();
 
 		Board board_;
-		Hand senteHand_;
-		Hand goteHand_;
+		Hand hand_;
 		MoveManager moveManager_;
 		PlayerSide currentPlayer_;
 	};

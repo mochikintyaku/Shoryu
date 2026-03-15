@@ -14,6 +14,7 @@ namespace shoryu::core
 
 		MoveManager(Board& board, Hand& hand);
 		~MoveManager();
+		void clear();
 		void execute(Move cmd);
 		void undoLast();
 

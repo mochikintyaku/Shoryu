@@ -24,14 +24,14 @@ namespace shoryu::core
 		}
 	}
 
-	PieceCode Board::getSquare(Position pos) const
+	PieceCode Board::getPiece(Position pos) const
 	{
 		int rowIdx = DanToRowIndex(pos.dan_);
 		int colIdx = SujiToColumnIndex(pos.suji_);
 		return layout_[rowIdx][colIdx];
 	}
 
-	void Board::setSquare(Position pos, PieceCode pieceCode)
+	void Board::setPiece(Position pos, PieceCode pieceCode)
 	{
 		int rowIdx = DanToRowIndex(pos.dan_);
 		int colIdx = SujiToColumnIndex(pos.suji_);
@@ -43,7 +43,7 @@ namespace shoryu::core
 		layout_ = newLayout;
 	}
 
-	const Board::PieceLayout& Board::getLayout() const
+	const PieceLayout& Board::getLayout() const
 	{
 		return layout_;
 	}

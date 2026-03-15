@@ -1,5 +1,4 @@
 #pragma once
-#include <array>
 #include "Types.h"
 
 namespace shoryu::core
@@ -7,14 +6,12 @@ namespace shoryu::core
 	class Board
 	{
 	public:
-		typedef std::array<std::array<PieceCode, BoardSize>, BoardSize> PieceLayout;
-
 		Board();
 		~Board() = default;
 
 		void Clear();
-		PieceCode getSquare(Position pos) const;
-		void setSquare(Position pos, PieceCode pieceCode);
+		PieceCode getPiece(Position pos) const;
+		void setPiece(Position pos, PieceCode pieceCode);
 		void setLayout(PieceLayout& newLayout);
 		const PieceLayout& getLayout() const;
 

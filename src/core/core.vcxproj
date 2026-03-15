@@ -93,7 +93,6 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameController.cpp" />
     <ClCompile Include="Hand.cpp" />
     <ClCompile Include="LegalMoveFinder.cpp" />
     <ClCompile Include="MoveManager.cpp" />
@@ -102,7 +101,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\inc\core\Board.h" />
     <ClInclude Include="..\..\inc\core\Game.h" />
-    <ClInclude Include="..\..\inc\core\GameController.h" />
     <ClInclude Include="..\..\inc\core\Hand.h" />
     <ClInclude Include="..\..\inc\core\LegalMoveFinder.h" />
     <ClInclude Include="..\..\inc\core\Move.h" />
