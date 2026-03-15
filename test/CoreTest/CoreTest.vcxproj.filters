@@ -4,9 +4,6 @@
     <Filter Include="Core (Shared)">
       <UniqueIdentifier>{8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core (Shared)\src">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Tests">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
     </Filter>
@@ -16,21 +13,6 @@
   </ItemGroup>
   <!-- Core �\�[�X�t�@�C�� -->
   <ItemGroup>
-    <ClCompile Include="..\..\src\core\Board.cpp">
-      <Filter>Core (Shared)\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\LegalMoveFinder.cpp">
-      <Filter>Core (Shared)\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\MoveManager.cpp">
-      <Filter>Core (Shared)\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\Piece.cpp">
-      <Filter>Core (Shared)\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\Types.cpp">
-      <Filter>Core (Shared)\src</Filter>
-    </ClCompile>
     <!-- �e�X�g�t�@�C�� -->
     <ClCompile Include="test.cpp">
       <Filter>Tests</Filter>
@@ -38,17 +20,8 @@
     <ClCompile Include="LegalMoveFinderTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\core\Hand.cpp">
-      <Filter>Core %28Shared%29\src</Filter>
-    </ClCompile>
     <ClCompile Include="MoveManagerTest.cpp">
       <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\Game.cpp">
-      <Filter>Core %28Shared%29\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\GameController.cpp">
-      <Filter>Core %28Shared%29\src</Filter>
     </ClCompile>
   </ItemGroup>
   <!-- Core �w�b�_�[�t�@�C�� -->
@@ -68,9 +41,6 @@
     <ClInclude Include="..\..\inc\core\MoveTable.h">
       <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\inc\core\Piece.h">
-      <Filter>Core %28Shared%29\inc</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\inc\core\PieceTraits.h">
       <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
@@ -84,9 +54,6 @@
       <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\inc\core\Game.h">
-      <Filter>Core %28Shared%29\inc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\inc\core\GameController.h">
       <Filter>Core %28Shared%29\inc</Filter>
     </ClInclude>
   </ItemGroup>

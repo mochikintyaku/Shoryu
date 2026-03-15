@@ -1,9 +1,8 @@
 ﻿#include "gtest/gtest.h"
 #include "core/LegalMoveFinder.h"
 #include "core/Board.h"
-#include "core/Piece.h"
 #include "core/Types.h"
-#include <vector>
+#include <vector>						
 #include <algorithm>
 
 using namespace shoryu::core;
@@ -72,8 +71,7 @@ namespace LegalMoveFinderTest
 	TEST(BasicTest, Sente_Fu)
 	{
 		Board board;
-		Piece piece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
+		board.setPiece(Position(5, 5), PieceCode::SenteFu);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 1);
@@ -84,8 +82,7 @@ namespace LegalMoveFinderTest
 	TEST(BasicTest, Sente_Kyo)
 	{
 		Board board;
-		Piece piece(PieceType::Kyo, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKyo);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 4);
@@ -99,8 +96,7 @@ namespace LegalMoveFinderTest
 	TEST(BasicTest, Sente_Kei)
 	{
 		Board board;
-		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKei);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 2);
@@ -112,8 +108,7 @@ namespace LegalMoveFinderTest
 	TEST(BasicTest, Sente_Gin)
 	{
 		Board board;
-		Piece piece(PieceType::Gin, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
+		board.setPiece(Position(5, 5), PieceCode::SenteGin);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 5);
@@ -128,8 +123,7 @@ namespace LegalMoveFinderTest
 	TEST(BasicTest, Sente_Kin)
 	{
 		Board board;
-		Piece piece(PieceType::Kin, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKin);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 6);
@@ -145,8 +139,7 @@ namespace LegalMoveFinderTest
 	TEST(BasicTest, Sente_Kaku)
 	{
 		Board board;
-		Piece piece(PieceType::Kaku, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKaku);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 16);
@@ -176,8 +169,7 @@ namespace LegalMoveFinderTest
 	TEST(BasicTest, Sente_Hisha)
 	{
 		Board board;
-		Piece piece(PieceType::Hisha, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
+		board.setPiece(Position(5, 5), PieceCode::SenteHisya);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 16);
@@ -201,331 +193,27 @@ namespace LegalMoveFinderTest
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 5)), moves.end());
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 5)), moves.end());
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 5)), moves.end());
+	}
+
+	// 後手の王・玉は同値テスト案
+	// 後手・王将
+	TEST(BasicTest, Gote_Ou_Similarity)
+	{
+		Board board1;
+		Board board2;
+		board1.setPiece(Position(5, 5), PieceCode::Ou);
+		board2.setPiece(Position(5, 5), PieceCode::Gyoku);
+
+		std::vector<Position> moves1 = findLegalMoves(board1, Position(5, 5));
+		std::vector<Position> moves2 = findLegalMoves(board2, Position(5, 5));
+		EXPECT_EQ(moves1, moves2);
 	}
 
 	// 先手・王将
 	TEST(BasicTest, Sente_Ou)
 	{
 		Board board;
-		Piece piece(PieceType::Ou, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 8);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-	}
-
-	// 先手・玉将
-	TEST(BasicTest, Sente_Gyoku)
-	{
-		Board board;
-		Piece piece(PieceType::Gyoku, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 8);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-	}
-
-	// 先手・と金
-	TEST(BasicTest, Sente_Tokin)
-	{
-		Board board;
-		Piece piece(PieceType::Tokin, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 6);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-	}
-
-	// 先手・成香
-	TEST(BasicTest, Sente_NariKyo)
-	{
-		Board board;
-		Piece piece(PieceType::NariKyo, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 6);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-	}
-
-	// 先手・成桂
-	TEST(BasicTest, Sente_NariKei)
-	{
-		Board board;
-		Piece piece(PieceType::NariKei, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 6);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-	}
-
-	// 先手・成銀
-	TEST(BasicTest, Sente_NariGin)
-	{
-		Board board;
-		Piece piece(PieceType::NariGin, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 6);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-	}
-
-	// 先手・馬
-	TEST(BasicTest, Sente_Uma)
-	{
-		Board board;
-		Piece piece(PieceType::Uma, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 20);
-		// 右上方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 3)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 2)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 1)), moves.end());
-		// 左上方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 3)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 2)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 1)), moves.end());
-		// 右下方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 9)), moves.end());
-		// 左下方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 9)), moves.end());
-		// 縦横１マス
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-	}
-
-	// 先手・竜
-	TEST(BasicTest, Sente_Ryu)
-	{
-		Board board;
-		Piece piece(PieceType::Ryu, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 20);
-		// 上方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 3)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 2)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 1)), moves.end());
-		// 下方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 9)), moves.end());
-		// 左方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 5)), moves.end());
-		// 右方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 5)), moves.end());
-		// 斜め１マス
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-	}
-
-	// ========================================
-	// 後手のテスト（中央配置）
-	// ========================================
-
-	// 後手・歩兵
-	TEST(BasicTest, Gote_Fu)
-	{
-		Board board;
-		Piece piece(PieceType::Fu, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 1);
-		EXPECT_EQ(moves[0], Position(5, 6));
-	}
-
-	// 後手・香車
-	TEST(BasicTest, Gote_Kyo)
-	{
-		Board board;
-		Piece piece(PieceType::Kyo, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 4);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 9)), moves.end());
-	}
-
-	// 後手・桂馬
-	TEST(BasicTest, Gote_Kei)
-	{
-		Board board;
-		Piece piece(PieceType::Kei, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 2);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 7)), moves.end());
-	}
-
-	// 後手・銀将
-	TEST(BasicTest, Gote_Gin)
-	{
-		Board board;
-		Piece piece(PieceType::Gin, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 5);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-	}
-
-	// 後手・金将
-	TEST(BasicTest, Gote_Kin)
-	{
-		Board board;
-		Piece piece(PieceType::Kin, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 6);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-	}
-
-	// 後手・角行
-	TEST(BasicTest, Gote_Kaku)
-	{
-		Board board;
-		Piece piece(PieceType::Kaku, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 16);
-		// 右上方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 3)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 2)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 1)), moves.end());
-		// 左上方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 3)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 2)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 1)), moves.end());
-		// 右下方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 9)), moves.end());
-		// 左下方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 9)), moves.end());
-	}
-
-	// 後手・飛車
-	TEST(BasicTest, Gote_Hisha)
-	{
-		Board board;
-		Piece piece(PieceType::Hisha, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 16);
-		// 上方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 3)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 2)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 1)), moves.end());
-		// 下方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 9)), moves.end());
-		// 左方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 5)), moves.end());
-		// 右方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 5)), moves.end());
-	}
-
-	// 後手・王将
-	TEST(BasicTest, Gote_Ou)
-	{
-		Board board;
-		Piece piece(PieceType::Ou, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
+		board.setPiece(Position(5, 5), PieceCode::Ou);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 8);
@@ -543,8 +231,7 @@ namespace LegalMoveFinderTest
 	TEST(BasicTest, Gote_Gyoku)
 	{
 		Board board;
-		Piece piece(PieceType::Gyoku, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
+		board.setPiece(Position(5, 5), PieceCode::Gyoku);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		ASSERT_EQ(moves.size(), 8);
@@ -558,146 +245,6 @@ namespace LegalMoveFinderTest
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
 	}
 
-	// 後手・と金
-	TEST(BasicTest, Gote_Tokin)
-	{
-		Board board;
-		Piece piece(PieceType::Tokin, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 6);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-	}
-
-	// 後手・成香
-	TEST(BasicTest, Gote_NariKyo)
-	{
-		Board board;
-		Piece piece(PieceType::NariKyo, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 6);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-	}
-
-	// 後手・成桂
-	TEST(BasicTest, Gote_NariKei)
-	{
-		Board board;
-		Piece piece(PieceType::NariKei, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 6);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-	}
-
-	// 後手・成銀
-	TEST(BasicTest, Gote_NariGin)
-	{
-		Board board;
-		Piece piece(PieceType::NariGin, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 6);
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-	}
-
-	// 後手・馬
-	TEST(BasicTest, Gote_Uma)
-	{
-		Board board;
-		Piece piece(PieceType::Uma, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 20);
-		// 右上方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 3)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 2)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 1)), moves.end());
-		// 左上方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 3)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 2)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 1)), moves.end());
-		// 右下方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 9)), moves.end());
-		// 左下方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 9)), moves.end());
-		// 縦横１マス
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-	}
-
-	// 後手・竜
-	TEST(BasicTest, Gote_Ryu)
-	{
-		Board board;
-		Piece piece(PieceType::Ryu, PlayerSide::Gote);
-		board.setSquare(Position(5, 5), piece);
-
-		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		ASSERT_EQ(moves.size(), 20);
-		// 上方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 3)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 2)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 1)), moves.end());
-		// 下方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 7)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 8)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 9)), moves.end());
-		// 左方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 5)), moves.end());
-		// 右方向
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 5)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 5)), moves.end());
-		// 斜め１マス
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 4)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 6)), moves.end());
-		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
-	}
-
 	// ========================================
 	// 盤外チェックのテスト（先手のみ）
 	// ========================================
@@ -706,8 +253,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Fu_1_Dan)
 	{
 		Board board;
-		Piece piece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(5, 1), piece);
+		board.setPiece(Position(5, 1), PieceCode::SenteFu);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 1));
 		// (5,1) の歩は (5,0) に進むが盤外なので合法手なし
@@ -718,8 +264,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Kyo_1_Dan)
 	{
 		Board board;
-		Piece piece(PieceType::Kyo, PlayerSide::Sente);
-		board.setSquare(Position(5, 1), piece);
+		board.setPiece(Position(5, 1), PieceCode::SenteKyo);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 1));
 		// (5,1) の香車は (5,0) 方向だが盤外なので合法手なし
@@ -730,8 +275,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Kei_2_Dan)
 	{
 		Board board;
-		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setSquare(Position(5, 2), piece);
+		board.setPiece(Position(5, 2), PieceCode::SenteKei);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 2));
 		// (5,2) の桂は (4,0) と (6,0) に移動するが、両方とも盤外なので合法手なし
@@ -742,8 +286,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Kei_1_Suji)
 	{
 		Board board;
-		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setSquare(Position(1, 5), piece);
+		board.setPiece(Position(1, 5), PieceCode::SenteKei);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 5));
 		// (1,5) の桂は (0,3) と (2,3) に移動するが、(0,3) は盤外なので除外
@@ -755,8 +298,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Kei_9_Suji)
 	{
 		Board board;
-		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setSquare(Position(9, 5), piece);
+		board.setPiece(Position(9, 5), PieceCode::SenteKei);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(9, 5));
 		// (9,5) の桂は (8,3) と (10,3) に移動するが、(10,3) は盤外なので除外
@@ -768,8 +310,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Gin_Corner)
 	{
 		Board board;
-		Piece piece(PieceType::Gin, PlayerSide::Sente);
-		board.setSquare(Position(1, 1), piece);
+		board.setPiece(Position(1, 1), PieceCode::SenteGin);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 銀は左下のみ
@@ -781,8 +322,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Kin_Corner)
 	{
 		Board board;
-		Piece piece(PieceType::Kin, PlayerSide::Sente);
-		board.setSquare(Position(1, 1), piece);
+		board.setPiece(Position(1, 1), PieceCode::SenteKin);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 金は左・下の2方向のみ
@@ -795,8 +335,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Kaku_Corner)
 	{
 		Board board;
-		Piece piece(PieceType::Kaku, PlayerSide::Sente);
-		board.setSquare(Position(1, 1), piece);
+		board.setPiece(Position(1, 1), PieceCode::SenteKaku);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 角は左下方向のみ
@@ -815,8 +354,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Hisha_Corner)
 	{
 		Board board;
-		Piece piece(PieceType::Hisha, PlayerSide::Sente);
-		board.setSquare(Position(1, 1), piece);
+		board.setPiece(Position(1, 1), PieceCode::SenteHisya);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 飛車左方向と下方向に移動可能
@@ -845,8 +383,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Ou_Corner)
 	{
 		Board board;
-		Piece piece(PieceType::Ou, PlayerSide::Sente);
-		board.setSquare(Position(1, 1), piece);
+		board.setPiece(Position(1, 1), PieceCode::Ou);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 王は左・左下・下の3方向
@@ -860,8 +397,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Uma_Corner)
 	{
 		Board board;
-		Piece piece(PieceType::Uma, PlayerSide::Sente);
-		board.setSquare(Position(1, 1), piece);
+		board.setPiece(Position(1, 1), PieceCode::SenteUma);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 馬は右下斜め + 右・下のステップ
@@ -884,8 +420,7 @@ namespace LegalMoveFinderTest
 	TEST(OutOfBoundsMoveTest, Sente_Ryu_Corner)
 	{
 		Board board;
-		Piece piece(PieceType::Ryu, PlayerSide::Sente);
-		board.setSquare(Position(1, 1), piece);
+		board.setPiece(Position(1, 1), PieceCode::SenteRyu);
 
 		std::vector<Position> moves = findLegalMoves(board, Position(1, 1));
 		// (1,1) 竜は右・下方向のスライド + 右下斜め1マス
@@ -910,6 +445,13 @@ namespace LegalMoveFinderTest
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(1, 9)), moves.end());
 		// 斜め1マス
 		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(2, 2)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(3, 3)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(4, 4)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(5, 5)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(6, 6)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(7, 7)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(8, 8)), moves.end());
+		EXPECT_NE(std::find(moves.begin(), moves.end(), Position(9, 9)), moves.end());
 	}
 
 	// ========================================
@@ -920,10 +462,9 @@ namespace LegalMoveFinderTest
 	TEST(ExcludesFriendlyOccupiedSquare, Sente_Fu)
 	{
 		Board board;
-		Piece piece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(5, 4), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteFu);
+		board.setPiece(Position(5, 4), PieceCode::SenteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4) に味方駒がいるため、合法手に含まれない
 		EXPECT_TRUE(moves.empty());
@@ -933,10 +474,9 @@ namespace LegalMoveFinderTest
 	TEST(IncludesEnemyOccupiedSquare, Sente_Fu)
 	{
 		Board board;
-		Piece piece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setSquare(Position(5, 4), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteFu);
+		board.setPiece(Position(5, 4), PieceCode::GoteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4) に敵駒がいるため、合法手に含まれる
 		ASSERT_EQ(moves.size(), 1);
@@ -947,10 +487,9 @@ namespace LegalMoveFinderTest
 	TEST(ExcludesFriendlyOccupiedSquare, Sente_Kyo)
 	{
 		Board board;
-		Piece piece(PieceType::Kyo, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(5, 3), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKyo);
+		board.setPiece(Position(5, 3), PieceCode::SenteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,3) に味方駒がいるため、(5, 4) のみが合法手
 		ASSERT_EQ(moves.size(), 1);
@@ -961,10 +500,9 @@ namespace LegalMoveFinderTest
 	TEST(IncludesEnemyOccupiedSquare, Sente_Kyo)
 	{
 		Board board;
-		Piece piece(PieceType::Kyo, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setSquare(Position(5, 3), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKyo);
+		board.setPiece(Position(5, 3), PieceCode::GoteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,3) に敵駒がいるため、(5,4) と (5,3) が合法手
 		ASSERT_EQ(moves.size(), 2);
@@ -976,12 +514,11 @@ namespace LegalMoveFinderTest
 	TEST(ExcludesFriendlyOccupiedSquare, Sente_Kei)
 	{
 		Board board;
-		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(4, 3), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKei);
+		board.setPiece(Position(4, 3), PieceCode::SenteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
-		// (4,3) に味方駒がいるため、(6,3) のみが合法手
+		// (4,3) に味方駒がいるため、合法手に含まれない
 		ASSERT_EQ(moves.size(), 1);
 		EXPECT_EQ(moves[0], Position(6, 3));
 	}
@@ -990,10 +527,9 @@ namespace LegalMoveFinderTest
 	TEST(IncludesEnemyOccupiedSquare, Sente_Kei)
 	{
 		Board board;
-		Piece piece(PieceType::Kei, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setSquare(Position(4, 3), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKei);
+		board.setPiece(Position(4, 3), PieceCode::GoteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,3) に敵駒がいるため、(4,3) と (6,3) が合法手
 		ASSERT_EQ(moves.size(), 2);
@@ -1005,11 +541,10 @@ namespace LegalMoveFinderTest
 	TEST(ExcludesFriendlyOccupiedSquare, Sente_Gin)
 	{
 		Board board;
-		Piece piece(PieceType::Gin, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(4, 4), blockingPiece);
-		board.setSquare(Position(6, 4), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteGin);
+		board.setPiece(Position(4, 4), PieceCode::SenteFu);
+		board.setPiece(Position(6, 4), PieceCode::SenteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,4) に味方駒がいるため、合法手に含まれない
 		ASSERT_EQ(moves.size(), 3);
@@ -1022,11 +557,10 @@ namespace LegalMoveFinderTest
 	TEST(IncludesEnemyOccupiedSquare, Sente_Gin)
 	{
 		Board board;
-		Piece piece(PieceType::Gin, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setSquare(Position(4, 4), blockingPiece);
-		board.setSquare(Position(6, 4), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteGin);
+		board.setPiece(Position(4, 4), PieceCode::GoteFu);
+		board.setPiece(Position(6, 4), PieceCode::GoteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,4) に敵駒がいるため、合法手に含まれる
 		ASSERT_EQ(moves.size(), 5);
@@ -1040,11 +574,10 @@ namespace LegalMoveFinderTest
 	TEST(ExcludesFriendlyOccupiedSquare, Sente_Kin)
 	{
 		Board board;
-		Piece piece(PieceType::Kin, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(5, 4), blockingPiece);
-		board.setSquare(Position(4, 5), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKin);
+		board.setPiece(Position(5, 4), PieceCode::SenteFu);
+		board.setPiece(Position(4, 5), PieceCode::SenteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4)と (4,5) に味方駒がいるため、合法手に含まれない
 		ASSERT_EQ(moves.size(), 4);
@@ -1057,11 +590,10 @@ namespace LegalMoveFinderTest
 	TEST(IncludesEnemyOccupiedSquare, Sente_Kin)
 	{
 		Board board;
-		Piece piece(PieceType::Kin, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setSquare(Position(5, 4), blockingPiece);
-		board.setSquare(Position(4, 5), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKin);
+		board.setPiece(Position(5, 4), PieceCode::GoteFu);
+		board.setPiece(Position(4, 5), PieceCode::GoteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4)と (4,5) に敵駒がいるため、合法手に含まれる
 		ASSERT_EQ(moves.size(), 6);
@@ -1076,13 +608,12 @@ namespace LegalMoveFinderTest
 	TEST(ExcludesFriendlyOccupiedSquare, Sente_Kaku)
 	{
 		Board board;
-		Piece piece(PieceType::Kaku, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(4, 4), blockingPiece);
-		board.setSquare(Position(9, 1), blockingPiece);
-		board.setSquare(Position(8, 8), blockingPiece);
-		board.setSquare(Position(3, 7), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKaku);
+		board.setPiece(Position(4, 4), PieceCode::SenteFu);
+		board.setPiece(Position(9, 1), PieceCode::SenteFu);
+		board.setPiece(Position(8, 8), PieceCode::SenteFu);
+		board.setPiece(Position(3, 7), PieceCode::SenteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,4),(9,1),(8,8),(3,7) に味方駒がいるため、合法手に含まれず、それ以降も進めない
 		ASSERT_EQ(moves.size(), 6);
@@ -1097,13 +628,12 @@ namespace LegalMoveFinderTest
 	TEST(IncludesEnemyOccupiedSquare, Sente_Kaku)
 	{
 		Board board;
-		Piece piece(PieceType::Kaku, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setSquare(Position(4, 4), blockingPiece);
-		board.setSquare(Position(9, 1), blockingPiece);
-		board.setSquare(Position(8, 8), blockingPiece);
-		board.setSquare(Position(3, 7), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteKaku);
+		board.setPiece(Position(4, 4), PieceCode::GoteFu);
+		board.setPiece(Position(9, 1), PieceCode::GoteFu);
+		board.setPiece(Position(8, 8), PieceCode::GoteFu);
+		board.setPiece(Position(3, 7), PieceCode::GoteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (4,4),(9,1),(8,8),(3,7) に敵駒がいるため、合法手に含まれ、それ以降は進めない
 		ASSERT_EQ(moves.size(), 10);
@@ -1122,13 +652,12 @@ namespace LegalMoveFinderTest
 	TEST(ExcludesFriendlyOccupiedSquare, Sente_Hisya)
 	{
 		Board board;
-		Piece piece(PieceType::Hisha, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(5, 3), blockingPiece);
-		board.setSquare(Position(9, 5), blockingPiece);
-		board.setSquare(Position(5, 8), blockingPiece);
-		board.setSquare(Position(2, 5), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteHisya);
+		board.setPiece(Position(5, 3), PieceCode::SenteFu);
+		board.setPiece(Position(9, 5), PieceCode::SenteFu);
+		board.setPiece(Position(5, 8), PieceCode::SenteFu);
+		board.setPiece(Position(2, 5), PieceCode::SenteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,3),(9,5),(5,8),(2,5) に味方駒がいるため、合法手に含まれず、それ以降も進めない
 		ASSERT_EQ(moves.size(), 8);
@@ -1145,13 +674,12 @@ namespace LegalMoveFinderTest
 	TEST(IncludesEnemyOccupiedSquare, Sente_Hisya)
 	{
 		Board board;
-		Piece piece(PieceType::Hisha, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setSquare(Position(5, 3), blockingPiece);
-		board.setSquare(Position(9, 5), blockingPiece);
-		board.setSquare(Position(5, 8), blockingPiece);
-		board.setSquare(Position(2, 5), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::SenteHisya);
+		board.setPiece(Position(5, 3), PieceCode::GoteFu);
+		board.setPiece(Position(9, 5), PieceCode::GoteFu);
+		board.setPiece(Position(5, 8), PieceCode::GoteFu);
+		board.setPiece(Position(2, 5), PieceCode::GoteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,3),(9,5),(5,8),(2,5) に敵駒がいるため、合法手に含まれ、それ以降は進めない
 		ASSERT_EQ(moves.size(), 12);
@@ -1172,12 +700,11 @@ namespace LegalMoveFinderTest
 	TEST(ExcludesFriendlyOccupiedSquare, Sente_Ou)
 	{
 		Board board;
-		Piece piece(PieceType::Ou, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Sente);
-		board.setSquare(Position(5, 4), blockingPiece);
-		board.setSquare(Position(4, 5), blockingPiece);
-		board.setSquare(Position(6, 6), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::Ou);
+		board.setPiece(Position(5, 4), PieceCode::SenteFu);
+		board.setPiece(Position(4, 5), PieceCode::SenteFu);
+		board.setPiece(Position(6, 6), PieceCode::SenteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4),(4,5),(6,6) に味方駒がいるため、合法手に含まれない
 		ASSERT_EQ(moves.size(), 5);
@@ -1191,12 +718,11 @@ namespace LegalMoveFinderTest
 	TEST(IncludesEnemyOccupiedSquare, Sente_Ou)
 	{
 		Board board;
-		Piece piece(PieceType::Ou, PlayerSide::Sente);
-		board.setSquare(Position(5, 5), piece);
-		Piece blockingPiece(PieceType::Fu, PlayerSide::Gote);
-		board.setSquare(Position(5, 4), blockingPiece);
-		board.setSquare(Position(4, 5), blockingPiece);
-		board.setSquare(Position(6, 6), blockingPiece);
+		board.setPiece(Position(5, 5), PieceCode::Ou);
+		board.setPiece(Position(5, 4), PieceCode::GoteFu);
+		board.setPiece(Position(4, 5), PieceCode::GoteFu);
+		board.setPiece(Position(6, 6), PieceCode::GoteFu);
+
 		std::vector<Position> moves = findLegalMoves(board, Position(5, 5));
 		// (5,4),(4,5),(6,6) に敵駒がいるため、合法手に含まれる
 		ASSERT_EQ(moves.size(), 8);

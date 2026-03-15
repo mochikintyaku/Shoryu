@@ -6,7 +6,7 @@
 
 namespace shoryu::core
 {
-    struct SHORYU_API Position
+    struct Position
     {
         int suji_;  // xç¿ïW
         int dan_;   // yç¿ïW

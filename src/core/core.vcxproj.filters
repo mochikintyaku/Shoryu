@@ -47,9 +47,6 @@
     <ClInclude Include="..\..\inc\core\PieceTraits.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h">
-      <Filter>inc</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\inc\core\Types.h">
       <Filter>inc</Filter>
     </ClInclude>
