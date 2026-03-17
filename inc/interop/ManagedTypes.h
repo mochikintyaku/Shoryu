@@ -68,4 +68,10 @@ namespace shoryu::interop
 
 		ManagedHandCounts(array<int>^ counts);
 	};
+
+	public enum class ManagedPlayerSide
+	{
+		Sente = 1,
+		Gote = -1
+	};
 }

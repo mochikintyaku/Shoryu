@@ -11,6 +11,7 @@ namespace shoryu::interop
 		static ManagedPieceCode ToManaged(shoryu::core::PieceCode pc);
 		static ManagedPieceLayout ToManaged(const shoryu::core::PieceLayout& layout);
 		static ManagedHandCounts ToManaged(const std::array<int, shoryu::core::NumHandPieceType * 2>& counts);
+		static ManagedPlayerSide ToManaged(shoryu::core::PlayerSide side);
 
 		static shoryu::core::Position ToNative(ManagedPosition pos);
 		static shoryu::core::PieceCode ToNative(ManagedPieceCode pc);

@@ -39,6 +39,13 @@ namespace shoryu::interop
 		return ManagedHandCounts(managed);
 	}
 
+	ManagedPlayerSide TypeConverter::ToManaged(shoryu::core::PlayerSide side)
+	{
+		return side == shoryu::core::PlayerSide::Sente ? ManagedPlayerSide::Sente : ManagedPlayerSide::Gote;
+	}
+
+
+
 	shoryu::core::Position TypeConverter::ToNative(ManagedPosition pos)
 	{
 		return shoryu::core::Position(pos.Suji, pos.Dan);
