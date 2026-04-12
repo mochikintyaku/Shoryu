@@ -6,7 +6,7 @@
 namespace shoryu::core
 {
 	MoveManager::MoveManager(Board& board, Hand& hand)
-		:stack_(), board_(board),hand_(hand)
+		:board_(board), hand_(hand), stack_()
 	{ }
 
 	MoveManager::~MoveManager()
