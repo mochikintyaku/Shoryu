@@ -2,7 +2,6 @@
 #include "vector"
 #include "core/MoveTable.h"
 #include "core/Board.h"
-#include "core/Square.h"
 #include "core/PieceTraits.h"
 
 namespace shoryu::core
@@ -11,45 +10,46 @@ namespace shoryu::core
 	{
 		std::vector<Position> legalMoves;
 
-		if (isInside(from) == false)
+		if (Board::isInside(from) == false)
 			return legalMoves;
 
-		const auto pieceOpt = board.getPiece(from);
-		if (pieceOpt.has_value() == false)
-			return legalMoves; // 指定位置に駒がない場合、空のリストを返す
+		// 指定位置に駒がない場合、空のリストを返す
+		const PieceCode fromPiece = board.getPiece(from);
+		if (isEmpty(fromPiece))
+			return legalMoves; 
 
-		const auto& fromPiece = pieceOpt.value();
-		const auto it = moveTable.find(fromPiece.pieceType());
-		if (it == moveTable.end())
-			return legalMoves;
-
-		const MoveSpec& moveSpec = it->second;
-		int sideFactor = ((fromPiece.owner()) == PlayerSide::Gote) ? -1 : 1;
+		const MoveSpec& moveSpec = getMoveTable(fromPiece);
 
 		// ステップ移動の処理
 		for (const auto& step : moveSpec.stepMoves)
 		{
-			int newSuji = from.suji_ + step.dx * sideFactor;
-			int newDan = from.dan_ + step.dy * sideFactor;
+			// ステップ移動の場合のPositionを計算
+			int newSuji = from.suji_ + step.dx;
+			int newDan = from.dan_ + step.dy;
 			Position newPos(newSuji, newDan);
-			if (isInside(newPos))
-			{
-				legalMoves.push_back(newPos);
-			}
+			if (!Board::isInside(newPos))
+				continue;
+
+			const PieceCode destPiece = board.getPiece(newPos);
+			if (!isEmpty(destPiece))
+				if (isAlly(fromPiece, destPiece))
+					continue;
+			
+			legalMoves.push_back(newPos);
 		}
 
 		// スライド移動の処理
 		for (const auto& slide : moveSpec.slideMoves)
 		{
-			int dx = slide.dx * sideFactor;
-			int dy = slide.dy * sideFactor;
+			int dx = slide.dx;
+			int dy = slide.dy;
 
 			Position searchPos(from.suji_ + dx, from.dan_ + dy);
-			while (isInside(searchPos))
+			while (Board::isInside(searchPos))
 			{
 				Position newPos = searchPos;
-				const auto pieceOpt = board.getPiece(newPos);
-				if (pieceOpt == std::nullopt)
+				const PieceCode destPiece = board.getPiece(newPos);
+				if (isEmpty(destPiece))
 				{
 					legalMoves.push_back(newPos);
 					searchPos.suji_ += dx;
@@ -57,7 +57,6 @@ namespace shoryu::core
 					continue;
 				}
 				
-				const auto& destPiece = pieceOpt.value();
 				if (isAlly(destPiece, fromPiece))
 				{
 					break;

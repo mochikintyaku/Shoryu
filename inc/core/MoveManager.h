@@ -1,28 +1,29 @@
 #pragma once
-#pragma warning(push)
-#pragma warning(disable : 4251)
 #include "Move.h"
-#include "ShoryuCoreExport.h"
-#include <memory>
 #include <stack>
 
 namespace shoryu::core
 {
 	class Board;
+	class Hand;
 
-	class SHORYU_API MoveManager
+	class MoveManager
 	{
 	public:
 		typedef std::stack<Move> MoveStack;
 
-		MoveManager(Board& board);
+		MoveManager(Board& board, Hand& hand);
 		~MoveManager();
+		void clear();
 		void execute(Move cmd);
 		void undoLast();
 
+		// è”i—š—ğ‚Ì[‚³j‚ğæ“¾
+		size_t getMoveCount() const;
+
 	private:
 		Board& board_;
+		Hand& hand_;
 		MoveStack stack_;
 	};
 }
-#pragma warning(pop)

@@ -6,4 +6,14 @@ namespace shoryu::core
 		: suji_(suji), dan_(dan)
 	{
 	}
+
+	bool Position::operator==(const Position& other) const
+	{
+		return (this->suji_ == other.suji_) && (this->dan_ == other.dan_);
+	}
+
+	bool Position::operator!=(const Position& other) const
+	{
+		return !(*this == other);
+	}
 }
