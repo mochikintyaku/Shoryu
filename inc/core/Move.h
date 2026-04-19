@@ -6,13 +6,13 @@ namespace shoryu::core
 {
 	struct Move
 	{
-		const std::optional<Position> from;	// ˆÚ“®Œ³
-		const Position to;	// ˆÚ“®æ
-		const PieceCode capturedPiece; // æ‚Á‚½‹î(‚È‚¯‚ê‚ÎPieceCode::Empty)
-		const PieceCode movedPieceBefore; // ˆÚ“®‘O‚Ì‹î
-		const PieceCode movedPieceAfter;  // ˆÚ“®Œã‚Ì‹î(¬‚Á‚Ä‚¢‚ê‚Î¬‚Á‚½Œã‚Ì‹î)
+		const std::optional<Position> from;	// ç§»å‹•å…ƒ
+		const Position to;	// ç§»å‹•å…ˆ
+		const PieceCode capturedPiece; // å–ã£ãŸé§’(ãªã‘ã‚Œã°PieceCode::Empty)
+		const PieceCode movedPieceBefore; // ç§»å‹•å‰ã®é§’
+		const PieceCode movedPieceAfter;  // ç§»å‹•å¾Œã®é§’(æˆã£ã¦ã„ã‚Œã°æˆã£ãŸå¾Œã®é§’)
 
-		// Š®‘SƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		// å®Œå…¨ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		Move(std::optional<Position> from_,
 		     Position to_,
 		     PieceCode capturedPiece_,

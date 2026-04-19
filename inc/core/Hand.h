@@ -1,4 +1,4 @@
-// ��������Ǘ�����N���X
+// 持ち駒を管理するクラス
 #pragma once
 #include "Types.h"
 #include <array>
@@ -11,8 +11,8 @@ namespace shoryu::core
 		Hand();
 		~Hand() = default;
 
-		// ���L�ҍ��� PieceCode�i���=�� / ���=���j�ŊǗ�����B
-		// �����n���ꂽ�ꍇ�͎����I�ɕs���ɖ߂��Ď��������B
+		// 所有者込み PieceCode（先手=正 / 後手=負）で管理する。
+		// 成り駒が渡された場合は自動的に不成に戻して持ち駒化する。
 		void add(PieceCode pc);
 		void remove(PieceCode pc);
 		int count(PieceCode pc) const;

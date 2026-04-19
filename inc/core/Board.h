@@ -15,13 +15,13 @@ namespace shoryu::core
 		void setLayout(PieceLayout& newLayout);
 		const PieceLayout& getLayout() const;
 
-		// À•W•ÏŠ·ƒ†[ƒeƒBƒŠƒeƒB
+		// åº§æ¨™å¤‰æ›ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 		static int SujiToColumnIndex(int suji);
 		static int DanToRowIndex(int dan);
 		static int ColumnIndexToSuji(int col);
 		static int RowIndexToDan(int row);
 		
-		// ”Õ–Ê”»’è
+		// ç›¤é¢åˆ¤å®š
 		static bool isInside(Position pos);
 
 	private:

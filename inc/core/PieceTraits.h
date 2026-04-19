@@ -27,7 +27,7 @@ namespace shoryu::core
 
 	inline constexpr PlayerSide ownerOf(PieceCode pc)
 	{
-		// ‘O’ñ: Empty ‚Å‚Í‚È‚¢
+		// å‰æ: Empty ã§ã¯ãªã„
 		assert(pc != PieceCode::Empty && "ownerOf(pc): pc must not be Empty");
 		return isSentePiece(pc) ? PlayerSide::Sente : PlayerSide::Gote;
 	}
@@ -60,11 +60,11 @@ namespace shoryu::core
 		if (isEmpty(pc))
 			return false;
 
-		// ‚·‚Å‚É¬‚è‹î‚È‚ç¬‚ê‚È‚¢
+		// ã™ã§ã«æˆã‚Šé§’ãªã‚‰æˆã‚Œãªã„
 		if (isPromotedPiece(pc))
 			return false;
 
-		// u•àŒj‹âŠp”òv‚¾‚¯¬‚ê‚é
+		// ã€Œæ­©é¦™æ¡‚éŠ€è§’é£›ã€ã ã‘æˆã‚Œã‚‹
 		switch (pc)
 		{
 		case PieceCode::SenteFu:
@@ -107,7 +107,7 @@ namespace shoryu::core
 	}
 
 	// --- hand helpers ---
-	// ”Õã‚Ì‹î‚ªu‚¿‹î‚Æ‚µ‚Ä‘¶İ‚µ“¾‚éví—Ş‚©i¬‚è‚Í demote ‚µ‚Ä”»’èj
+	// ç›¤ä¸Šã®é§’ãŒã€ŒæŒã¡é§’ã¨ã—ã¦å­˜åœ¨ã—å¾—ã‚‹ã€ç¨®é¡ã‹ï¼ˆæˆã‚Šã¯ demote ã—ã¦åˆ¤å®šï¼‰
 	inline constexpr bool isHandPiece(PieceCode pc)
 	{
 		if (isEmpty(pc))
@@ -136,17 +136,17 @@ namespace shoryu::core
 		}
 	}
 
-	// Œ³‚Ì PieceCode ‚ğu‚¿‹î‚Æ‚µ‚ÄŠÇ—‚·‚éƒL[i•s¬jv‚Ö³‹K‰»
+	// å…ƒã® PieceCode ã‚’ã€ŒæŒã¡é§’ã¨ã—ã¦ç®¡ç†ã™ã‚‹ã‚­ãƒ¼ï¼ˆä¸æˆï¼‰ã€ã¸æ­£è¦åŒ–
 	inline constexpr PieceCode toHandKey(PieceCode pc)
 	{
 		return demote(pc);
 	}
 
-	// ‚¿‹î”z—ñ‚Ì index ‚É•ÏŠ·‚·‚éB
-	// pc ‚ÍuŠ—LÒ•t‚«vB¬‚è‚ª“n‚³‚ê‚Ä‚à demote ‚µ‚Äˆµ‚¤B
-	// •Ô‚è’l:
-	//   0..6  : æè (•à,,Œj,‹â,‹à,Šp,”ò)
-	//   7..13 : Œãè (•à,,Œj,‹â,‹à,Šp,”ò)
+	// æŒã¡é§’é…åˆ—ã® index ã«å¤‰æ›ã™ã‚‹ã€‚
+	// pc ã¯ã€Œæ‰€æœ‰è€…ä»˜ãã€ã€‚æˆã‚ŠãŒæ¸¡ã•ã‚Œã¦ã‚‚ demote ã—ã¦æ‰±ã†ã€‚
+	// è¿”ã‚Šå€¤:
+	//   0..6  : å…ˆæ‰‹ (æ­©,é¦™,æ¡‚,éŠ€,é‡‘,è§’,é£›)
+	//   7..13 : å¾Œæ‰‹ (æ­©,é¦™,æ¡‚,éŠ€,é‡‘,è§’,é£›)
 	inline constexpr int handPieceIndex(PieceCode pc)
 	{
 		assert(isHandPiece(pc) && "handPieceIndex(pc): pc must be a hand piece");

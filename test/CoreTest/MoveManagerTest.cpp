@@ -13,10 +13,10 @@ namespace MoveManagerTest
 		Board board;
 		Hand hand;
 		MoveManager moveManager(board, hand);
-		// ‰Šú”z’u: æè‚Ì•à(5,7)‚É”z’u
+		// åˆæœŸé…ç½®: å…ˆæ‰‹ã®æ­©(5,7)ã«é…ç½®
 		Position from(5, 7);
 		board.setPiece(from, PieceCode::SenteFu);
-		// (5,7)‚©‚ç(5,6)‚ÖˆÚ“®‚·‚éè‚ğÀs
+		// (5,7)ã‹ã‚‰(5,6)ã¸ç§»å‹•ã™ã‚‹æ‰‹ã‚’å®Ÿè¡Œ
 		Position to(5, 6);
 		Move move(
 			from,
@@ -26,17 +26,17 @@ namespace MoveManagerTest
 			PieceCode::SenteFu
 		);
 		moveManager.execute(move);
-		// ˆÚ“®Œã‚Ìó‘Ô‚ğŠm”F
-		EXPECT_EQ(board.getPiece(from), PieceCode::Empty); // ˆÚ“®Œ³‚Í‹ó
+		// ç§»å‹•å¾Œã®çŠ¶æ…‹ã‚’ç¢ºèª
+		EXPECT_EQ(board.getPiece(from), PieceCode::Empty); // ç§»å‹•å…ƒã¯ç©º
 		const PieceCode pieceAtTo = board.getPiece(to);
 		EXPECT_TRUE(!isEmpty(pieceAtTo));
-		EXPECT_EQ(pieceAtTo, PieceCode::SenteFu); // ˆÚ“®æ‚É•à‚ª‚ ‚é
-		// è‚ğ–ß‚·
+		EXPECT_EQ(pieceAtTo, PieceCode::SenteFu); // ç§»å‹•å…ˆã«æ­©ãŒã‚ã‚‹
+		// æ‰‹ã‚’æˆ»ã™
 		moveManager.undoLast();
-		// –ß‚µ‚½Œã‚Ìó‘Ô‚ğŠm”F
+		// æˆ»ã—ãŸå¾Œã®çŠ¶æ…‹ã‚’ç¢ºèª
 		const PieceCode pieceAtFromAfterUndo = board.getPiece(from);
 		EXPECT_TRUE(!isEmpty(pieceAtFromAfterUndo));
-		EXPECT_EQ(pieceAtFromAfterUndo, PieceCode::SenteFu); // ˆÚ“®Œ³‚É•à‚ª–ß‚é
-		EXPECT_TRUE(isEmpty(board.getPiece(to))); // ˆÚ“®æ‚Í‹ó‚É–ß‚é
+		EXPECT_EQ(pieceAtFromAfterUndo, PieceCode::SenteFu); // ç§»å‹•å…ƒã«æ­©ãŒæˆ»ã‚‹
+		EXPECT_TRUE(isEmpty(board.getPiece(to))); // ç§»å‹•å…ˆã¯ç©ºã«æˆ»ã‚‹
 	}
 } // namespace MoveManagerTest

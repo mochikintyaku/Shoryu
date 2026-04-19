@@ -23,7 +23,7 @@ namespace shoryu::core
 	{
 		clear();
 
-		// æèi‰º‘¤: dan=7..9j
+		// å…ˆæ‰‹ï¼ˆä¸‹å´: dan=7..9ï¼‰
 		board_.setPiece(Position(1, 9), PieceCode::SenteKyo);
 		board_.setPiece(Position(2, 9), PieceCode::SenteKei);
 		board_.setPiece(Position(3, 9), PieceCode::SenteGin);
@@ -42,7 +42,7 @@ namespace shoryu::core
 			board_.setPiece(Position(suji, 7), PieceCode::SenteFu);
 		}
 
-		// Œãèiã‘¤: dan=1..3j
+		// å¾Œæ‰‹ï¼ˆä¸Šå´: dan=1..3ï¼‰
 		board_.setPiece(Position(1, 1), PieceCode::GoteKyo);
 		board_.setPiece(Position(2, 1), PieceCode::GoteKei);
 		board_.setPiece(Position(3, 1), PieceCode::GoteGin);

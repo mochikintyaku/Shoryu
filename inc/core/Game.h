@@ -8,36 +8,36 @@
 
 namespace shoryu::core
 {
-	// «Šû‚Ì1‹Ç‘S‘Ì‚ğŠÇ—‚·‚éModelƒNƒ‰ƒXŒ“ŒöŠJAPI‚ğ‚à‚ÂContollerƒNƒ‰ƒX
+	// å°†æ£‹ã®1å±€å…¨ä½“ã‚’ç®¡ç†ã™ã‚‹Modelã‚¯ãƒ©ã‚¹å…¼å…¬é–‹APIã‚’ã‚‚ã¤Contollerã‚¯ãƒ©ã‚¹
 	class Game
 	{
 	public:
 		Game();
 		~Game() = default;
 
-		// ƒQ[ƒ€‚Ì‰Šú‰»
+		// ã‚²ãƒ¼ãƒ ã®åˆæœŸåŒ–
 		void newGame();
 		void clear();
 
-		// ”Õ–Êî•ñ‚Ìæ“¾
+		// ç›¤é¢æƒ…å ±ã®å–å¾—
 		PieceLayout getLayout() const;
 		std::array<int, NumHandPieceType*2> getHandCounts() const;
 		PlayerSide getCurrentPlayer() const;
 		size_t getMoveCount() const;
 
-		// ‡–@è‚Ìæ“¾
+		// åˆæ³•æ‰‹ã®å–å¾—
 		std::vector<Position> getLegalMoves(Position from) const;
 
-		// w‚µè‚ÌÀs
+		// æŒ‡ã—æ‰‹ã®å®Ÿè¡Œ
 		void executeNormalMove(Position from, Position to);
 		void executePromotionMove(Position from, Position to);
 		void executeDropMove(Position to, PieceCode pc);
 
-		// w‚µè‚Ìæ‚èÁ‚µ
+		// æŒ‡ã—æ‰‹ã®å–ã‚Šæ¶ˆã—
 		void undoLastMove();
 		bool canUndo() const;
 
-		// ‚ƒŒƒxƒ‹‘€ì
+		// é«˜ãƒ¬ãƒ™ãƒ«æ“ä½œ
 		void undoMultipleMoves(int count);
 
 	private:
