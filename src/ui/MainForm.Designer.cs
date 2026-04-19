@@ -1,6 +1,6 @@
-﻿namespace ui
+namespace ui
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            shogiBoardControl1 = new ShogiBoardControl();
+            SuspendLayout();
+            // 
+            // shogiBoardControl1
+            // 
+            shogiBoardControl1.Dock = DockStyle.Fill;
+            shogiBoardControl1.Location = new Point(191, 32);
+            shogiBoardControl1.Name = "shogiBoardControl1";
+            shogiBoardControl1.Size = new Size(410, 392);
+            shogiBoardControl1.TabIndex = 0;
+            // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(shogiBoardControl1);
+            Name = "MainForm";
+            Text = "Shoryu";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private ShogiBoardControl shogiBoardControl1;
     }
 }
