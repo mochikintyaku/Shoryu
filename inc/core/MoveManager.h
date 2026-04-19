@@ -18,7 +18,7 @@ namespace shoryu::core
 		void execute(Move cmd);
 		void undoLast();
 
-		// è”i—š—ğ‚Ì[‚³j‚ğæ“¾
+		// æ‰‹æ•°ï¼ˆå±¥æ­´ã®æ·±ã•ï¼‰ã‚’å–å¾—
 		size_t getMoveCount() const;
 
 	private:

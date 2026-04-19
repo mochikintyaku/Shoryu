@@ -13,17 +13,17 @@ namespace shoryu::core
 		if (Board::isInside(from) == false)
 			return legalMoves;
 
-		// w’èˆÊ’u‚É‹î‚ª‚È‚¢ê‡A‹ó‚ÌƒŠƒXƒg‚ğ•Ô‚·
+		// æŒ‡å®šä½ç½®ã«é§’ãŒãªã„å ´åˆã€ç©ºã®ãƒªã‚¹ãƒˆã‚’è¿”ã™
 		const PieceCode fromPiece = board.getPiece(from);
 		if (isEmpty(fromPiece))
 			return legalMoves; 
 
 		const MoveSpec& moveSpec = getMoveTable(fromPiece);
 
-		// ƒXƒeƒbƒvˆÚ“®‚Ìˆ—
+		// ã‚¹ãƒ†ãƒƒãƒ—ç§»å‹•ã®å‡¦ç†
 		for (const auto& step : moveSpec.stepMoves)
 		{
-			// ƒXƒeƒbƒvˆÚ“®‚Ìê‡‚ÌPosition‚ğŒvZ
+			// ã‚¹ãƒ†ãƒƒãƒ—ç§»å‹•ã®å ´åˆã®Positionã‚’è¨ˆç®—
 			int newSuji = from.suji_ + step.dx;
 			int newDan = from.dan_ + step.dy;
 			Position newPos(newSuji, newDan);
@@ -38,7 +38,7 @@ namespace shoryu::core
 			legalMoves.push_back(newPos);
 		}
 
-		// ƒXƒ‰ƒCƒhˆÚ“®‚Ìˆ—
+		// ã‚¹ãƒ©ã‚¤ãƒ‰ç§»å‹•ã®å‡¦ç†
 		for (const auto& slide : moveSpec.slideMoves)
 		{
 			int dx = slide.dx;

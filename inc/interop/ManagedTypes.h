@@ -10,7 +10,7 @@ namespace shoryu::interop
 		ManagedPosition(int suji, int dan);
 	};
 
-	// core::PieceCode ‚Æ“¯‚¶’l‚ğ‚ÂiŠ—LÒ‚İ: æè=³ / Œãè=•‰j
+	// core::PieceCode ã¨åŒã˜å€¤ã‚’æŒã¤ï¼ˆæ‰€æœ‰è€…è¾¼ã¿: å…ˆæ‰‹=æ­£ / å¾Œæ‰‹=è² ï¼‰
 	public enum class ManagedPieceCode : int
 	{
 		Empty = 0,
@@ -52,7 +52,7 @@ namespace shoryu::interop
 	{
 		literal int BoardSize = 9;
 
-		// [row, col] ‚Ì 9x9icore::PieceLayout ‚Æ“¯“™j
+		// [row, col] ã® 9x9ï¼ˆcore::PieceLayout ã¨åŒç­‰ï¼‰
 		array<ManagedPieceCode, 2>^ Board;
 
 		ManagedPieceLayout(array<ManagedPieceCode, 2>^ board);
@@ -63,7 +63,7 @@ namespace shoryu::interop
 		literal int NumHandPieceType = 7;
 		literal int CountsLength = NumHandPieceType * 2;
 
-		// ’·‚³=14i0..6:æè •àŒj‹â‹àŠp”ò / 7..13:Œãè •àŒj‹â‹àŠp”òj
+		// é•·ã•=14ï¼ˆ0..6:å…ˆæ‰‹ æ­©é¦™æ¡‚éŠ€é‡‘è§’é£› / 7..13:å¾Œæ‰‹ æ­©é¦™æ¡‚éŠ€é‡‘è§’é£›ï¼‰
 		array<int>^ Counts;
 
 		ManagedHandCounts(array<int>^ counts);

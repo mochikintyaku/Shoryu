@@ -5,7 +5,7 @@
 
 namespace shoryu::core
 {
-	// æèŠî€‚Ì’è‹`idy=-1 ‚ªu‘Ovj
+	// å…ˆæ‰‹åŸºæº–ã®å®šç¾©ï¼ˆdy=-1 ãŒã€Œå‰ã€ï¼‰
 	inline const std::map<PieceCode, MoveSpec> senteMoveTable =
 	{
 		{
@@ -108,7 +108,7 @@ namespace shoryu::core
 		return dst;
 	}
 
-	// pc ‚ªŒãè‹î‚È‚ç dy ‚ğ”½“]‚µ‚½ MoveSpec ‚ğ•Ô‚·iæèŠî€ƒe[ƒuƒ‹‚ğg‚¢‰ñ‚·j
+	// pc ãŒå¾Œæ‰‹é§’ãªã‚‰ dy ã‚’åè»¢ã—ãŸ MoveSpec ã‚’è¿”ã™ï¼ˆå…ˆæ‰‹åŸºæº–ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½¿ã„å›ã™ï¼‰
 	inline MoveSpec getMoveTable(PieceCode pc)
 	{
 		if (isEmpty(pc))

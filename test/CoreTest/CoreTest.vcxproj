@@ -75,18 +75,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\inc\core\Board.h" />
-    <ClInclude Include="..\..\inc\core\Game.h" />
-    <ClInclude Include="..\..\inc\core\Hand.h" />
-    <ClInclude Include="..\..\inc\core\LegalMoveFinder.h" />
-    <ClInclude Include="..\..\inc\core\Move.h" />
-    <ClInclude Include="..\..\inc\core\MoveManager.h" />
-    <ClInclude Include="..\..\inc\core\MoveTable.h" />
-    <ClInclude Include="..\..\inc\core\PieceTraits.h" />
-    <ClInclude Include="..\..\inc\core\ShoryuCoreExport.h" />
-    <ClInclude Include="..\..\inc\core\Types.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="LegalMoveFinderTest.cpp" />
     <ClCompile Include="MoveManagerTest.cpp" />
     <ClCompile Include="test.cpp" />

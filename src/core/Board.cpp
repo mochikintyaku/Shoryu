@@ -48,7 +48,7 @@ namespace shoryu::core
 		return layout_;
 	}
 
-	// ���W�ϊ����[�e�B���e�B�̎���
+	// 座標変換ユーティリティの実装
 	int Board::SujiToColumnIndex(int suji)
 	{
 		return BoardSize - suji;
@@ -69,7 +69,7 @@ namespace shoryu::core
 		return row + 1;
 	}
 
-	// �Ֆʔ���̎���
+	// 盤面判定の実装
 	bool Board::isInside(Position pos)
 	{
 		if ((pos.suji_ < 1) || (pos.suji_ > BoardSize))

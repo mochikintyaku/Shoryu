@@ -6,7 +6,7 @@
 namespace shoryu::core
 {
 	MoveManager::MoveManager(Board& board, Hand& hand)
-		:stack_(), board_(board),hand_(hand)
+		:board_(board), hand_(hand), stack_()
 	{ }
 
 	MoveManager::~MoveManager()
@@ -22,25 +22,25 @@ namespace shoryu::core
 
 	void MoveManager::execute(Move move)
 	{
-		// 1. ˆÚ“®Œ³(from)‚ğíœA‚Ü‚½‚Í‚¿‹î‚©‚çŒ¸‚ç‚·
+		// 1. ç§»å‹•å…ƒ(from)ã‚’å‰Šé™¤ã€ã¾ãŸã¯æŒã¡é§’ã‹ã‚‰æ¸›ã‚‰ã™
 		if (move.from)
 		{
-			// ”Õã‚ÌˆÚ“®
+			// ç›¤ä¸Šã®ç§»å‹•
 			board_.setPiece(*move.from, PieceCode::Empty);
 		}
 		else
 		{
-			// ‹î‚ğ‘Å‚Âê‡A‚¿‹î‚©‚çŒ¸‚ç‚·
+			// é§’ã‚’æ‰“ã¤å ´åˆã€æŒã¡é§’ã‹ã‚‰æ¸›ã‚‰ã™
 			hand_.remove(move.movedPieceAfter);
 		}
 
-		// 2. ˆÚ“®æ(to)‚É‹î‚ğ”z’u
+		// 2. ç§»å‹•å…ˆ(to)ã«é§’ã‚’é…ç½®
 		board_.setPiece(move.to, move.movedPieceAfter);
 
-		// 3. ‹î‚ğæ‚Á‚Ä‚¢‚éê‡A‚¿‹î‚É’Ç‰Á
+		// 3. é§’ã‚’å–ã£ã¦ã„ã‚‹å ´åˆã€æŒã¡é§’ã«è¿½åŠ 
 		if (!isEmpty(move.capturedPiece))
 		{
-			// æ‚Á‚½‹î‚Í‘Šè‚Ì‹î‚È‚Ì‚ÅAŠ—LÒ‚ğ”½“]‚µ‚Ä‚¿‹î‰»
+			// å–ã£ãŸé§’ã¯ç›¸æ‰‹ã®é§’ãªã®ã§ã€æ‰€æœ‰è€…ã‚’åè»¢ã—ã¦æŒã¡é§’åŒ–
 			PieceCode capturedPcAsHand = flipOwner(move.capturedPiece);
 			hand_.add(capturedPcAsHand);
 		}
@@ -56,15 +56,15 @@ namespace shoryu::core
 		Move move = stack_.top();
 		stack_.pop();
 
-		// 1. ‚¿‹î‚ğíœ(‹î‚ğæ‚Á‚Ä‚¢‚½ê‡)
+		// 1. æŒã¡é§’ã‚’å‰Šé™¤(é§’ã‚’å–ã£ã¦ã„ãŸå ´åˆ)
 		if (!isEmpty(move.capturedPiece))
 		{
-			// æ‚Á‚½‹î‚Í‘Šè‚Ì‹î‚È‚Ì‚ÅAŠ—LÒ‚ğ”½“]‚µ‚Ä‚¿‹î‚©‚çíœ
+			// å–ã£ãŸé§’ã¯ç›¸æ‰‹ã®é§’ãªã®ã§ã€æ‰€æœ‰è€…ã‚’åè»¢ã—ã¦æŒã¡é§’ã‹ã‚‰å‰Šé™¤
 			PieceCode capturedPcAsHand = flipOwner(move.capturedPiece);
 			hand_.remove(capturedPcAsHand);
 		}
 
-		// 2. ˆÚ“®æ(to)‚Ì‹î‚ğíœ(‹î‚ğæ‚Á‚Ä‚¢‚ê‚ÎAŒ³‚É–ß‚·)
+		// 2. ç§»å‹•å…ˆ(to)ã®é§’ã‚’å‰Šé™¤(é§’ã‚’å–ã£ã¦ã„ã‚Œã°ã€å…ƒã«æˆ»ã™)
 		if (!isEmpty(move.capturedPiece))
 		{
 			board_.setPiece(move.to, move.capturedPiece);
@@ -74,14 +74,14 @@ namespace shoryu::core
 			board_.setPiece(move.to, PieceCode::Empty);
 		}
 
-		// 3. ˆÚ“®Œ³(from)‚É‹î‚ğ”z’uA‚Ü‚½‚Í‚¿‹î‚É–ß‚·
+		// 3. ç§»å‹•å…ƒ(from)ã«é§’ã‚’é…ç½®ã€ã¾ãŸã¯æŒã¡é§’ã«æˆ»ã™
 		if (move.from)
 		{
 			board_.setPiece(*move.from, move.movedPieceBefore);
 		}
 		else
 		{
-			// ‹î‚ğ‘Å‚Á‚Ä‚¢‚½ê‡A‚¿‹î‚É–ß‚·
+			// é§’ã‚’æ‰“ã£ã¦ã„ãŸå ´åˆã€æŒã¡é§’ã«æˆ»ã™
 			hand_.add(move.movedPieceAfter);
 		}
 	}

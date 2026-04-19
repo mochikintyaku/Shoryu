@@ -1,4 +1,4 @@
-﻿#include "gtest/gtest.h"
+#include "gtest/gtest.h"
 #include "core/LegalMoveFinder.h"
 #include "core/Board.h"
 #include "core/Types.h"

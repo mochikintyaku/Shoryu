@@ -8,19 +8,19 @@ namespace shoryu::core
 {
     struct Position
     {
-        int suji_;  // xÀ•W
-        int dan_;   // yÀ•W
+        int suji_;  // xåº§æ¨™
+        int dan_;   // yåº§æ¨™
 
         Position(int suji, int dan);
 
-        // ”äŠr‰‰Zq‚ğ’Ç‰Á
+        // æ¯”è¼ƒæ¼”ç®—å­ã‚’è¿½åŠ 
         bool operator==(const Position& other) const;
         bool operator !=(const Position& other) const;
     };
 
     enum class PieceCode : int
     {
-        Empty = 0, //‹óƒ}ƒX‚ğ•\‚·ƒR[ƒh
+        Empty = 0, //ç©ºãƒã‚¹ã‚’è¡¨ã™ã‚³ãƒ¼ãƒ‰
 
         SenteFu = 1,
         SenteKyo = 2,
@@ -29,8 +29,8 @@ namespace shoryu::core
         SenteKin = 5,
         SenteKaku = 6,
         SenteHisya = 7,
-        Ou = 8,     //æè‚ª‰¤
-        SenteTokin = 11,  //¬‚è‚²‚Ü‚Í‹îƒR[ƒh‚É10‚ğ‘«‚·–‚Å•\‚·
+        Ou = 8,     //å…ˆæ‰‹ãŒç‹
+        SenteTokin = 11,  //æˆã‚Šã”ã¾ã¯é§’ã‚³ãƒ¼ãƒ‰ã«10ã‚’è¶³ã™äº‹ã§è¡¨ã™
         SenteNariKyo = 12,
         SenteNariKei = 13,
         SenteNariGin = 14,
@@ -78,8 +78,8 @@ namespace shoryu::core
     };
 
 
-	inline constexpr int BoardSize = 9;        // ”Õ–Ê‚Ìˆê•Ó‚ÌƒTƒCƒYi9x9j
-	inline constexpr int NumHandPieceType = 7; // Hand—pi‹î‘ä‚É“oê‚·‚éj‹î‚Ìí—Ş”
+	inline constexpr int BoardSize = 9;        // ç›¤é¢ã®ä¸€è¾ºã®ã‚µã‚¤ã‚ºï¼ˆ9x9ï¼‰
+	inline constexpr int NumHandPieceType = 7; // Handç”¨ï¼ˆé§’å°ã«ç™»å ´ã™ã‚‹ï¼‰é§’ã®ç¨®é¡æ•°
 
     typedef std::array<std::array<PieceCode, BoardSize>, BoardSize> PieceLayout;
 }
