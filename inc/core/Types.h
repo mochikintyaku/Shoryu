@@ -2,7 +2,6 @@
 #include <map>
 #include <vector>
 #include <array>
-#include "ShoryuCoreExport.h"
 
 namespace shoryu::core
 {
