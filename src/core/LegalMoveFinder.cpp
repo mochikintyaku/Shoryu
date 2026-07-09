@@ -14,7 +14,7 @@ namespace shoryu::core
 			return legalMoves;
 
 		// 指定位置に駒がない場合、空のリストを返す
-		const PieceCode fromPiece = board.getPiece(from);
+		const PieceCode fromPiece = board.getPieceCode(from);
 		if (isEmpty(fromPiece))
 			return legalMoves; 
 
@@ -30,7 +30,7 @@ namespace shoryu::core
 			if (!Board::isInside(newPos))
 				continue;
 
-			const PieceCode destPiece = board.getPiece(newPos);
+			const PieceCode destPiece = board.getPieceCode(newPos);
 			if (!isEmpty(destPiece))
 				if (isAlly(fromPiece, destPiece))
 					continue;
@@ -48,7 +48,7 @@ namespace shoryu::core
 			while (Board::isInside(searchPos))
 			{
 				Position newPos = searchPos;
-				const PieceCode destPiece = board.getPiece(newPos);
+				const PieceCode destPiece = board.getPieceCode(newPos);
 				if (isEmpty(destPiece))
 				{
 					legalMoves.push_back(newPos);

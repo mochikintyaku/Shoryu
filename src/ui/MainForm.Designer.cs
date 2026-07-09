@@ -1,4 +1,4 @@
-namespace ui
+namespace UI
 {
     partial class MainForm
     {
@@ -28,9 +28,9 @@ namespace ui
         /// </summary>
         private void InitializeComponent()
         {
-            handControl_Gote = new UI.HandControl();
-            boardControl = new UI.BoardControl();
-            handControl_Sente = new UI.HandControl();
+            handControl_Gote = new HandControl();
+            boardControl = new BoardControl();
+            handControl_Sente = new HandControl();
             listView1 = new ListView();
             panel1 = new Panel();
             label2 = new Label();
@@ -45,6 +45,7 @@ namespace ui
             // handControl_Gote
             // 
             handControl_Gote.AutoSize = true;
+            handControl_Gote.BackColor = Color.FromArgb(239, 179, 70);
             handControl_Gote.Location = new Point(20, 10);
             handControl_Gote.Name = "handControl_Gote";
             handControl_Gote.Size = new Size(230, 260);
@@ -55,11 +56,14 @@ namespace ui
             boardControl.BackColor = Color.FromArgb(239, 179, 97);
             boardControl.Location = new Point(270, 10);
             boardControl.Name = "boardControl";
-            boardControl.Size = new Size(550, 580);
+            boardControl.Size = new Size(550, 577);
             boardControl.TabIndex = 2;
+            boardControl.Paint += boardControl_Paint;
+            boardControl.MouseClick += boardControl_MouseClick;
             // 
             // handControl_Sente
             // 
+            handControl_Sente.BackColor = Color.FromArgb(239, 179, 70);
             handControl_Sente.Location = new Point(840, 330);
             handControl_Sente.Name = "handControl_Sente";
             handControl_Sente.Size = new Size(230, 260);

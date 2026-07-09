@@ -36,7 +36,7 @@ namespace shoryu::core
 
 		const int index = handPieceIndex(pc);
 
-		assert(counts_[index] > 0 && "Hand::remove(pc): piece count must be > 0");
+		//assert(counts_[index] > 0 && "Hand::remove(pc): piece count must be > 0");
 		if (counts_[index] <= 0)
 			return;
 

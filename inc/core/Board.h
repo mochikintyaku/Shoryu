@@ -10,7 +10,7 @@ namespace shoryu::core
 		~Board() = default;
 
 		void clear();
-		PieceCode getPiece(Position pos) const;
+		PieceCode getPieceCode(Position pos) const;
 		void setPiece(Position pos, PieceCode pieceCode);
 		void setLayout(PieceLayout& newLayout);
 		const PieceLayout& getLayout() const;

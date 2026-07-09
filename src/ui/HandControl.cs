@@ -12,19 +12,10 @@ namespace UI
 {
     public partial class HandControl : UserControl
     {
-        private static readonly Color HandControlColor = Color.LightGray;
-
         public HandControl()
         {
             InitializeComponent();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            var g = e.Graphics;
-
-            g.FillRectangle(new SolidBrush(HandControlColor), ClientRectangle);
-        }
     }
 }

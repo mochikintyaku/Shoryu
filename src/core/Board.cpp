@@ -24,7 +24,7 @@ namespace shoryu::core
 		}
 	}
 
-	PieceCode Board::getPiece(Position pos) const
+	PieceCode Board::getPieceCode(Position pos) const
 	{
 		int rowIdx = DanToRowIndex(pos.dan_);
 		int colIdx = SujiToColumnIndex(pos.suji_);

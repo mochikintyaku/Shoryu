@@ -43,6 +43,11 @@ namespace shoryu::interop
 		return TypeConverter::ToManaged(GetGame(game_)->getLayout());
 	}
 
+	ManagedPieceCode ManagedGame::GetPieceCodeAt(ManagedPosition pos)
+	{
+		return TypeConverter::ToManaged(GetGame(game_)->getPieceCodeAt(TypeConverter::ToNative(pos)));
+	}
+
 	ManagedHandCounts ManagedGame::GetHandCounts()
 	{
 		return TypeConverter::ToManaged(GetGame(game_)->getHandCounts());
