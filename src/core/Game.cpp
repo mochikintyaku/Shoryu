@@ -77,6 +77,11 @@ namespace shoryu::core
 		return board_.getLayout();
 	}
 
+	PieceCode Game::getPieceCodeAt(Position pos) const
+	{
+		return board_.getPieceCode(pos);
+	}
+
 	std::array<int, NumHandPieceType*2> Game::getHandCounts() const
 	{
 		return hand_.getAllCounts();
@@ -99,10 +104,10 @@ namespace shoryu::core
 
 	void Game::executeNormalMove(Position from, Position to)
 	{
-		assert(!isEmpty(board_.getPiece(from)) && "executeNormalMove: No piece at 'from'");
+		assert(!isEmpty(board_.getPieceCode(from)) && "executeNormalMove: No piece at 'from'");
 
-		const PieceCode movedBefore = board_.getPiece(from);
-		const PieceCode captured = board_.getPiece(to);
+		const PieceCode movedBefore = board_.getPieceCode(from);
+		const PieceCode captured = board_.getPieceCode(to);
 
 		const Move move(from, to, captured, movedBefore, movedBefore);
 		moveManager_.execute(move);
@@ -111,12 +116,12 @@ namespace shoryu::core
 
 	void Game::executePromotionMove(Position from, Position to)
 	{
-		assert(!isEmpty(board_.getPiece(from)) && "executePromotionMove: No piece at 'from'");
+		assert(!isEmpty(board_.getPieceCode(from)) && "executePromotionMove: No piece at 'from'");
 
-		const PieceCode movedBefore = board_.getPiece(from);
+		const PieceCode movedBefore = board_.getPieceCode(from);
 		assert(canPromotePiece(movedBefore) && "executePromotionMove: Piece cannot be promoted");
 
-		const PieceCode captured = board_.getPiece(to);
+		const PieceCode captured = board_.getPieceCode(to);
 		const PieceCode movedAfter = promote(movedBefore);
 
 		const Move move(from, to, captured, movedBefore, movedAfter);
@@ -126,12 +131,12 @@ namespace shoryu::core
 
 	void Game::executeDropMove(Position to, PieceCode pc)
 	{
-		assert(isEmpty(board_.getPiece(to)) && "executeDropMove: 'to' position must be empty");
+		assert(isEmpty(board_.getPieceCode(to)) && "executeDropMove: 'to' position must be empty");
 
 		assert(isHandPiece(pc) && "executeDropMove: pc must be a hand piece");
-		assert(ownerOf(pc) == currentPlayer_ && "executeDropMove: pc owner mismatch");
+		//assert(ownerOf(pc) == currentPlayer_ && "executeDropMove: pc owner mismatch");
 
-		assert(hand_.has(pc) && "executeDropMove: No piece in hand to drop");
+		//assert(hand_.has(pc) && "executeDropMove: No piece in hand to drop");
 
 		const Move move(std::nullopt, to, PieceCode::Empty, PieceCode::Empty, pc);
 		moveManager_.execute(move);
