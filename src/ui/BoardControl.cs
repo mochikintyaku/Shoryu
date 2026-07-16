@@ -15,7 +15,6 @@ namespace UI
     {
         private int cellWidth;
         private int cellHeight;
-        private Image senteFuImg = Image.FromFile("Fu.png");
 
         public BoardControl()
         {
@@ -68,7 +67,11 @@ namespace UI
         {
             var g = e.Graphics;
             Rectangle rect = new Rectangle((9 - suji) * cellWidth, (dan - 1) * cellHeight, cellWidth, cellHeight);
-            g.DrawImage(senteFuImg, rect);
+            Image? img = PieceImageLoader.PieceImage(code);
+            if (img != null)
+            {
+                g.DrawImage(img, rect);
+            }
         }
 
         public int ToSuji(int x)

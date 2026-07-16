@@ -14,13 +14,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\**" />
+    <Content Include="Images\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\interop\Interop.vcxproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Fu.png">
+    <Compile Update="PieceImageLoader.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Compile>
   </ItemGroup>
 
 </Project>
