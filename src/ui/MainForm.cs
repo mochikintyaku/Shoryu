@@ -18,7 +18,17 @@ namespace UI
             ManagedPieceCode code = game.GetPieceCodeAt(position);
             if (code == ManagedPieceCode.Empty)
             {
+                // TODO: Implement drop move logic here. For now, we will just drop a SenteFu piece for demonstration.
                 game.ExecuteDropMove(position, ManagedPieceCode.SenteFu);
+            }
+            else
+            {
+                ManagedPosition[] legalMoves = game.GetLegalMoves(position);
+                if (legalMoves.Length > 0)
+                {
+                    // TODO: Implement move selection logic here. For now, we will just move the piece to the first legal position for demonstration.
+                    game.ExecuteNormalMove(position, legalMoves[0]);
+                }
             }
             boardControl.Invalidate();
         }
