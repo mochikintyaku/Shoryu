@@ -34,8 +34,8 @@ namespace shoryu::core
 		board_.setPiece(Position(8, 9), PieceCode::SenteKei);
 		board_.setPiece(Position(9, 9), PieceCode::SenteKyo);
 
-		board_.setPiece(Position(2, 8), PieceCode::SenteKaku);
-		board_.setPiece(Position(8, 8), PieceCode::SenteHisya);
+		board_.setPiece(Position(8, 8), PieceCode::SenteKaku);
+		board_.setPiece(Position(2, 8), PieceCode::SenteHisya);
 
 		for (int suji = 1; suji <= BoardSize; ++suji)
 		{
@@ -53,8 +53,8 @@ namespace shoryu::core
 		board_.setPiece(Position(8, 1), PieceCode::GoteKei);
 		board_.setPiece(Position(9, 1), PieceCode::GoteKyo);
 
-		board_.setPiece(Position(8, 2), PieceCode::GoteKaku);
-		board_.setPiece(Position(2, 2), PieceCode::GoteHisya);
+		board_.setPiece(Position(2, 2), PieceCode::GoteKaku);
+		board_.setPiece(Position(8, 2), PieceCode::GoteHisya);
 
 		for (int suji = 1; suji <= BoardSize; ++suji)
 		{

@@ -5,40 +5,81 @@ using shoryu.interop;
 
 namespace UI
 {
-    enum GameState
+    public enum GameState
     {
         Idle,                 // 駒未選択
-        WaitingForMove        // 駒選択済み、駒の移動先または打ち先の選択待ち
+        PieceSelected,        // 盤上の駒を選択済み
+        HandSelected,         // 持ち駒を選択済み
+        PromotionPending,       // 成りの選択待ち
     }
 
     public class GameController
     {
         public ManagedGame Game { get; }
-        private GameState _state;
-
-
+        public GameState State { get; private set; }
+        private ManagedPosition? _selectedFrom; //選択中の駒の位置
+        private ManagedPosition[] _availablePos; //移動可能なマス
+ 
         public GameController(ManagedGame game)
         {
             Game = game;
-            _state = GameState.Idle;
+            State = GameState.Idle;
+            _selectedFrom = null;
+            _availablePos = [];
         }
 
-        public void MakeMove(ManagedPosition pos)
+        private void HandleClickWhenIdle(ManagedPosition pos)
         {
             ManagedPieceCode code = Game.GetPieceCodeAt(pos);
             if (code == ManagedPieceCode.Empty)
             {
-                // TODO: Implement drop move logic here. For now, we will just drop a SenteFu piece for demonstration.
-                Game.ExecuteDropMove(pos, ManagedPieceCode.SenteFu);
+                return;
             }
-            else
+
+            ManagedPosition[] tmpLegalMoves = Game.GetLegalMoves(pos);
+            if(tmpLegalMoves.Length == 0)
             {
-                ManagedPosition[] legalMoves = Game.GetLegalMoves(pos);
-                if (legalMoves.Length > 0)
-                {
-                    // TODO: Implement move selection logic here. For now, we will just move the piece to the first legal position for demonstration.
-                    Game.ExecuteNormalMove(pos, legalMoves[0]);
-                }
+                return;
+            }
+
+            _availablePos = tmpLegalMoves.ToArray();
+            _selectedFrom = pos;
+            State = GameState.PieceSelected;
+        }
+
+
+        private void HandleClickWhenPieceSelected(ManagedPosition pos)
+        {
+            if(!_availablePos.Contains(pos))
+            {
+                return;
+            }
+            
+            if(_selectedFrom == null)
+            {
+                State = GameState.Idle;
+            }
+            else 
+            {
+                ManagedPosition from = _selectedFrom.Value;
+                Game.ExecuteNormalMove(from, pos);
+                _selectedFrom = null;
+                State = GameState.Idle;
+            }
+        }
+
+        public void OnMouseClick(ManagedPosition pos)
+        {
+            switch (State)
+            {
+                case GameState.Idle:
+                    HandleClickWhenIdle(pos);
+                    break;
+                case GameState.PieceSelected:
+                    HandleClickWhenPieceSelected(pos);
+                    break;
+                case GameState.PromotionPending:
+                    break;
             }
         }
 

@@ -16,7 +16,7 @@ namespace UI
         private void boardControl_MouseClick(object sender, MouseEventArgs e)
         {
             ManagedPosition position = new ManagedPosition(boardControl.ToSuji(e.X), boardControl.ToDan(e.Y));
-            _gameController.MakeMove(position);
+            _gameController.OnMouseClick(position);
             boardControl.Invalidate();
         }
 
