@@ -82,7 +82,7 @@ namespace shoryu::core
 		return board_.getPieceCode(pos);
 	}
 
-	std::array<int, NumHandPieceType*2> Game::getHandCounts() const
+	std::array<int, NumPieceType> Game::getHandCounts() const
 	{
 		return hand_.getAllCounts();
 	}

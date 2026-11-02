@@ -13,9 +13,9 @@ namespace shoryu::interop
 		void NewGame();
 		void Clear();
 
-		ManagedPieceLayout GetLayout();
+		array<ManagedPieceCode, 2>^ GetManagedPieceLayout();
 		ManagedPieceCode GetPieceCodeAt(ManagedPosition pos);
-		ManagedHandCounts GetHandCounts();
+		array<int>^ GetHandPieceCounts();
 		ManagedPlayerSide GetCurrentPlayer();
 		int GetMoveCount();
 

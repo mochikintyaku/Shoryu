@@ -22,7 +22,7 @@ namespace shoryu::core
 		// 盤面情報の取得
 		PieceLayout getLayout() const;
 		PieceCode getPieceCodeAt(Position pos) const;
-		std::array<int, NumHandPieceType*2> getHandCounts() const;
+		std::array<int, NumPieceType> getHandCounts() const;
 		PlayerSide getCurrentPlayer() const;
 		size_t getMoveCount() const;
 

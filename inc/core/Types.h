@@ -29,27 +29,27 @@ namespace shoryu::core
         SenteKaku = 6,
         SenteHisya = 7,
         Ou = 8,     //先手が王
-        SenteTokin = 11,  //成りごまは駒コードに10を足す事で表す
-        SenteNariKyo = 12,
-        SenteNariKei = 13,
-        SenteNariGin = 14,
-        SenteUma = 16,
-        SenteRyu = 17,
+        SenteTokin = 9,  //成りごまは駒コードに10を足す事で表す
+        SenteNariKyo = 10,
+        SenteNariKei = 11,
+        SenteNariGin = 12,
+        SenteUma = 13,
+        SenteRyu = 14,
 
-        GoteFu = -1,
-        GoteKyo = -2,
-        GoteKei = -3,
-        GoteGin = -4,
-        GoteKin = -5,
-        GoteKaku = -6,
-        GoteHisya = -7,
-        Gyoku = -8,
-        GoteTokin = -11,
-        GoteNariKyo = -12,
-        GoteNariKei = -13,
-        GoteNariGin = -14,
-        GoteUma = -16,
-        GoteRyu = -17
+        GoteFu = 15,
+        GoteKyo = 16,
+        GoteKei = 17,
+        GoteGin = 18,
+        GoteKin = 19,
+        GoteKaku = 20,
+        GoteHisya = 21,
+        Gyoku = 22,
+        GoteTokin = 23,
+        GoteNariKyo = 24,
+        GoteNariKei = 25,
+        GoteNariGin = 26,
+        GoteUma = 27,
+        GoteRyu = 28
     };
 
     struct step
@@ -73,12 +73,14 @@ namespace shoryu::core
     enum class PlayerSide
     {
         Sente = 0,
-        Gote
+        Gote = 1
     };
 
 
 	inline constexpr int BoardSize = 9;        // 盤面の一辺のサイズ（9x9）
-	inline constexpr int NumHandPieceType = 7; // Hand用（駒台に登場する）駒の種類数
+	inline constexpr int NumPieceType = 29;    // 駒の種類数
+	inline constexpr int PromoteOffset = 8;     // 成り駒のコードは、通常駒のコードにこの値を足すことで表す
+	inline constexpr int FlipOffset = 14;       // 後手駒のコードは、先手駒のコードにこの値を足すことで表す
 
     typedef std::array<std::array<PieceCode, BoardSize>, BoardSize> PieceLayout;
 }

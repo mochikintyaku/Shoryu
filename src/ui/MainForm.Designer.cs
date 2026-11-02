@@ -1,3 +1,5 @@
+using shoryu.interop;
+
 namespace UI
 {
     partial class MainForm
@@ -28,9 +30,9 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            handControl_Gote = new HandControl();
+            handControl_Gote = new HandControl(ManagedPlayerSide.Gote);
             boardControl = new BoardControl();
-            handControl_Sente = new HandControl();
+            handControl_Sente = new HandControl(ManagedPlayerSide.Sente);
             listView1 = new ListView();
             panel1 = new Panel();
             label2 = new Label();
@@ -51,23 +53,24 @@ namespace UI
             handControl_Gote.Size = new Size(230, 260);
             handControl_Gote.TabIndex = 1;
             // 
-            // boardControl
+            // BoardControl
             // 
-            boardControl.BackColor = Color.FromArgb(239, 179, 97);
-            boardControl.Location = new Point(270, 10);
-            boardControl.Name = "boardControl";
-            boardControl.Size = new Size(550, 577);
-            boardControl.TabIndex = 2;
-            boardControl.Paint += boardControl_Paint;
-            boardControl.MouseClick += boardControl_MouseClick;
+            this.boardControl.BackColor = Color.FromArgb(239, 179, 97);
+            this.boardControl.Location = new Point(270, 10);
+            this.boardControl.Name = "boardControl";
+            this.boardControl.Size = new Size(550, 577);
+            this.boardControl.TabIndex = 2;
+            this.boardControl.Paint += this.BoardControl_Paint;
+            this.boardControl.MouseClick += this.BoardControl_MouseClick;
             // 
-            // handControl_Sente
+            // HandControl_Sente
             // 
             handControl_Sente.BackColor = Color.FromArgb(239, 179, 70);
             handControl_Sente.Location = new Point(840, 330);
             handControl_Sente.Name = "handControl_Sente";
             handControl_Sente.Size = new Size(230, 260);
             handControl_Sente.TabIndex = 3;
+            handControl_Sente.Paint += this.HandControl_Sente_OnPaint;
             // 
             // listView1
             // 
@@ -140,7 +143,7 @@ namespace UI
             Controls.Add(panel1);
             Controls.Add(listView1);
             Controls.Add(handControl_Sente);
-            Controls.Add(boardControl);
+            Controls.Add(this.boardControl);
             Controls.Add(handControl_Gote);
             Name = "MainForm";
             Text = "Shoryu";

@@ -13,7 +13,7 @@ namespace shoryu::core
 		counts_.fill(0);
 	}
 
-	const std::array<int, NumHandPieceType * 2>& Hand::getAllCounts() const
+	const std::array<int, NumPieceType>& Hand::getAllCounts() const
 	{
 		return counts_;
 	}
@@ -24,8 +24,7 @@ namespace shoryu::core
 		if (!isHandPiece(pc))
 			return;
 
-		const int index = handPieceIndex(pc);
-		counts_[index]++;
+		counts_[static_cast<int>(pc)]++;
 	}
 
 	void Hand::remove(PieceCode pc)
@@ -34,13 +33,13 @@ namespace shoryu::core
 		if (!isHandPiece(pc))
 			return;
 
-		const int index = handPieceIndex(pc);
+		const int iPc = static_cast<int>(pc);
 
 		//assert(counts_[index] > 0 && "Hand::remove(pc): piece count must be > 0");
-		if (counts_[index] <= 0)
+		if (counts_[iPc] <= 0)
 			return;
 
-		counts_[index]--;
+		counts_[iPc]--;
 	}
 
 	int Hand::count(PieceCode pc) const
@@ -49,8 +48,8 @@ namespace shoryu::core
 		if (!isHandPiece(pc))
 			return 0;
 
-		const int index = handPieceIndex(pc);
-		return counts_[index];
+		const int iPc = static_cast<int>(pc);
+		return counts_[iPc];
 	}
 
 	bool Hand::has(PieceCode pc) const

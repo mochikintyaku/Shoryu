@@ -27,16 +27,16 @@ namespace MoveManagerTest
 		);
 		moveManager.execute(move);
 		// 移動後の状態を確認
-		EXPECT_EQ(board.getPiece(from), PieceCode::Empty); // 移動元は空
-		const PieceCode pieceAtTo = board.getPiece(to);
+		EXPECT_EQ(board.getPieceCode(from), PieceCode::Empty); // 移動元は空
+		const PieceCode pieceAtTo = board.getPieceCode(to);
 		EXPECT_TRUE(!isEmpty(pieceAtTo));
 		EXPECT_EQ(pieceAtTo, PieceCode::SenteFu); // 移動先に歩がある
 		// 手を戻す
 		moveManager.undoLast();
 		// 戻した後の状態を確認
-		const PieceCode pieceAtFromAfterUndo = board.getPiece(from);
+		const PieceCode pieceAtFromAfterUndo = board.getPieceCode(from);
 		EXPECT_TRUE(!isEmpty(pieceAtFromAfterUndo));
 		EXPECT_EQ(pieceAtFromAfterUndo, PieceCode::SenteFu); // 移動元に歩が戻る
-		EXPECT_TRUE(isEmpty(board.getPiece(to))); // 移動先は空に戻る
+		EXPECT_TRUE(isEmpty(board.getPieceCode(to))); // 移動先は空に戻る
 	}
 } // namespace MoveManagerTest

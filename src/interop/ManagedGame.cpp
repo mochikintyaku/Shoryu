@@ -38,9 +38,18 @@ namespace shoryu::interop
 		GetGame(game_)->clear();
 	}
 
-	ManagedPieceLayout ManagedGame::GetLayout()
+	array<ManagedPieceCode, 2>^ ManagedGame::GetManagedPieceLayout()
 	{
-		return TypeConverter::ToManaged(GetGame(game_)->getLayout());
+		auto managedLayout = gcnew array<ManagedPieceCode, 2>(9, 9);
+		auto  nativeLayout = GetGame(game_)->getLayout();
+		for (int rowIdx = 0; rowIdx < 9; ++rowIdx)
+		{
+			for (int colIdx = 0; colIdx < 9; ++colIdx)
+			{
+				managedLayout[rowIdx, colIdx] = TypeConverter::ToManaged(nativeLayout[rowIdx][colIdx]);
+			}
+		}
+		return managedLayout;
 	}
 
 	ManagedPieceCode ManagedGame::GetPieceCodeAt(ManagedPosition pos)
@@ -48,9 +57,15 @@ namespace shoryu::interop
 		return TypeConverter::ToManaged(GetGame(game_)->getPieceCodeAt(TypeConverter::ToNative(pos)));
 	}
 
-	ManagedHandCounts ManagedGame::GetHandCounts()
+	array<int>^ ManagedGame::GetHandPieceCounts()
 	{
-		return TypeConverter::ToManaged(GetGame(game_)->getHandCounts());
+		auto counts = GetGame(game_)->getHandCounts();
+		auto managedCounts = gcnew array<int>(static_cast<int>(counts.size()));
+		for (int i=0; i<managedCounts->Length; ++i)
+		{
+			managedCounts[i] = (counts[i]);
+		}
+		return managedCounts;
 	}
 
 	ManagedPlayerSide ManagedGame::GetCurrentPlayer()

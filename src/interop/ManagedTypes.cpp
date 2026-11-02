@@ -6,14 +6,4 @@ namespace shoryu::interop
 		: Suji(suji), Dan(dan)
 	{
 	}
-
-	ManagedPieceLayout::ManagedPieceLayout(array<ManagedPieceCode, 2>^ board)
-		: Board(board)
-	{
-	}
-
-	ManagedHandCounts::ManagedHandCounts(array<int>^ counts)
-		: Counts(counts)
-	{
-	}
 }

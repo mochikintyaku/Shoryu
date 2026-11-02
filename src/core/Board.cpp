@@ -2,16 +2,9 @@
 
 namespace shoryu::core
 {
-	Board::Board()
-	{
-		for (auto& dan : layout_)
-		{
-			for (auto& square : dan)
-			{
-				square = PieceCode::Empty;
-			}
-		}
-	}
+	Board::Board() 
+		: layout_{}
+	{}
 
 	void Board::clear()
 	{

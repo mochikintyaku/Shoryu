@@ -4,25 +4,25 @@
 
 namespace shoryu::core
 {
+	constexpr bool InPieceCodeRange(PieceCode target, PieceCode lo, PieceCode hi)
+	{
+		return (lo <= target) && (target <= hi);
+	}
+
 	// --- basic ---
 	inline constexpr bool isEmpty(PieceCode pc)
 	{
 		return pc == PieceCode::Empty;
 	}
 
-	inline constexpr bool hasPiece(PieceCode pc)
-	{
-		return pc != PieceCode::Empty;
-	}
-
 	inline constexpr bool isSentePiece(PieceCode pc)
 	{
-		return static_cast<int>(pc) > 0;
+		return InPieceCodeRange(pc, PieceCode::SenteFu, PieceCode::SenteRyu);
 	}
 
 	inline constexpr bool isGotePiece(PieceCode pc)
 	{
-		return static_cast<int>(pc) < 0;
+		return InPieceCodeRange(pc, PieceCode::GoteFu, PieceCode::GoteRyu);
 	}
 
 	inline constexpr PlayerSide ownerOf(PieceCode pc)
@@ -34,15 +34,22 @@ namespace shoryu::core
 
 	inline constexpr PieceCode flipOwner(PieceCode pc)
 	{
-		return static_cast<PieceCode>(-static_cast<int>(pc));
+		if (isSentePiece(pc))
+		{
+			return static_cast<PieceCode>(static_cast<int>(pc) + FlipOffset);
+
+		}
+		else
+		{
+			return static_cast<PieceCode>(static_cast<int>(pc) - FlipOffset);
+		}
 	}
 
 	// --- promotion ---
 	inline constexpr bool isPromotedPiece(PieceCode pc)
 	{
-		const int v = static_cast<int>(pc);
-		const int absV = (v < 0) ? -v : v;
-		return absV >= 11;
+		return (InPieceCodeRange(pc, PieceCode::SenteTokin, PieceCode::SenteRyu))||
+			(InPieceCodeRange(pc, PieceCode::GoteTokin, PieceCode::GoteRyu));
 	}
 
 	inline constexpr PieceCode demote(PieceCode pc)
@@ -50,9 +57,9 @@ namespace shoryu::core
 		if (isEmpty(pc) || !isPromotedPiece(pc))
 			return pc;
 
-		const int v = static_cast<int>(pc);
-		const int sign = (v < 0) ? -1 : 1;
-		return static_cast<PieceCode>(v - sign * 10);
+		int iPc = static_cast<int>(pc);
+		iPc -= PromoteOffset;
+		return static_cast<PieceCode>(iPc);
 	}
 
 	inline constexpr bool canPromotePiece(const PieceCode pc)
@@ -90,20 +97,26 @@ namespace shoryu::core
 		if (!canPromotePiece(pc))
 			return pc;
 
-		const int v = static_cast<int>(pc);
-		const int sign = (v < 0) ? -1 : 1;
-		return static_cast<PieceCode>(v + sign * 10);
+		int iPc = static_cast<int>(pc);
+		iPc += PromoteOffset;
+		return static_cast<PieceCode>(iPc);
 	}
 
 	// --- side relation ---
 	inline constexpr bool isAlly(PieceCode a, PieceCode b)
 	{
-		return hasPiece(a) && hasPiece(b) && (isSentePiece(a) == isSentePiece(b));
+		if (isEmpty(a) || isEmpty(b))
+			return false;
+
+		return (isSentePiece(a) == isSentePiece(b));
 	}
 
 	inline constexpr bool isEnemy(PieceCode a, PieceCode b)
 	{
-		return hasPiece(a) && hasPiece(b) && (isSentePiece(a) != isSentePiece(b));
+		if (isEmpty(a) || isEmpty(b))
+			return false;
+
+		return (isSentePiece(a) != isSentePiece(b));
 	}
 
 	// --- hand helpers ---
@@ -134,43 +147,5 @@ namespace shoryu::core
 		default:
 			return false;
 		}
-	}
-
-	// 元の PieceCode を「持ち駒として管理するキー（不成）」へ正規化
-	inline constexpr PieceCode toHandKey(PieceCode pc)
-	{
-		return demote(pc);
-	}
-
-	// 持ち駒配列の index に変換する。
-	// pc は「所有者付き」。成りが渡されても demote して扱う。
-	// 返り値:
-	//   0..6  : 先手 (歩,香,桂,銀,金,角,飛)
-	//   7..13 : 後手 (歩,香,桂,銀,金,角,飛)
-	inline constexpr int handPieceIndex(PieceCode pc)
-	{
-		assert(isHandPiece(pc) && "handPieceIndex(pc): pc must be a hand piece");
-
-		const PieceCode base = demote(pc);
-		const bool isGote = isGotePiece(base);
-		const PieceCode absBase = static_cast<PieceCode>(isGote ? -static_cast<int>(base) : static_cast<int>(base));
-
-		int typeIndex = 0;
-		switch (absBase)
-		{
-		case PieceCode::SenteFu: typeIndex = 0; break;
-		case PieceCode::SenteKyo: typeIndex = 1; break;
-		case PieceCode::SenteKei: typeIndex = 2; break;
-		case PieceCode::SenteGin: typeIndex = 3; break;
-		case PieceCode::SenteKin: typeIndex = 4; break;
-		case PieceCode::SenteKaku: typeIndex = 5; break;
-		case PieceCode::SenteHisya: typeIndex = 6; break;
-		default:
-			assert(false && "handPieceIndex(pc): unexpected piece");
-			typeIndex = 0;
-			break;
-		}
-
-		return (isGote ? NumHandPieceType : 0) + typeIndex;
 	}
 }
