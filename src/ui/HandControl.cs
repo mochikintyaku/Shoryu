@@ -17,7 +17,8 @@ namespace UI
         private readonly ManagedPlayerSide _playerSide;
         private int _cellWidth;
         private int _cellHeight;
-
+        private static int _handPieceCountsLength = 7;  // 持ち駒として扱う駒の種類は7種類しかないので、配列の長さは7に固定する
+        private static int _flipOffset = 14;
         public HandControl()
             : this(ManagedPlayerSide.Sente)
         {
@@ -69,9 +70,38 @@ namespace UI
 
         public void DrowHandPiece(Graphics g, ManagedGame game)
         {
-            if (this._playerSide == ManagedPlayerSide.Sente)
+            int[] pieceAllCounts = game.GetHandPieceCounts();
+            int beginIdx = (this._playerSide == ManagedPlayerSide.Sente) ? (int)ManagedPieceCode.SenteFu : (int)ManagedPieceCode.GoteFu;
+            int endIdx = beginIdx + _handPieceCountsLength;
+            for (; beginIdx < endIdx;++beginIdx)
             {
-                int[] pieceCounts = game.GetHandPieceCounts();
+                if (pieceAllCounts[beginIdx] > 0)
+                {
+                    int x = 0;
+                    int y = 0;
+                    if (this._playerSide == ManagedPlayerSide.Sente)
+                    {
+                        x = (beginIdx - 1) % 3;
+                        y = (beginIdx - 1) / 3;
+                    }
+                    else
+                    {
+                        int tmpIdx = beginIdx - _flipOffset;
+                        x = 2 - (tmpIdx - 1) % 3;
+                        y = 2 - (tmpIdx - 1) / 3;
+                    }
+
+                    DrawPiece(g, (ManagedPieceCode)beginIdx, x, y);
+                }
+            }
+        }
+
+        public void DrawPiece(Graphics g, ManagedPieceCode code, int x, int y)
+        {
+            var pieceImage = PieceImageProvider.GetPieceImage(code);
+            if (pieceImage != null)
+            {
+                g.DrawImage(pieceImage, new Rectangle(_cellWidth * x, _cellHeight * y, _cellWidth, _cellHeight));
             }
         }
     }

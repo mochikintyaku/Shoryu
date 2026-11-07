@@ -38,7 +38,8 @@ namespace UI
             panel2 = new Panel();
             label3 = new Label();
             label4 = new Label();
-            handControl_Sente = new HandControl();
+            handControl_Sente = new HandControl(ManagedPlayerSide.Sente);
+            handControl_Gote = new HandControl(ManagedPlayerSide.Gote);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -124,11 +125,21 @@ namespace UI
             handControl_Sente.TabIndex = 7;
             handControl_Sente.Paint += HandControl_Sente_OnPaint;
             // 
+            // handControl_Gote
+            // 
+            handControl_Gote.BackColor = Color.FromArgb(247, 210, 145);
+            handControl_Gote.Location = new Point(20, 10);
+            handControl_Gote.Name = "handControl_Gote";
+            handControl_Gote.Size = new Size(230, 250);
+            handControl_Gote.TabIndex = 8;
+            handControl_Gote.Paint += handControl_Gote_Paint;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1089, 601);
+            Controls.Add(handControl_Gote);
             Controls.Add(handControl_Sente);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -147,6 +158,7 @@ namespace UI
 
         private UI.BoardControl boardControl;
         private HandControl handControl_Sente;
+        private HandControl handControl_Gote;
         private ListView listView1;
         private Panel panel1;
         private Label label1;

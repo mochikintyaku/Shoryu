@@ -5,7 +5,7 @@ using shoryu.interop;
 
 namespace UI
 {
-    internal class PieceImageLoader
+    internal class PieceImageProvider
     {
         static private readonly Image ImgSenteFu = Image.FromFile("Images/Fu.png");
         static private readonly Image ImgSenteKyo = Image.FromFile("Images/Kyosya.png");
@@ -76,7 +76,7 @@ namespace UI
             { ManagedPieceCode.GoteRyu, ImgGoteRyu },
         };
 
-        public static Image? PieceImage(ManagedPieceCode code)
+        public static Image? GetPieceImage(ManagedPieceCode code)
         {
             return PieceImageMap.GetValueOrDefault(code);
         }

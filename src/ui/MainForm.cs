@@ -18,6 +18,8 @@ namespace UI
             ManagedPosition position = new ManagedPosition(boardControl.ToSuji(e.X), boardControl.ToDan(e.Y));
             _gameController.OnMouseClick(position);
             boardControl.Invalidate();
+            handControl_Sente.Invalidate();
+            handControl_Gote.Invalidate();
         }
 
         private void BoardControl_Paint(object sender, PaintEventArgs e)
@@ -28,6 +30,11 @@ namespace UI
         private void HandControl_Sente_OnPaint(object sender, PaintEventArgs e)
         {
             handControl_Sente.OnPaint(e, _gameController.Game);
+        }
+
+        private void handControl_Gote_Paint(object sender, PaintEventArgs e)
+        {
+            handControl_Gote.OnPaint(e, _gameController.Game);
         }
     }
 }

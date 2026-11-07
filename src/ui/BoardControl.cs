@@ -64,7 +64,7 @@ namespace UI
         {
             var g = e.Graphics;
             Rectangle rect = new Rectangle((9 - suji) * cellWidth, (dan - 1) * cellHeight, cellWidth, cellHeight);
-            Image? img = PieceImageLoader.PieceImage(code);
+            Image? img = PieceImageProvider.GetPieceImage(code);
             if (img != null)
             {
                 g.DrawImage(img, rect);
