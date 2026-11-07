@@ -30,9 +30,7 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            handControl_Gote = new HandControl(ManagedPlayerSide.Gote);
             boardControl = new BoardControl();
-            handControl_Sente = new HandControl(ManagedPlayerSide.Sente);
             listView1 = new ListView();
             panel1 = new Panel();
             label2 = new Label();
@@ -40,37 +38,20 @@ namespace UI
             panel2 = new Panel();
             label3 = new Label();
             label4 = new Label();
+            handControl_Sente = new HandControl();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // handControl_Gote
+            // boardControl
             // 
-            handControl_Gote.AutoSize = true;
-            handControl_Gote.BackColor = Color.FromArgb(239, 179, 70);
-            handControl_Gote.Location = new Point(20, 10);
-            handControl_Gote.Name = "handControl_Gote";
-            handControl_Gote.Size = new Size(230, 260);
-            handControl_Gote.TabIndex = 1;
-            // 
-            // BoardControl
-            // 
-            this.boardControl.BackColor = Color.FromArgb(239, 179, 97);
-            this.boardControl.Location = new Point(270, 10);
-            this.boardControl.Name = "boardControl";
-            this.boardControl.Size = new Size(550, 577);
-            this.boardControl.TabIndex = 2;
-            this.boardControl.Paint += this.BoardControl_Paint;
-            this.boardControl.MouseClick += this.BoardControl_MouseClick;
-            // 
-            // HandControl_Sente
-            // 
-            handControl_Sente.BackColor = Color.FromArgb(239, 179, 70);
-            handControl_Sente.Location = new Point(840, 330);
-            handControl_Sente.Name = "handControl_Sente";
-            handControl_Sente.Size = new Size(230, 260);
-            handControl_Sente.TabIndex = 3;
-            handControl_Sente.Paint += this.HandControl_Sente_OnPaint;
+            boardControl.BackColor = Color.FromArgb(239, 179, 97);
+            boardControl.Location = new Point(270, 10);
+            boardControl.Name = "boardControl";
+            boardControl.Size = new Size(550, 577);
+            boardControl.TabIndex = 2;
+            boardControl.Paint += BoardControl_Paint;
+            boardControl.MouseClick += BoardControl_MouseClick;
             // 
             // listView1
             // 
@@ -134,17 +115,25 @@ namespace UI
             label4.TabIndex = 0;
             label4.Text = "label4";
             // 
+            // handControl_Sente
+            // 
+            handControl_Sente.BackColor = Color.FromArgb(247, 210, 145);
+            handControl_Sente.Location = new Point(840, 337);
+            handControl_Sente.Name = "handControl_Sente";
+            handControl_Sente.Size = new Size(230, 250);
+            handControl_Sente.TabIndex = 7;
+            handControl_Sente.Paint += HandControl_Sente_OnPaint;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1089, 601);
+            Controls.Add(handControl_Sente);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(listView1);
-            Controls.Add(handControl_Sente);
-            Controls.Add(this.boardControl);
-            Controls.Add(handControl_Gote);
+            Controls.Add(boardControl);
             Name = "MainForm";
             Text = "Shoryu";
             panel1.ResumeLayout(false);
@@ -152,14 +141,12 @@ namespace UI
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private UI.BoardControl boardControl;
-        private UI.HandControl handControl_Gote;
-        private UI.HandControl handControl_Sente;
+        private HandControl handControl_Sente;
         private ListView listView1;
         private Panel panel1;
         private Label label1;

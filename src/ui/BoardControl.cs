@@ -39,13 +39,10 @@ namespace UI
         private void DrawBoardFrame(PaintEventArgs e)
         {
             var g = e.Graphics;
-            for (int row = 0; row < 9; row++)
+            for (int i = 0; i <= 9; i++)
             {
-                for (int col = 0; col < 9; col++)
-                {
-                    Rectangle rect = new Rectangle(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
-                    g.DrawRectangle(Pens.Black, rect);
-                }
+                g.DrawLine(Pens.Black, new Point(cellWidth*i, 0), new Point(cellWidth*i, Height));
+                g.DrawLine(Pens.Black, new Point(0, cellHeight*i), new Point(Width, cellHeight*i));
             }
         }
 
