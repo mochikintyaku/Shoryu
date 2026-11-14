@@ -15,7 +15,7 @@ namespace UI
 
         private void BoardControl_MouseClick(object sender, MouseEventArgs e)
         {
-            ManagedPosition position = new ManagedPosition(boardControl.ToSuji(e.X), boardControl.ToDan(e.Y));
+            ManagedPosition position = new ManagedPosition(boardControl.pixelToSuji(e.X), boardControl.pixelToDan(e.Y));
             _gameController.OnMouseClick(position);
             boardControl.Invalidate();
             handControl_Sente.Invalidate();
@@ -35,6 +35,11 @@ namespace UI
         private void handControl_Gote_Paint(object sender, PaintEventArgs e)
         {
             handControl_Gote.OnPaint(e, _gameController.Game);
+        }
+
+        private void handControl_Sente_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

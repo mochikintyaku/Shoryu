@@ -123,6 +123,7 @@ namespace UI
             handControl_Sente.Name = "handControl_Sente";
             handControl_Sente.Size = new Size(230, 250);
             handControl_Sente.TabIndex = 7;
+            handControl_Sente.Click += handControl_Sente_Click;
             handControl_Sente.Paint += HandControl_Sente_OnPaint;
             // 
             // handControl_Gote

@@ -91,17 +91,8 @@ namespace UI
                         y = 2 - (tmpIdx - 1) / 3;
                     }
 
-                    DrawPiece(g, (ManagedPieceCode)beginIdx, x, y);
+                    PieceRenderer.DrawPiece(g, (ManagedPieceCode)beginIdx, x * _cellWidth, y * _cellHeight, _cellWidth, _cellHeight);
                 }
-            }
-        }
-
-        public void DrawPiece(Graphics g, ManagedPieceCode code, int x, int y)
-        {
-            var pieceImage = PieceImageProvider.GetPieceImage(code);
-            if (pieceImage != null)
-            {
-                g.DrawImage(pieceImage, new Rectangle(_cellWidth * x, _cellHeight * y, _cellWidth, _cellHeight));
             }
         }
     }

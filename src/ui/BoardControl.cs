@@ -55,27 +55,18 @@ namespace UI
                     ManagedPieceCode code = game.GetPieceCodeAt(new ManagedPosition(suji, dan));
                     if (code != ManagedPieceCode.Empty)
                     {
-                        DrawPiece(e, code, suji, dan);
+                        var g = e.Graphics;
+                        PieceRenderer.DrawPiece(g, code, (9 - suji) * cellWidth, (dan - 1) * cellHeight, cellWidth, cellHeight);
                     }
                 }
             }
         }
-        public void DrawPiece(PaintEventArgs e, ManagedPieceCode code, int suji, int dan)
-        {
-            var g = e.Graphics;
-            Rectangle rect = new Rectangle((9 - suji) * cellWidth, (dan - 1) * cellHeight, cellWidth, cellHeight);
-            Image? img = PieceImageProvider.GetPieceImage(code);
-            if (img != null)
-            {
-                g.DrawImage(img, rect);
-            }
-        }
 
-        public int ToSuji(int x)
+        public int pixelToSuji(int x)
         {
             return 9 - (x / cellWidth);
         }
-        public int ToDan(int y)
+        public int pixelToDan(int y)
         {
             return (y / cellHeight) + 1;
         }
